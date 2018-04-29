@@ -15,6 +15,7 @@ public class Card {
 		this.num_pas = num_pas;
 		this.type = type;
 		setDate();
+		setCost(type,owner);
 
 	}
 
