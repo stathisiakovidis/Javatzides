@@ -3,50 +3,72 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Card {
-	private Date today;
-	private int cost;
+
 	private String date;
-	
-	
-	public Card(Date today, int cost, String date) {
-		this.today = today;
-		this.cost= cost;
-		this.date=date;
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
-		setToday(Calendar.getInstance().getTime());
-		date=formatter.format(getToday());
-		
+	private String owner;
+	private String num_pas;
+	private String type;
+	private int cost;
+
+	public Card(String owner, String num_pas, String type) {
+		this.owner = owner;
+		this.num_pas = num_pas;
+		this.type = type;
+		setDate();
 
 	}
-	
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
 
 	public int getCost() {
 		return cost;
 	}
 
+	public void setCost(String type, String num_pas) {
+		if (num_pas == null) {
+			if (type.equals("лгмиаиа")) {
+				this.cost = 30;
+			} else if (type.equals("TRIMHNIAIA")) {
+				this.cost = 84;
+			} else if (type.equals("EXAMINIAIA")) {
+				this.cost = 150;
+			} else if (type.equals("ETHSIA")) {
+				this.cost = 270;
+			} else {
+				if (type.equals("лгмиаиа")) {
+					this.cost = 15;
+				} else if (type.equals("TRIMHNIAIA")) {
+					this.cost = 42;
+				} else if (type.equals("EXAMINIAIA")) {
+					this.cost = 75;
+				} else if (type.equals("ETHSIA")) {
+					this.cost = 135;
+				}
+			}
 
-	public void setCost(int cost) {
-		this.cost = cost;
+		}
 	}
-
-
-	public String getDate() {
-		return date;
-	}
-
 
 	public void setDate(String date) {
 		this.date = date;
 	}
 
-
-	public Date getToday() {
-		return today;
+	public String getDate() {
+		return date;
 	}
 
-	public void setToday(Date today) {
-		this.today = today;
+	public void setDate() {
+		Date today;
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+		today = Calendar.getInstance().getTime();
+		this.date = formatter.format(today);
+
 	}
 
 }
