@@ -25,5 +25,7 @@ public class Main extends Application {
 		primaryStage.setTitle("ThessBus: Card");
 		primaryStage.show();
 		
+		System.out.println("Hello");
+		
 	}
 }
