@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# ThessBus
-=======
 # ThessBus
 
-UI Branch
->>>>>>> ui
+Master Branch
