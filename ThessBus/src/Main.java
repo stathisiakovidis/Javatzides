@@ -17,15 +17,12 @@ public class Main extends Application {
 		else
 			 root= FXMLLoader.load(getClass().getResource("Card 2.fxml"));
 		
-		String css= Main.class.getResource("style.css").toExternalForm();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(css);
+		
 		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Card");
 		primaryStage.show();
-		
-		System.out.println("Hello");
-		
+	
 	}
 }
