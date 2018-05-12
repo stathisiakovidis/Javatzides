@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +20,6 @@ public class Main extends Application {
 			 root= FXMLLoader.load(getClass().getResource("Card 2.fxml"));
 		
 		Scene scene = new Scene(root);
-		
-		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Card");
 		primaryStage.show();

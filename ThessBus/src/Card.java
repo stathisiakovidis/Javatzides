@@ -14,11 +14,8 @@ public class Card {
 		this.type = type;
 		setDate();
 		setCost(type/*,owner*/);
-		
-
 	}
 
-	
 	public int getCost() {
 		return cost;
 	}
