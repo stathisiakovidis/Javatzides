@@ -23,6 +23,8 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Card");
 		primaryStage.show();
+		
+		System.out.println("Hello");
 	
 	}
 }
