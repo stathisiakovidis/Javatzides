@@ -14,17 +14,15 @@ public class Main extends Application {
 	
 	public void start(Stage primaryStage) throws Exception{
 		Parent root=null;
-		if(true) 
-			 root= FXMLLoader.load(getClass().getResource("Card.fxml"));
+		if(/*owner.num_pass==null*/true) 
+			 root= FXMLLoader.load(getClass().getResource("Card2.fxml"));
 		else
-			 root= FXMLLoader.load(getClass().getResource("Card 2.fxml"));
+			root= FXMLLoader.load(getClass().getResource("Card.fxml"));
 		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Card");
 		primaryStage.show();
 		
-		System.out.println("Hello");
-	
 	}
 }

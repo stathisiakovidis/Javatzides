@@ -5,45 +5,37 @@ import java.util.Date;
 public class Card {
 
 	private String date;
-	//private User owner;
+	// private User owner;
 	private String type;
 	private int cost;
 
-	public Card(/*User owner,*/ String type) {
-		//this.owner=owner;
+	public Card(/* User owner, */ String type, int cost) {
+		// this.owner=owner;
 		this.type = type;
+		this.cost=cost;
 		setDate();
-		setCost(type/*,owner*/);
 	}
+
+	
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 
 	public int getCost() {
 		return cost;
 	}
 
-	public void setCost(String type) {
-		if (/*owner.num_pas==null*/true) {
-			if (type.contains("Μηνιαία")) {
-				this.cost = 30;
-			} else if (type.contains("Τριμηνιαία")) {
-				this.cost = 84;
-			} else if (type.contains("Εξαμηνιαία")) {
-				this.cost = 150;
-			} else if (type.contains("Ετήσια")) {
-				this.cost = 270;
-			} else {
-				if (type.contains("Μηνιαία")) {
-					this.cost = 15;
-				} else if (type.contains("Τριμηνιαία")) {
-					this.cost = 42;
-				}  else if (type.contains("Εξαμηνιαία")) {
-					this.cost = 75;
-				} else if (type.contains("Ετήσια")) {
-					this.cost = 135;
-				}
-			}
-		}
-		
+
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
+
 
 	public String getDate() {
 		return date;
@@ -56,5 +48,14 @@ public class Card {
 		this.date = formatter.format(today);
 
 	}
+	
+	/* public User getOwner(){
+	 * 		return owner;
+	 * }
+	 * 
+	 * public void setOwner(User owner){
+	 * 		this.owner=owner;
+	 * }
+	 */
 
 }
