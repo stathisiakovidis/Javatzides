@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="150.0" text="ThessBus" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="60.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="61.0" layoutY="6.0" text="Όνομα Χρήστη" />
+                  <Label layoutX="61.0" layoutY="28.0" text="Χρήματα" />
+               </children>
+            </AnchorPane>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Αρχική">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/web-page-home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Ιστορικό">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/circular-clock-.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Κατάθεση">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/euro-currency-symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Ρυθμίσεις">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/garage-wrench.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Πληροφορίες">
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/edit-file.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></VBox>
+      <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="450.0" minHeight="-Infinity" minWidth="450.0" prefHeight="400.0" prefWidth="450.0">
+         <children>
+            <Label text="Γεια σου, ΧΡΗΣΤΗ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="40.0" />
+               </VBox.margin>
+            </Label>
+            <Pane prefHeight="43.0" prefWidth="332.0" style="-fx-border-color: red; -fx-border-width: 2;">
+               <children>
+                  <Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true" />
+                  <Label layoutX="24.0" layoutY="13.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="30.0" />
+               </VBox.margin>
+            </Pane>
+            <ButtonBar prefHeight="100.0" prefWidth="467.0">
+              <buttons>
+                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="60.0" text="Εισητήριο">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button minWidth="6.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="173.0" text="Κάρτα">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+              </buttons>
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+            </ButtonBar>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>
