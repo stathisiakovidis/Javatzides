@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/web-page-home.png" />
+                        <Image url="@../Images/web-page-home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/circular-clock-.png" />
+                        <Image url="@../Images/circular-clock-.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -69,7 +69,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/euro-currency-symbol.png" />
+                        <Image url="@../Images/euro-currency-symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -84,7 +84,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/garage-wrench.png" />
+                        <Image url="@../Images/garage-wrench.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -99,7 +99,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Downloads/edit-file.png" />
+                        <Image url="@../Images/edit-file.png" />
                      </image>
                   </ImageView>
                </graphic>
