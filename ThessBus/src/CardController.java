@@ -60,7 +60,7 @@ public class CardController {
 		 * }else{
 		 * 		newcard.setOwner(owner);
 		 * 		owner.products.add(newcard);
-		 * 		owner.setBalance(owner.getBalance()-newcard.getCost());
+		 * 		owner.reduseBalance(newcard.getCost());
 		 * }
 		 */
 
