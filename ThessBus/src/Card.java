@@ -7,12 +7,12 @@ public class Card {
 	private String date;
 	// private User owner;
 	private String type;
-	private int cost;
+	private double cost;
 
-	public Card(/* User owner, */ String type, int cost) {
+	public Card(/* User owner, */ String type,double cost) {
 		// this.owner=owner;
 		this.type = type;
-		this.cost=cost;
+		this.cost=/*owner.getCheck()**/cost;
 		setDate();
 	}
 
@@ -27,13 +27,13 @@ public class Card {
 	}
 
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
 
-	public void setCost(int cost) {
-		this.cost = cost;
+	public void setCost(double cost) {
+		this.cost =/*owner.getCheck()**/cost;
 	}
 
 

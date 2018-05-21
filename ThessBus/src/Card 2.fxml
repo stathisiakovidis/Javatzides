@@ -83,10 +83,10 @@
       </VBox>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="Card30" layoutX="56.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 30€" />
-            <Button fx:id="Card84" layoutX="243.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 84€" />
-            <Button fx:id="Card150" layoutX="56.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 150€" />
-            <Button fx:id="Card270" layoutX="243.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 270€" />
+            <Button fx:id="Miniaia" layoutX="56.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 30€" />
+            <Button fx:id="Triminiaia" layoutX="243.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 84€" />
+            <Button fx:id="Examiniaia" layoutX="56.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 150€" />
+            <Button fx:id="Ethsia" layoutX="243.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 270€" />
             <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="336.0" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE">
                <font>
                   <Font size="14.0" />
