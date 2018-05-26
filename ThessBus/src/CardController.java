@@ -1,17 +1,20 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class CardController {
-	@FXML
 	// private User owner;
+	@FXML
+	public Button Miniaia,Triminaia,Examiniaia,Ethsia;
+	
 	public void generateCard(ActionEvent event) {
 		Card newcard = null;
 		boolean flag=true;
 		/*if(owner.getNumPas()==null){
-		 * 		if(button.id.equals("Card30"){ 
-		 * 			if(owner.getBalance()>=30)
+		 * 		if(event.getSource()==Miniaia){ 
+		 * 			if(owner.getBalance()>= 30/owner.getCheck())
 		 * 				newcard.setType("Μηνιαία");
-		 * 				newcard.setCost(30);
+		 * 				newcard.setCost(15);
 		 * 				flag=false; 
 		 *		 }else if(button.id.equals("Card84"){ 
 		 * 			if(owner.getBalance()>=84)
@@ -56,8 +59,8 @@ public class CardController {
 		 *		errorAlert.showAndWait();
 		 * }else{
 		 * 		newcard.setOwner(owner);
-		 * 		owner.cardsList.add(newcard);
-		 * 		owner.setBalance(owner.getBalance()-newcard.getCost());
+		 * 		owner.products.add(newcard);
+		 * 		owner.reduseBalance(newcard.getCost());
 		 * }
 		 */
 
