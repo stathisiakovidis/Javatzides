@@ -14,7 +14,11 @@
 <?import javafx.scene.text.Font?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> parent of 3ed1de7... Final commit
    <items>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -40,7 +44,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/web-page-home.png" />
+                        <Image url="@../../../../../../Downloads/web-page-home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -55,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/circular-clock-.png" />
+                        <Image url="@../../../../../../Downloads/circular-clock-.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -70,7 +74,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/euro-currency-symbol.png" />
+                        <Image url="@../../../../../../Downloads/euro-currency-symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,7 +89,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/garage-wrench.png" />
+                        <Image url="@../../../../../../Downloads/garage-wrench.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -100,7 +104,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/edit-file.png" />
+                        <Image url="@../../../../../../Downloads/edit-file.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -116,7 +120,7 @@
                   <Insets left="40.0" top="40.0" />
                </VBox.margin>
             </Label>
-            <Pane prefHeight="43.0" prefWidth="380.0" style="-fx-border-color: red; -fx-border-width: 2;">
+            <Pane prefHeight="43.0" prefWidth="332.0" style="-fx-border-color: red; -fx-border-width: 2;">
                <children>
                   <Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true" />
                   <Label layoutX="24.0" layoutY="13.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
@@ -126,17 +130,17 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets left="35.0" right="35.0" top="30.0" />
+                  <Insets left="20.0" top="30.0" />
                </VBox.margin>
             </Pane>
-            <ButtonBar prefHeight="100.0" prefWidth="450.0">
+            <ButtonBar prefHeight="100.0" prefWidth="467.0">
               <buttons>
-                  <Button minWidth="0.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" text="Κάρτα">
+                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="60.0" text="Εισητήριο">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" text="Εισητήριο">
+                  <Button minWidth="6.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="173.0" text="Κάρτα">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -146,6 +150,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
                <padding>
+<<<<<<< HEAD
                   <Insets right="80.0" />
 =======
 <SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
@@ -282,6 +287,9 @@
                <padding>
                   <Insets left="50.0" right="50.0" />
 >>>>>>> branch 'ui' of https://github.com/stathisiakovidis/Javatzides.git
+=======
+                  <Insets left="50.0" right="50.0" />
+>>>>>>> parent of 3ed1de7... Final commit
                </padding>
             </ButtonBar>
          </children>
