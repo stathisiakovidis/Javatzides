@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2725752508361204" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CardController">
+<fx:root dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <items>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -34,7 +35,7 @@
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="Αρχική">
+            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +44,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="10.0" layoutY="128.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="Ιστορικό">
+            <Button fx:id="historyButton" layoutX="10.0" layoutY="128.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +53,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="10.0" layoutY="180.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="Κατάθεση">
+            <Button fx:id="depositButton" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +62,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="10.0" layoutY="232.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="Ρυθμίσεις">
+            <Button fx:id="settingsButton" layoutX="10.0" layoutY="232.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Ρυθμίσεις">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="10.0" layoutY="284.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="Πληροφορίες">
+            <Button fx:id="infoButton" layoutX="10.0" layoutY="284.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,17 +81,49 @@
                </graphic>
             </Button>
          </children></VBox>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button fx:id="Miniaia" layoutX="56.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 15€" />
-            <Button fx:id="Triminiaia" layoutX="243.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 42€" />
-            <Button fx:id="Examiniaia" layoutX="56.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 75€" />
-            <Button fx:id="Ethsia" layoutX="243.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 125€" />
-            <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="336.0" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Hyperlink>
-         </children></AnchorPane>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" text="ΤΙΜΗ 1">
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" text="ΤΙΜΗ 2">
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </Button>
+              </buttons>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets right="80.0" />
+               </padding>
+            </ButtonBar>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" text="ΤΙΜΗ 3">
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" text="ΤΙΜΗ 4">
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </Button>
+              </buttons>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets right="80.0" />
+               </padding>
+            </ButtonBar>
+         </children>
+      </VBox>
   </items>
-</SplitPane>
+</fx:root>

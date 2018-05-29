@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -106,7 +105,7 @@
                </graphic>
             </Button>
          </children></VBox>
-      <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="450.0" minHeight="-Infinity" minWidth="450.0" prefHeight="400.0" prefWidth="450.0">
+      <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0">
          <children>
             <Label text="Γεια σου, ΧΡΗΣΤΗ">
                <font>
@@ -116,9 +115,12 @@
                   <Insets left="40.0" top="40.0" />
                </VBox.margin>
             </Label>
-            <Pane prefHeight="43.0" prefWidth="332.0" style="-fx-border-color: red; -fx-border-width: 2;">
+            <Pane prefHeight="43.0" prefWidth="360.0" style="-fx-border-color: red; -fx-border-width: 2;">
                <children>
-                  <Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true" />
+                  <Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Hyperlink>
                   <Label layoutX="24.0" layoutY="13.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
                      <font>
                         <Font size="13.0" />
@@ -126,7 +128,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets left="20.0" top="30.0" />
+                  <Insets left="40.0" top="30.0" />
                </VBox.margin>
             </Pane>
             <ButtonBar prefHeight="100.0" prefWidth="467.0">
@@ -146,9 +148,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
                <padding>
-                  <Insets left="50.0" right="50.0" />
-
-                  <Insets left="50.0" right="50.0" />
+                  <Insets right="55.0" />
                </padding>
             </ButtonBar>
          </children>
