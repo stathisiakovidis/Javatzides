@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public abstract class MainController {
+public  class MainController {
 	
 	@FXML
 	public Button startButton;

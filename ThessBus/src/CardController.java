@@ -2,7 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class CardController {
+public class CardController extends MainController {
 	// private User owner;
 	@FXML
 	public Button Miniaia,Triminaia,Examiniaia,Ethsia;

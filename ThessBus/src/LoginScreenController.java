@@ -1,6 +1,6 @@
 
 
-import java.util.Optional;
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -19,30 +17,42 @@ import javafx.stage.Stage;
 
 
 public class LoginScreenController {
+	@FXML public Button loginButton;
+	@FXML public TextField usernameField;
+	@FXML public PasswordField passwordField;
 	
-	@FXML private TextField usernameField;
-	@FXML private PasswordField passwordField;
-	
-	public void onClickedLogin(ActionEvent actionEvent) throws Exception{
+	public void onClickedLogin(ActionEvent e)  {
 		
-		Stage primarystage = getStageFromEvent(actionEvent);
-		/*primarystage.close();*/
+		Stage primarystage = Main.getStagefromEvent(e);
+		primarystage.close();
 		
-		if(usernameField.getText().equals("") && passwordField.getText().equals("")) {
+		if(usernameField.getText().equals("1") && passwordField.getText().equals("1"))
+		{
 			
-			Stage stage = new Stage();
-
-			Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!")), 600, 400); 
-
-			stage .setTitle("Welcome to JavaFX!"); 
-	        stage.setScene(scene); 
-	        stage.sizeToScene(); 
-			//stage.setMaximized(true);
-	        stage.show();
+			//Parent root=null;
+			
+			try {
+				//FXMLLoader loader = new FXMLLoader(getClass().getResource("C:\\Users\\stathis\\git\\ThessBus\\ThessBus\\src\\StartScreen.fxml"));
+				//Parent root = (Parent) loader.load();
+				Stage stage = new Stage();
+				Parent root=null;
+				root= FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
 				
+				//FXMLLoader loader= new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+				//Parent root =loader.load();
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.setTitle("ThessBus: Home");
+				stage.show();
+					
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+			
 		}
 		else {
-		
+		System.out.println("geia");
 		}		
 	}
 	

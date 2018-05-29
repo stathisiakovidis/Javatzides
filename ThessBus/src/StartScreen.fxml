@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <items>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -29,7 +29,7 @@
                   <Label layoutX="61.0" layoutY="28.0" text="Χρήματα" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" prefWidth="150.0" text="Αρχική">
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#openStartScreen" prefWidth="150.0" text="Αρχική">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="150.0" text="Κατάθεση">
+            <Button fx:id="depositButton" mnemonicParsing="false" onAction="#openDepositScreen" prefWidth="150.0" text="Κατάθεση">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
@@ -133,7 +133,7 @@
             </Pane>
             <ButtonBar prefHeight="100.0" prefWidth="467.0">
               <buttons>
-                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="60.0" text="Εισητήριο">
+                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="60.0" text="Εισιτήριο">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -154,4 +154,4 @@
          </children>
       </VBox>
    </items>
-</SplitPane>
+</fx:root>
