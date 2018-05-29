@@ -15,7 +15,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -31,46 +30,20 @@ public class LoginScreenController {
 		
 		if(usernameField.getText().equals("") && passwordField.getText().equals("")) {
 			
-			/*Stage stage = new Stage();*/
+			Stage stage = new Stage();
 
-			/*Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!")), 600, 400); 
+			Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!")), 600, 400); 
 
 			stage .setTitle("Welcome to JavaFX!"); 
 	        stage.setScene(scene); 
 	        stage.sizeToScene(); 
 			//stage.setMaximized(true);
-	        stage.show();*/
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
-			LoginScreenController controller = new LoginScreenController();
-			loader.setController(controller);
-			
-			Parent root = loader.load();
-			Scene scene = new Scene(root, 600, 400);
-			primarystage.setScene(scene);
-			primarystage.setTitle("Inspector Screen");
-			primarystage.show();
-			
+	        stage.show();
+				
 		}
 		else {
 		
-			/*Popup popupwindow = new Popup();
-			
-			popupwindow.setX(300);
-	        popupwindow.setY(200);
-	        popupwindow.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
-			popupwindow.show(getStageFromEvent(actionEvent));*/
-			
-			Alert alert = new Alert(AlertType.ERROR);
-	        alert.setTitle("Λάθος όνομα και κωδικός");
-	        alert.setHeaderText("Error");
-	        alert.setContentText("Έχετε πληκτρολογήσει λανθασμένο κωδικό ή όνομα χρήστη");
-	        Optional<ButtonType> result = alert.showAndWait();
-	        
-	        if (result.get() == ButtonType.OK)
-	        	primarystage.show();
-	    }
-			
+		}		
 	}
 	
 	public void onHyperlinkSignUp(ActionEvent actionEvent) throws Exception{
