@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <VBox prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -37,7 +37,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Ticket-Panel/ThessBus/Images/web-page-home.png" />
+                        <Image url="@../Images/web-page-home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,7 +49,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Ticket-Panel/ThessBus/Images/circular-clock-.png" />
+                        <Image url="@../Images/circular-clock-.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,7 +61,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Ticket-Panel/ThessBus/Images/euro-currency-symbol.png" />
+                        <Image url="@../Images/euro-currency-symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -73,7 +73,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Ticket-Panel/ThessBus/Images/garage-wrench.png" />
+                        <Image url="@../Images/garage-wrench.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,7 +85,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Ticket-Panel/ThessBus/Images/edit-file.png" />
+                        <Image url="@../Images/edit-file.png" />
                      </image>
                   </ImageView>
                </graphic>
