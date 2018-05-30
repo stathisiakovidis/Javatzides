@@ -1,16 +1,16 @@
 public class Fine {
 
 	String date_time;
-	User owner;
+	Passenger owner;
 	double price;	
 	String  inspector_num;
 	int bus;
 	boolean paid;
 	
-	public Fine(String date_time, User owner, String inspector_num, int bus) {
+	public Fine(String date_time, Passenger owner, String inspector_num, int bus) {
 		this.date_time = date_time;
 		this.owner = owner;
-		this.price = countPrice(owner.getPass_no());
+		this.price = countPrice(owner.getPassengerNum());
 		this.inspector_num = inspector_num;
 		this.bus = bus;
 		this.paid = false;
@@ -33,5 +33,10 @@ public class Fine {
 		}
 		return price;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+	
+	
 }
->>>>>>> 460c5befd844e43edf35ce11e54375df9a851e91
