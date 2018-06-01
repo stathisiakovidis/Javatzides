@@ -90,7 +90,7 @@
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" text="ΤΙΜΗ 2">
+                  <Button fx:id="threeMonths" mnemonicParsing="false" text="ΤΙΜΗ 2">
                      <padding>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </padding>
@@ -105,12 +105,12 @@
             </ButtonBar>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                <Button mnemonicParsing="false" text="ΤΙΜΗ 3">
+                <Button fx:id="sixMonths" mnemonicParsing="false" text="ΤΙΜΗ 3">
                      <padding>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" text="ΤΙΜΗ 4">
+                  <Button fx:id="annual" mnemonicParsing="false" text="ΤΙΜΗ 4">
                      <padding>
                         <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                      </padding>

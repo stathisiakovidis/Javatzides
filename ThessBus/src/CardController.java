@@ -5,7 +5,13 @@ import javafx.scene.control.Button;
 public class CardController extends MainController {
 	// private User owner;
 	@FXML
-	public Button Miniaia,Triminaia,Examiniaia,Ethsia;
+	public Button monthly;
+	@FXML
+	public Button threeMonths;
+	@FXML
+	public Button sixMonths;
+	@FXML
+	public Button annual;
 	
 	public void generateCard(ActionEvent event) {
 		Card newcard = null;
@@ -63,7 +69,6 @@ public class CardController extends MainController {
 		 * 		owner.reduseBalance(newcard.getCost());
 		 * }
 		 */
-
 	}
 
 }

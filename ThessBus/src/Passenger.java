@@ -80,6 +80,10 @@ public class Passenger extends User{
 	public double getBalance() {
 		return balance;
 	}
+	
+	public void addProduct(Product aProduct) {
+		products.add(aProduct);
+	}
 
 	
 	

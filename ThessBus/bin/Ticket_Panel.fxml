@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketController">
    <items>
       <VBox prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -93,11 +93,10 @@
          </children></VBox>
       <Pane prefHeight="400.0" prefWidth="450.0">
          <children>
-            <Button layoutX="50.0" layoutY="61.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="Κανονικό 1,00€  &gt;" textAlignment="CENTER" />
-            <Button layoutX="246.0" layoutY="61.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Μειωμένο 0,50€  &gt;" textAlignment="CENTER" />
-            <Button layoutX="50.0" layoutY="149.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Κανονικό 1,20€  &gt;" />
-            <Button layoutX="246.0" layoutY="149.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Μειωμένο 0,60€  &gt;" />
-            <Button layoutX="50.0" layoutY="244.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="4 Μετακινήσεις 2,00€ &gt;" />
+            <Button fx:id="oneWayNormal" layoutX="50.0" layoutY="61.0" mnemonicParsing="false" onAction="#onClickedOneWay" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="Κανονικό 1,00€  &gt;" textAlignment="CENTER" />
+            <Button fx:id="oneWayReduced" layoutX="246.0" layoutY="61.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Μειωμένο 0,50€  &gt;" textAlignment="CENTER" />
+            <Button fx:id="twoWayNormal" layoutX="50.0" layoutY="149.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Κανονικό 1,20€  &gt;" />
+            <Button fx:id="twoWayReduced" layoutX="246.0" layoutY="149.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Μειωμένο 0,60€  &gt;" />
             <Button accessibleRole="INCREMENT_BUTTON" layoutX="321.0" layoutY="341.0" mnemonicParsing="false" text="Αποσύνδεση" />
          </children>
       </Pane>
