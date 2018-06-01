@@ -131,12 +131,12 @@ public class FileManager {
 			FileOutputStream fout = new FileOutputStream(filename);
 			oos = new ObjectOutputStream(fout);
 			
-			//read previous list of users from file
+			//read previous list of products from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			products = (ArrayList) ois.readObject();
 			
-			//add the new user
+			//add the new product
 			products.add(product);
 			oos.writeObject(users);
 		} 
@@ -149,7 +149,7 @@ public class FileManager {
 			e.printStackTrace();
 		} 
 		catch (ClassNotFoundException e) {
-			//if class not found then first time adding a user so no need to read the list 
+			//if class not found then first time adding a product so no need to read the list 
 			products.add(product);
 			try {
 				oos.writeObject(product);
@@ -198,12 +198,12 @@ public class FileManager {
 			FileOutputStream fout = new FileOutputStream(filename);
 			oos = new ObjectOutputStream(fout);
 			
-			//read previous list of users from file
+			//read previous list of fines from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			fines = (ArrayList) ois.readObject();
 			
-			//add the new user
+			//add the new fine
 			fines.add(issued_fine);
 			oos.writeObject(users);
 		} 
@@ -216,7 +216,7 @@ public class FileManager {
 			e.printStackTrace();
 		} 
 		catch (ClassNotFoundException e) {
-			//if class not found then first time adding a user so no need to read the list 
+			//if class not found then first time adding a fine so no need to read the list 
 			fines.add(issued_fine);
 			try {
 				oos.writeObject(issued_fine);
