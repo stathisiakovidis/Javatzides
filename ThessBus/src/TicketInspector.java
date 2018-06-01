@@ -25,7 +25,7 @@ public class TicketInspector extends User {
 		Product product;
 		
 		product_num = QRcode.decodeQRCodeImage(filepath_of_qr);
-		if(!type)
+		if(type == 0)
 			filename = "Cards";
 		else
 			filename = "Tickets";
