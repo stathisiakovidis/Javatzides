@@ -47,7 +47,9 @@ public class FileManager {
 		}
 	}
 	
-	public User searchUser(User user, String filename) {
+	public User searchUser(String username, String password,String filename) {
+		boolean found=false;
+		User foundUser = null;
 		try 
 		{
 			FileInputStream fin = new FileInputStream(filename);
@@ -67,9 +69,17 @@ public class FileManager {
 			e.printStackTrace();
 		}
 		
-		if(users.contains(user))
+		for (int i = 0; i < users.size(); i++) {
+			if(users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password))
+			{
+				found = true;
+				foundUser = users.get(i);
+			}
+		}
+		
+		if(found==true)
 		{
-			return user;
+			return foundUser;
 		}
 		else
 		{
@@ -248,7 +258,7 @@ public class FileManager {
 			e.printStackTrace();
 		}
 		
-		for (int i = 0; i < products.size(); i++) {
+		for (int i = 0; i < fines.size(); i++) {
 			if(fines.get(i).getOwner().getUsername().equals(username))
 			{
 				foundfines.add(fines.get(i));
