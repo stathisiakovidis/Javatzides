@@ -63,14 +63,15 @@ public  class MainController {
 	primaryStage.setTitle("ThessBus: Settings");
 	primaryStage.show(); }*/
 	
-	/* public void openInfoScreen(ActionEvent e) throws Exception{
-	Stage primaryStage=Main.getStagefromEvent(e);
-	Parent root=null;
-	root= FXMLLoader.load(getClass().getResource("Information.fxml"));
-	Scene scene = new Scene(root);
-	primaryStage.setScene(scene);
-	primaryStage.setTitle("ThessBus: Information");
-	primaryStage.show(); }*/
+	public void openInfoScreen(ActionEvent e) throws Exception{
+	  Stage primaryStage=Main.getStagefromEvent(e);
+	  Parent root=null;
+	  root= FXMLLoader.load(getClass().getResource("Information.fxml"));
+	  Scene scene = new Scene(root);
+	  primaryStage.setScene(scene);
+	  primaryStage.setTitle("ThessBus: Information");
+	  primaryStage.show();
+	}
 
 	
 	

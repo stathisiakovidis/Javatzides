@@ -28,18 +28,10 @@ public class LoginScreenController {
 		
 		if(usernameField.getText().equals("1") && passwordField.getText().equals("1"))
 		{
-			
-			//Parent root=null;
-			
 			try {
-				//FXMLLoader loader = new FXMLLoader(getClass().getResource("C:\\Users\\stathis\\git\\ThessBus\\ThessBus\\src\\StartScreen.fxml"));
-				//Parent root = (Parent) loader.load();
 				Stage stage = new Stage();
 				Parent root=null;
 				root= FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
-				
-				//FXMLLoader loader= new FXMLLoader(getClass().getResource("StartScreen.fxml"));
-				//Parent root =loader.load();
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Home");
@@ -66,7 +58,6 @@ public class LoginScreenController {
         stage.show();
 	}
 	
-	/**********/
 	public static Stage getStageFromEvent(ActionEvent actionEvent){
 		Node  source = (Node)  actionEvent.getSource(); 
 	    Stage stage  = (Stage) source.getScene().getWindow();

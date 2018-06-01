@@ -8,14 +8,16 @@ public class Card extends Product{
 		this.duration = duration;
 	}
 	
-    public void setQR (byte[] QRcode) {
-		
-	}
-	
 	public int getDuration() {
 		return duration;
 	}
 
+	
+    public void setQR (byte[] QRcode) {
+		
+	}
+	
+	
 	public void printQR() {
 		
 	}
