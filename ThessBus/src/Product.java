@@ -25,6 +25,10 @@ public abstract class Product {
 		return date_time;
 	}
 	
+	public Passenger getOwner() {
+		return owner;
+	}
+	
 	public void setDate_time() {
 		Date today;
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");

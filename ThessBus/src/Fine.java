@@ -15,6 +15,10 @@ public class Fine {
 		this.bus = bus;
 		this.paid = false;
 	}
+	
+	public Passenger getOwner() {
+		return owner;
+	}
 
 	public void finePaid()
 	{
