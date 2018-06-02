@@ -90,11 +90,21 @@ public  class MainController {
 		Parent root = null;
 		root = loader.load();
         LoginScreenController ctrl = (LoginScreenController)loader.getController();
-		
-        
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Login");
+		primaryStage.show();
+	}
+	public void onClickedSettings(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+		Parent root = null;
+		root = loader.load();
+        SettingsController ctrl = (SettingsController)loader.getController();
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ThessBus: Settings");
 		primaryStage.show();
 	}
 

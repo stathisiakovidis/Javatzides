@@ -100,7 +100,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Pane layoutX="58.0" layoutY="118.0" prefHeight="40.0" prefWidth="326.0" style="-fx-border-color: red; -fx-border-width: 2;">
+            <Pane layoutX="58.0" layoutY="118.0" prefHeight="40.0" prefWidth="347.0" style="-fx-border-color: red; -fx-border-width: 2;">
                <children>
                   <Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true">
                      <padding>
