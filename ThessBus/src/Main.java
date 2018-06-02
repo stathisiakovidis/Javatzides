@@ -28,6 +28,3 @@ public class Main extends Application {
 		return stage;
 	}
 }
-
-//Dimitris was here
-//Again
