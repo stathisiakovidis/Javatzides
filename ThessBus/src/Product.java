@@ -34,6 +34,10 @@ public abstract class Product {
 		return date_time;
 	}
 	
+	public Passenger getOwner() {
+		return owner;
+	}
+	
 	public void setDate_time() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHH:mm:ss");
 		Calendar cal = Calendar.getInstance();
