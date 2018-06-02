@@ -1,7 +1,7 @@
-import java.awt.event.ActionEvent;
-
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,17 +14,17 @@ public class Main extends Application {
 	
 	public void start(Stage primaryStage) throws Exception{
 		Parent root=null;
-		if(true) 
-			 root= FXMLLoader.load(getClass().getResource("Card.fxml"));
-		else
-			 root= FXMLLoader.load(getClass().getResource("Card 2.fxml"));
-		
+		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("ThessBus: Card");
+		primaryStage.setTitle("ThessBus");
 		primaryStage.show();
 		
-		System.out.println("Hello");
+	}
 	
+	public static Stage getStagefromEvent(ActionEvent e) {
+		Node source = (Node) e.getSource();
+		Stage stage = (Stage) source.getScene().getWindow();
+		return stage;
 	}
 }
