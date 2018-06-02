@@ -21,7 +21,7 @@ public class Main extends Application {
 		primaryStage.show();
 		
 	}
-	//f
+
 	
 	public static Stage getStagefromEvent(ActionEvent e) {
 		Node source = (Node) e.getSource();

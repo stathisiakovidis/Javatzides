@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <VBox prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -96,7 +97,7 @@
       </VBox>
       <Pane prefHeight="400.0" prefWidth="450.0">
          <children>
-            <TextField fx:id="usernameField" alignment="CENTER" layoutX="20.0" layoutY="67.0" promptText="Εισαγωγή Ονόματος">
+            <TextField fx:id="usernameField" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="67.0" promptText="Εισαγωγή Ονόματος">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -111,7 +112,7 @@
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField1" alignment="CENTER" layoutX="20.0" layoutY="125.0" promptText="Εισαγωγή Επωνύμου">
+            <TextField fx:id="usernameField1" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="125.0" promptText="Εισαγωγή Επωνύμου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -126,12 +127,12 @@
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField11" alignment="CENTER" layoutX="21.0" layoutY="186.0" promptText="Εισαγωγή Εμαιλ">
+            <TextField fx:id="usernameField11" alignment="CENTER" layoutX="21.0" layoutY="186.0" promptText="Εισαγωγή Email">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </TextField>
-            <Text layoutX="21.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Εμαιλ">
+            <Text layoutX="21.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
@@ -141,37 +142,12 @@
                   <Image url="@../Images/mail-black-envelope-symbol%20(1).png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField111" alignment="CENTER" layoutX="22.0" layoutY="250.0" promptText="Εισαγωγή Κωδικού">
-               <font>
-                  <Font name="Baskerville Old Face" size="13.0" />
-               </font>
-            </TextField>
-            <Text layoutX="22.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Κωδικός">
-               <font>
-                  <Font name="Baskerville Old Face" size="15.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="26.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/loginscreen_icons/lock-24-512.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="usernameField112" alignment="CENTER" layoutX="23.0" layoutY="317.0" promptText="Εισαγωγή Κωδικού">
-               <font>
-                  <Font name="Baskerville Old Face" size="13.0" />
-               </font>
-            </TextField>
             <Text layoutX="23.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Επαλήθευση Κωδικού">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Text>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="27.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/loginscreen_icons/lock-24-512.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="usernameField2" alignment="CENTER" layoutX="227.0" layoutY="67.0" promptText="Εισαγωγή Τηλεφώνου">
+            <TextField fx:id="usernameField2" alignment="CENTER_RIGHT" layoutX="227.0" layoutY="67.0" promptText="Εισαγωγή Τηλεφώνου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -201,9 +177,9 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField113" alignment="CENTER" layoutX="228.0" layoutY="186.0" promptText="Εισαγωγή Ταυτότητας">
+            <TextField fx:id="usernameField113" alignment="CENTER_RIGHT" layoutX="228.0" layoutY="186.0" promptText="Εισαγωγή Ταυτότητας">
                <font>
-                  <Font name="Baskerville Old Face" size="13.0" />
+                  <Font size="13.0" />
                </font>
             </TextField>
             <Text layoutX="228.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αρ. Ταυτότητας">
@@ -236,6 +212,27 @@
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Button>
+            <PasswordField alignment="CENTER" layoutX="21.0" layoutY="249.0" prefHeight="31.0" prefWidth="162.0" promptText="Κωδικός" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="26.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/loginscreen_icons/lock-24-512.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="22.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Κωδικός">
+               <font>
+                  <Font name="Baskerville Old Face" size="15.0" />
+               </font>
+            </Text>
+            <PasswordField alignment="CENTER_RIGHT" layoutX="23.0" layoutY="316.0" prefHeight="31.0" prefWidth="162.0" promptText="Επαλήθευση Κωδικού">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="27.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/loginscreen_icons/lock-24-512.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </items>
