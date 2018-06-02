@@ -1,7 +1,10 @@
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,59 +25,85 @@ public  class MainController {
 	
 	
 	
-	public void openStartScreen(ActionEvent e) throws Exception{ 	
-		Stage primaryStage=Main.getStagefromEvent(e);
-		Parent root=null;
-		root= FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("ThessBus: Home");
-		primaryStage.show();
-	}
-	
-	public void openDepositScreen(ActionEvent e) throws Exception{
-		Stage primaryStage=Main.getStagefromEvent(e);
-		Parent root=null;
-		root= FXMLLoader.load(getClass().getResource("Deposit.fxml"));
+	@FXML
+	public void onClickedPurchase(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Deposit.fxml"));
+		Parent root = null;
+		root = loader.load();
+		DepositController ctrl = (DepositController)loader.getController();
+		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Deposit");
 		primaryStage.show();
 	}
 	
-	/* public void openHistortyScreen(ActionEvent e) throws Exception{
-		Stage primaryStage=Main.getStagefromEvent(e);
-		Parent root=null;
-		root= FXMLLoader.load(getClass().getResource("History.fxml"));
+	@FXML
+	public void onClickedHistory(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("History.fxml"));
+		Parent root = null;
+		root = loader.load();
+		HistoryController ctrl = (HistoryController)loader.getController();
+		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: History");
-		primaryStage.show(); 
+		primaryStage.show();
+	}
+	
+	public void onClickedStartScreen(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+		Parent root = null;
+		root = loader.load();
+        StartScreenController ctrl = (StartScreenController)loader.getController();
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ThessBus: Start Screen");
+		primaryStage.show();
+	}
+	
+	public void onClickedInformation(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Information.fxml"));
+		Parent root = null;
+		root = loader.load();
+        InformationController ctrl = (InformationController)loader.getController();
 		
-	}*/
+        
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ThessBus: Information");
+		primaryStage.show();
+	}
 	
-	
-	/* public void openSettingsScreen(ActionEvent e) throws Exception{
-	Stage primaryStage=Main.getStagefromEvent(e);
-	Parent root=null;
-	root= FXMLLoader.load(getClass().getResource("Settings.fxml"));
-	Scene scene = new Scene(root);
-	primaryStage.setScene(scene);
-	primaryStage.setTitle("ThessBus: Settings");
-	primaryStage.show(); }*/
-	
-	public void openInfoScreen(ActionEvent e) throws Exception{
-	  Stage primaryStage=Main.getStagefromEvent(e);
-	  Parent root=null;
-	  root= FXMLLoader.load(getClass().getResource("Information.fxml"));
-	  Scene scene = new Scene(root);
-	  primaryStage.setScene(scene);
-	  primaryStage.setTitle("ThessBus: Information");
-	  primaryStage.show();
+	public void onClickedSignOut(ActionEvent actionEvent) throws IOException
+	{
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
+		Parent root = null;
+		root = loader.load();
+        LoginScreenController ctrl = (LoginScreenController)loader.getController();
+		
+        
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ThessBus: Login");
+		primaryStage.show();
 	}
 
-	
-	
+	public static Stage getStageFromEvent(ActionEvent actionEvent)
+	{
+		Node source = (Node) actionEvent.getSource();
+		Stage stage = (Stage) source.getScene().getWindow();
+		return stage;
+	}
 	
 	
 }

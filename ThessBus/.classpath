@@ -12,7 +12,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/ΠΑΜΑΚ/4ο_Εξάμηνο/Software_Engineering/QR_lib/core-3.3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/ΠΑΜΑΚ/4ο_Εξάμηνο/Software_Engineering/QR_lib/javase-3.3.0.jar"/>
+
+	<classpathentry kind="lib" path="qr jars/core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="qr jars/javase-3.3.0.jar"/>
+
 	<classpathentry kind="output" path="bin"/>
 </classpath>

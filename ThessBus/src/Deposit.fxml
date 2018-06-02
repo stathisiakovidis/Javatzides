@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DepositController">
    <items>
       <VBox maxWidth="150.0" prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -28,7 +28,7 @@
                   <Label layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
+            <Button mnemonicParsing="false" onAction="#onClickedStartScreen" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
                <font>
                   <Font size="14.0" />
                </font>
@@ -43,7 +43,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
+            <Button mnemonicParsing="false" onAction="#onClickedHistory" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
                <font>
                   <Font size="14.0" />
                </font>
@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
+            <Button mnemonicParsing="false" onAction="#onClickedPurchase" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
                <font>
                   <Font size="14.0" />
                </font>
@@ -79,7 +79,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
+            <Button mnemonicParsing="false" onAction="#onClickedInformation" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
                <font>
                   <Font size="14.0" />
                </font>
@@ -87,21 +87,6 @@
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/edit-file.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="120.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/web-page-home.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -1,17 +1,28 @@
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class CardController extends MainController {
-	// private User owner;
-	@FXML
-	public Button monthly;
-	@FXML
-	public Button threeMonths;
-	@FXML
-	public Button sixMonths;
-	@FXML
-	public Button annual;
+public class CardController extends MainController implements Initializable{
+
+		@FXML
+		public Button monthly;
+		@FXML
+		public Button threeMonths;
+		@FXML
+		public Button sixMonths;
+		@FXML
+		public Button annual;
+		
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	
 	public void generateCard(ActionEvent event) {
 		Card newcard = null;
