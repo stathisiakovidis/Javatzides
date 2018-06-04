@@ -62,10 +62,9 @@ public class LoginScreenController implements Initializable{
 	}
 	public void onClickedSignUp(ActionEvent actionEvent) throws Exception {
 		Stage primaryStage = getStageFromEvent(actionEvent);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Card.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScreen.fxml"));
 		Parent root = null;
 		root = loader.load();
-        VisitorScreenController ctrl = (VisitorScreenController)loader.getController();
 		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
