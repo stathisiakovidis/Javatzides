@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 import com.google.zxing.NotFoundException;
@@ -19,7 +20,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Path;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -78,7 +78,7 @@ public class InspectorController implements Initializable{
 	
 	public void onClickedPrintImage() {
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File ("C:\\JavaCodeRepository\\TicketInspectorUI\\"));
+		//fc.setInitialDirectory(new File ("C:\\JavaCodeRepository\\TicketInspectorUI\\"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PNG Files","*.png"));
 		File selectedFile = fc.showOpenDialog(null);
 		filePathOfQR = selectedFile.toPath();
