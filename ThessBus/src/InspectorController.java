@@ -33,7 +33,7 @@ public class InspectorController implements Initializable{
 	@FXML private RadioButton cardRadioButton;
 	@FXML private RadioButton ticketRadioButton;
 	
-	private int typeOfProductChecked;
+	private int typeOfProductChecked = -1;
 	private ToggleGroup toggleGroup;
 	private Path filePathOfQR;
 	

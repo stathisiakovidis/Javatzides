@@ -47,7 +47,7 @@ public class FileManager {
 		}
 	}
 	
-	public User searchUser(String username, String password,String filename) {
+	public User searchUser(String username, String password, String filename) {
 		boolean found=false;
 		User foundUser = null;
 		try 
