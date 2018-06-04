@@ -1,38 +1,28 @@
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 
-public class FineController {
+public class FineController extends MainController implements Initializable {
+
+	@FXML Pane leftPane;
+	@FXML Hyperlink backHyperlink;
 	
-	@FXML private Hyperlink backHyperlink;
-	
-	public void onHyperlinkGoBack(ActionEvent actionEvent) {
-		Stage primaryStage = getStageFromEvent(actionEvent);
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
-		Parent root = null;
-		try {
-			root = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("ThessBus: Inspector");
-		primaryStage.show();
 	}
-	
-	public static Stage getStageFromEvent(ActionEvent actionEvent) {
-		Node source = (Node) actionEvent.getSource();
-		Stage stage = (Stage) source.getScene().getWindow();
-		return stage;
+
+	public Pane getLeftPane() {
+		return leftPane;
+	}
+
+	public Hyperlink getBackHyperlink() {
+		return backHyperlink;
 	}
 	
 }

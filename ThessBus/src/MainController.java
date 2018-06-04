@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -7,14 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public  class MainController {
-	
-	
-	
-	
+		
 	@FXML
 	public void onClickedPurchase(ActionEvent actionEvent) throws IOException
 	{
@@ -51,6 +48,7 @@ public  class MainController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 		Parent root = null;
 		root = loader.load();
+		
         StartScreenController ctrl = (StartScreenController)loader.getController();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -63,9 +61,7 @@ public  class MainController {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Information.fxml"));
 		Parent root = null;
-		root = loader.load();
-        InformationController ctrl = (InformationController)loader.getController();
-		
+		root = loader.load();		
         
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -85,6 +81,7 @@ public  class MainController {
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 	}
+	
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException
 	{
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -92,12 +89,71 @@ public  class MainController {
 		Parent root = null;
 		root = loader.load();
         SettingsController ctrl = (SettingsController)loader.getController();
-		Scene scene = new Scene(root);
+		
+        Scene scene = new Scene(root);
+        
+        //setUserData so that the fxml file of the loader can be retrieved
+        scene.setUserData(loader);
+        
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 	}
 
+	public void onHyperlinkGoBack(ActionEvent actionEvent) throws IOException {
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		
+		FXMLLoader loader = (FXMLLoader) primaryStage.getScene().getUserData();
+		String fxmlFile = "";
+		fxmlFile = loader.getLocation().getFile();
+		
+		if(fxmlFile.contains("Card.fxml")) {
+			loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: StartScreen");
+			primaryStage.show();
+		}
+		else if(fxmlFile.contains("Fine.fxml")) {
+			loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: Inspector");
+			primaryStage.show();
+		}
+		else if(fxmlFile.contains("Ticket_Panel.fxml")) {
+			loader = new FXMLLoader(getClass().getResource("Startscreen.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: StartScreen");
+			primaryStage.show();
+		}
+		else if(fxmlFile.contains("Settings.fxml")) {
+			loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: StartScreen");
+			primaryStage.show();
+		}
+		else { //RegisterScreen.fxml, VisitorScreen.fxml
+			loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: Login");
+			primaryStage.show();
+		}
+	}
+	
 	public static Stage getStageFromEvent(ActionEvent actionEvent)
 	{
 		Node source = (Node) actionEvent.getSource();

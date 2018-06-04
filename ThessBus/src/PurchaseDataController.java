@@ -30,14 +30,14 @@ public class PurchaseDataController implements Initializable {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle(" ");
+        alert.setTitle("Έλεγχος");
         alert.setHeaderText("Error");
         alert.setContentText(" ");
         
         Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
-        okButton.setText(" ");
+        okButton.setText("ΟΚ");
         Button cancelButton = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
-        cancelButton.setText(" ");
+        cancelButton.setText("Πρόστιμο");
         
         Optional<ButtonType> result = alert.showAndWait();
         
@@ -49,6 +49,7 @@ public class PurchaseDataController implements Initializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
+			
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(" ");
@@ -63,7 +64,15 @@ public class PurchaseDataController implements Initializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+    		
+    		FineController ctrl = (FineController) loader.getController();
+    		ctrl.getLeftPane().getChildren().remove(ctrl.getBackHyperlink());
+    		
     		Scene scene = new Scene(root, 600, 400);
+    		
+    		//setUserData so that the fxml file of the loader can be retrieved
+    		scene.setUserData(loader);
+    		
     		primaryStage.setScene(scene);
     		primaryStage.setTitle(" ");
     		primaryStage.show();

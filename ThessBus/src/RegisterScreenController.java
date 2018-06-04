@@ -3,7 +3,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class TicketPanelController extends MainController implements Initializable {
+public class RegisterScreenController extends MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -12,4 +12,3 @@ public class TicketPanelController extends MainController implements Initializab
 	}
 
 }
-

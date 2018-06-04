@@ -40,7 +40,7 @@ public class InspectorController implements Initializable{
 	
 	public void onClickedBrowse(ActionEvent actionEvent) {
 	
-		Stage primaryStage = getStageFromEvent(actionEvent);
+		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		
 		String filepathofQR = filePathOfQR.toString();
 		String product_num = "";
@@ -71,7 +71,7 @@ public class InspectorController implements Initializable{
 		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle(" ");
+		primaryStage.setTitle("ThessBus: PurchaseData");
 		primaryStage.show();
 			
 	}
@@ -95,7 +95,7 @@ public class InspectorController implements Initializable{
 	}
 	
 	public void onClickedFine(ActionEvent actioEvent) {
-		Stage primaryStage = getStageFromEvent(actioEvent);
+		Stage primaryStage = MainController.getStageFromEvent(actioEvent);
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Fine.fxml"));
 		Parent root = null;
@@ -105,7 +105,12 @@ public class InspectorController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		
 		Scene scene = new Scene(root);
+		
+		//setUserData so that the fxml file of the loader can be retrieved
+		scene.setUserData(loader);
+		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Fine");
 		primaryStage.show();
@@ -116,12 +121,6 @@ public class InspectorController implements Initializable{
 			typeOfProductChecked = 0;
 		else
 			typeOfProductChecked = 1;
-	}
-	
-	public static Stage getStageFromEvent(ActionEvent actionEvent) {
-		Node source = (Node) actionEvent.getSource();
-		Stage stage = (Stage) source.getScene().getWindow();
-		return stage;
 	}
 
 	@Override

@@ -5,25 +5,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class CardController extends MainController implements Initializable{
 
-		@FXML
-		public Button monthly;
-		@FXML
-		public Button threeMonths;
-		@FXML
-		public Button sixMonths;
-		@FXML
-		public Button annual;
+	@FXML private Button monthly;
+	@FXML private Button threeMonths;
+	@FXML private Button sixMonths;
+	@FXML private Button annual;
+	@FXML private Pane buttonsPane;
+	@FXML private VBox navBarVBox;
+	@FXML private Hyperlink signOutHyperlink;
 		
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	
 	public void generateCard(ActionEvent event) {
 		Card newcard = null;
 		boolean flag=true;
@@ -81,5 +76,39 @@ public class CardController extends MainController implements Initializable{
 		 * }
 		 */
 	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+			
+	}
 
+	public VBox getNavBarVBox() {
+		return navBarVBox;
+	}
+
+	public Hyperlink getSignOutHyperlink() {
+		return signOutHyperlink;
+	}
+
+	public Button getMonthly() {
+		return monthly;
+	}
+
+	public Button getThreeMonths() {
+		return threeMonths;
+	}
+
+	public Button getSixMonths() {
+		return sixMonths;
+	}
+
+	public Button getAnnual() {
+		return annual;
+	}
+
+	public Pane getButtonsPane() {
+		return buttonsPane;
+	}
+	
 }

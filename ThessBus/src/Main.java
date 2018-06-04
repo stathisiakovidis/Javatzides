@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -22,10 +23,10 @@ public class Main extends Application {
 		
 	}
 
-	
 	public static Stage getStagefromEvent(ActionEvent e) {
 		Node source = (Node) e.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
 		return stage;
 	}
+	
 }
