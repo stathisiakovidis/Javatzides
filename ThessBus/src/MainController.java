@@ -12,16 +12,6 @@ import javafx.stage.Stage;
 
 public  class MainController {
 	
-	@FXML
-	public Button startButton;
-	@FXML
-	public Button historyButton;
-	@FXML
-	public Button settingsButton;
-	@FXML
-	public Button depositButton;
-	@FXML
-	public Button infoButton;
 	
 	
 	
@@ -104,7 +94,7 @@ public  class MainController {
         SettingsController ctrl = (SettingsController)loader.getController();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("ThessBus: Settings");
+		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 	}
 

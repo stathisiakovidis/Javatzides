@@ -60,10 +60,22 @@ public class LoginScreenController implements Initializable{
 			JOptionPane.showMessageDialog(null, "Error", null, JOptionPane.WARNING_MESSAGE);
 		}	
 	}
+	public void onClickedSignUp(ActionEvent actionEvent) throws Exception {
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Card.fxml"));
+		Parent root = null;
+		root = loader.load();
+        VisitorScreenController ctrl = (VisitorScreenController)loader.getController();
+		
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ThessBus: Sign Up");
+		primaryStage.show();
+	}
 	
 	public void onHyperlinkVisitor(ActionEvent actionEvent) throws Exception {
 		Stage primaryStage = getStageFromEvent(actionEvent);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreenVisitor.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("VisitorScreen.fxml"));
 		Parent root = null;
 		root = loader.load();
 		

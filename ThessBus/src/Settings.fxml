@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
    <items>
       <VBox prefHeight="400.0" prefWidth="150.0">
          <children>
@@ -30,7 +30,7 @@
                   <Label layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
+            <Button mnemonicParsing="false" onAction="#onClickedStartScreen" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,7 +45,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
+            <Button mnemonicParsing="false" onAction="#onClickedHistory" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
                <font>
                   <Font size="14.0" />
                </font>
@@ -57,7 +57,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
+            <Button mnemonicParsing="false" onAction="#onClickedPurchase" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,7 +69,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Ρυθμίσεις">
+            <Button mnemonicParsing="false" onAction="#onClickedSettings" prefHeight="60.0" prefWidth="150.0" text="Ρυθμίσεις">
                <font>
                   <Font size="14.0" />
                </font>
@@ -81,7 +81,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
+            <Button mnemonicParsing="false" onAction="#onClickedInformation" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
                <font>
                   <Font size="14.0" />
                </font>
@@ -97,7 +97,7 @@
       </VBox>
       <Pane prefHeight="400.0" prefWidth="450.0">
          <children>
-            <TextField fx:id="usernameField" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="67.0" promptText="Εισαγωγή Ονόματος">
+            <TextField alignment="CENTER_RIGHT" layoutX="20.0" layoutY="67.0" promptText="Εισαγωγή Ονόματος">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -112,7 +112,7 @@
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField1" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="125.0" promptText="Εισαγωγή Επωνύμου">
+            <TextField alignment="CENTER_RIGHT" layoutX="20.0" layoutY="125.0" promptText="Εισαγωγή Επωνύμου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -127,7 +127,7 @@
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField11" alignment="CENTER" layoutX="21.0" layoutY="186.0" promptText="Εισαγωγή Email">
+            <TextField alignment="CENTER" layoutX="21.0" layoutY="186.0" promptText="Εισαγωγή Email">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -147,7 +147,7 @@
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="usernameField2" alignment="CENTER_RIGHT" layoutX="227.0" layoutY="67.0" promptText="Εισαγωγή Τηλεφώνου">
+            <TextField alignment="CENTER_RIGHT" layoutX="227.0" layoutY="67.0" promptText="Εισαγωγή Τηλεφώνου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -162,7 +162,7 @@
                   <Image url="@../Images/phone.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField12" alignment="CENTER" layoutX="227.0" layoutY="125.0" promptText="Εισαγωγή Πάσου">
+            <TextField alignment="CENTER" layoutX="227.0" layoutY="125.0" promptText="Εισαγωγή Πάσου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -177,7 +177,7 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField113" alignment="CENTER_RIGHT" layoutX="228.0" layoutY="186.0" promptText="Εισαγωγή Ταυτότητας">
+            <TextField alignment="CENTER_RIGHT" layoutX="228.0" layoutY="186.0" promptText="Εισαγωγή Ταυτότητας">
                <font>
                   <Font size="13.0" />
                </font>
@@ -192,7 +192,7 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameField1111" alignment="CENTER" layoutX="229.0" layoutY="250.0" promptText="Εισαγωγή Κάρτας">
+            <TextField alignment="CENTER" layoutX="229.0" layoutY="250.0" promptText="Εισαγωγή Κάρτας">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -207,7 +207,7 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton" layoutX="266.0" layoutY="317.0" mnemonicParsing="false" onAction="#onClickedLogin" text="Αποθήκευση">
+            <Button layoutX="266.0" layoutY="317.0" mnemonicParsing="false" onAction="#onClickedSignOut" text="Αποθήκευση">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
