@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class FileManager {
 	
-	ArrayList<User> users = new ArrayList<User>();
-	ArrayList<Product> products = new ArrayList<Product>();
-	ArrayList<Fine> fines = new ArrayList<Fine>();
+	public static ArrayList<User> users = new ArrayList<User>();
+	public static ArrayList<Product> products = new ArrayList<Product>();
+	public static ArrayList<Fine> fines = new ArrayList<Fine>();
 	
-	public void InsertUser(User user, String filename) {
+	public static void InsertUser(User user, String filename) {
 		ObjectOutputStream oos = null;
 		try 
 		{
@@ -47,7 +47,7 @@ public class FileManager {
 		}
 	}
 	
-	public User searchUser(String username, String password, String filename) {
+	public static User searchUser(String username, String password, String filename) {
 		boolean found=false;
 		User foundUser = null;
 		try 
@@ -88,7 +88,7 @@ public class FileManager {
 		
 	}
 	
-	public void updatePassenger(User user, String filename) {
+	public static void updatePassenger(User user, String filename) {
 		boolean found;
 		
 		try 
@@ -134,7 +134,7 @@ public class FileManager {
 		
 	}
 	
-	public void insertProduct(Product product, String filename) {
+	public static void insertProduct(Product product, String filename) {
 		ObjectOutputStream oos = null;
 		try 
 		{
@@ -169,7 +169,7 @@ public class FileManager {
 		}
 	}
 	
-	public ArrayList<Product> getProducts(String username, String filename){
+	public static ArrayList<Product> getProducts(String username, String filename){
 		ArrayList<Product> foundproducts = new ArrayList<Product>();
 		
 		try 
@@ -201,7 +201,7 @@ public class FileManager {
 		return foundproducts;
 	}
 	
-	public void insertFine(Fine issued_fine, String filename) {
+	public static void insertFine(Fine issued_fine, String filename) {
 		ObjectOutputStream oos = null;
 		try 
 		{
@@ -236,7 +236,7 @@ public class FileManager {
 		}
 	}
 	
-	public ArrayList<Fine> getFines(String username, String filename){
+	public static ArrayList<Fine> getFines(String username, String filename){
 		ArrayList<Fine> foundfines = new ArrayList<Fine>();
 		
 		try 
@@ -268,7 +268,7 @@ public class FileManager {
 		return foundfines;
 	}
 	
-	public void updateFines(String username,ArrayList<Fine> updatedfines,String filename){
+	public static void updateFines(String username,ArrayList<Fine> updatedfines,String filename){
 		
 		try 
 		{
@@ -289,7 +289,7 @@ public class FileManager {
 			e.printStackTrace();
 		}
 		
-		for (int i = 0; i < fines.size(); i++) {
+		for(int i = 0; i < fines.size(); i++) {
 			if(fines.get(i).getOwner().getUsername().equals(username))
 			{
 				fines.remove(i);
@@ -302,7 +302,46 @@ public class FileManager {
 		
 	}
 	
-	
+	public static Object search(String searchvalue, String filename) {
+		ArrayList<Object> listOfItems = new ArrayList<>();
+		
+		try 
+		{
+			FileInputStream fin = new FileInputStream(filename);
+			ObjectInputStream ois = new ObjectInputStream(fin);
+			listOfItems = (ArrayList) ois.readObject();
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		if(filename.equals("Products.dat")) {			
+			for(int i = 0; i < listOfItems.size(); i++) {
+				if(((Product) listOfItems.get(i)).getProduct_num().equals(searchvalue)) {
+					return listOfItems.get(i);
+				}
+			}
+		}
+		else if(filename.equals("Users.dat")) {
+			for(int i = 0; i < listOfItems.size(); i++) {
+				if(((Passenger) listOfItems.get(i)).getUsername().equals(searchvalue)) {
+					return listOfItems.get(i);
+				}
+			}
+		}
+		
+		return null;
+		
+	}
 
 	
 }

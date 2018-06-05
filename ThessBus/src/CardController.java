@@ -25,9 +25,8 @@ public class CardController extends MainController implements Initializable {
 	private Pane buttonsPane;
 	@FXML
 	private VBox navBarVBox;
-	
-
-	
+	@FXML
+	private Hyperlink signOutHyperlink;
 	
 	public void generateMonthlyCard(ActionEvent event) throws IOException {
 		cost = 15 * owner.getCheck();
@@ -52,6 +51,34 @@ public class CardController extends MainController implements Initializable {
 		 cost = 135 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Ετήσια", 12);
 		owner.addProduct(newcard);
+	}
+
+	public Button getMonthly() {
+		return monthly;
+	}
+
+	public Button getThreeMonths() {
+		return threeMonths;
+	}
+
+	public Button getSixMonths() {
+		return sixMonths;
+	}
+
+	public Button getAnnual() {
+		return annual;
+	}
+
+	public Pane getButtonsPane() {
+		return buttonsPane;
+	}
+
+	public VBox getNavBarVBox() {
+		return navBarVBox;
+	}
+
+	public Hyperlink getSignOutHyperlink() {
+		return signOutHyperlink;
 	}
 
 	@Override

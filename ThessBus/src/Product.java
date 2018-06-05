@@ -65,4 +65,25 @@ public abstract class Product {
 	public boolean isValid() {
 		return false;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getProduct_num() {
+		return product_num;
+	}
+
+	public byte[] getQR_code() {
+		return QR_code;
+	}
+
+	public Image getQrImage() {
+		return qrImage;
+	}
+	
 }

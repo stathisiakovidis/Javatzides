@@ -1,9 +1,13 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+
+import com.google.zxing.NotFoundException;
 
 public class TicketInspector extends User {
 
@@ -20,7 +24,7 @@ public class TicketInspector extends User {
 		durations.put(2, 70);
 	}
 	
-	public Product browseQR(String filepath_of_qr, int type) {			//type: the type of product the inspector is examining
+	public Product browseQR(String filepath_of_qr, int type) throws FileNotFoundException, NotFoundException, IOException {			//type: the type of product the inspector is examining
 		String product_num, filename;
 		Product product;
 		

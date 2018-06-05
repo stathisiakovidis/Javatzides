@@ -6,7 +6,7 @@ public class Ticket extends Product{
 	
 	
 	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, int bus, String validation_date_time) {
-		super(date_time, price, owner, type, product_num, qRcode);
+		super(price, owner, type);
 		this.no_of_routes = no_of_routes;
 		this.bus = bus;
 		this.validation_date_time = validation_date_time;

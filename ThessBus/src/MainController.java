@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public  class MainController {
+public class MainController {
 		
 	@FXML
 	public void onClickedPurchase(ActionEvent actionEvent) throws IOException
