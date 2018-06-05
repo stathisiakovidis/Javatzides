@@ -3,8 +3,8 @@ public class Card extends Product{
 	
 	private int duration;
 
-	public Card(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int duration) {
-		super(date_time, price, owner, type, product_num, qRcode);
+	public Card(double price,Passenger owner, String type, int duration) {
+		super(price, owner, type);
 		this.duration = duration;
 	}
 	
@@ -12,22 +12,9 @@ public class Card extends Product{
 		return duration;
 	}
 
-	
-    public void setQR (byte[] QRcode) {
-		
-	}
-	
-	
-	public void printQR() {
-		
-	}
-	
 	public boolean isValid() {
 		return false;
 		
 	}
-
-	
-	
 
 }

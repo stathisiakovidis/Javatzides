@@ -6,14 +6,29 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InspectorController">
-   <children>
-      <Label layoutX="97.0" layoutY="79.0" prefHeight="40.0" prefWidth="103.0" text="Φόρτωσε QR code:" />
-      <Button fx:id="browseButton" layoutX="381.0" layoutY="161.0" mnemonicParsing="false" onAction="#onClickedBrowse" prefHeight="32.0" prefWidth="96.0" text="Browse" />
-      <Button fx:id="FineButton" layoutX="347.0" layoutY="239.0" mnemonicParsing="false" onAction="#onClickedFine" prefHeight="56.0" prefWidth="145.0" text="Πρόστιμο" />
-      <RadioButton fx:id="ticketRadioButton" layoutX="276.0" layoutY="152.0" mnemonicParsing="false" onAction="#OnRadioButtonSelected" text="Εισιτήριο" />
-      <RadioButton fx:id="cardRadioButton" layoutX="276.0" layoutY="184.0" mnemonicParsing="false" onAction="#OnRadioButtonSelected" text="Κάρτα" />
-      <ImageView fx:id="QRimage" fitHeight="100.0" fitWidth="100.0" layoutX="97.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="printImageButton" layoutX="88.0" layoutY="255.0" mnemonicParsing="false" onAction="#onClickedPrintImage" text="image" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="InspectorController">
+	<children>
+		<Label layoutX="97.0" layoutY="79.0" prefHeight="40.0"
+			prefWidth="103.0" text="Φόρτωσε QR code:" />
+		<Button fx:id="browseButton" layoutX="381.0" layoutY="161.0"
+			mnemonicParsing="false" onAction="#onClickedBrowse" prefHeight="32.0"
+			prefWidth="96.0" text="Browse" />
+		<Button fx:id="FineButton" layoutX="347.0" layoutY="239.0"
+			mnemonicParsing="false" onAction="#onClickedFine" prefHeight="56.0"
+			prefWidth="145.0" text="Πρόστιμο" />
+		<RadioButton fx:id="ticketRadioButton" layoutX="276.0"
+			layoutY="152.0" mnemonicParsing="false"
+			onAction="#OnRadioButtonSelected" text="Εισιτήριο" />
+		<RadioButton fx:id="cardRadioButton" layoutX="276.0"
+			layoutY="184.0" mnemonicParsing="false"
+			onAction="#OnRadioButtonSelected" text="Κάρτα" />
+		<ImageView fx:id="QRimage" fitHeight="100.0"
+			fitWidth="100.0" layoutX="97.0" layoutY="119.0" pickOnBounds="true"
+			preserveRatio="true" />
+		<Button fx:id="printImageButton" layoutX="88.0" layoutY="255.0"
+			mnemonicParsing="false" onAction="#onClickedPrintImage" text="image" />
+	</children>
 </AnchorPane>

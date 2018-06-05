@@ -57,13 +57,13 @@ public class QRcode {
     	return qrCodeResult.getText();
     }
     
-    public Image printQRCode(byte[] buffer) {
+    public static Image printQRCode(byte[] buffer) {
     	Image img = new Image(new ByteArrayInputStream(buffer));
       
     	return img;
     }
     
-    public Image printQRCodeImage(File selectedFile) {
+    public static Image printQRCodeImage(File selectedFile) {
     	Image img = new Image(selectedFile.toURI().toString());      
     	return img;
     }

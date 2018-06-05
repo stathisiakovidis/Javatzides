@@ -43,7 +43,6 @@ public  class StartScreenController extends MainController implements Initializa
 		
 		//setUserData so that the fxml file of the loader can be retrieved
 		scene.setUserData(loader);
-		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Card Purchase");
 		primaryStage.show();
