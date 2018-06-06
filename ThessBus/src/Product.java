@@ -22,7 +22,7 @@ public abstract class Product {
 	
 	
 	public Product(double price,Passenger owner, String type) {
-		setDate_time();
+		this.date_time = getCurrentTime();
 		this.owner = owner;
 		this.price = price;
 		this.type = type;
@@ -48,12 +48,18 @@ public abstract class Product {
 		return owner;
 	}
 	
-	public void setDate_time() {
+	/*public void setDate_time() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 		this.date_time = dateFormat.format(cal.getTime());
-	}
+	}*/
 
+	public String getCurrentTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHHmmss");
+		Calendar cal = Calendar.getInstance();
+		return  dateFormat.format(cal.getTime());
+	}
+	
 	public void setQR () throws WriterException, IOException {
 		this.QR_code = QRcode.generateQRCode(product_num, 350, 350);
 	}
@@ -62,12 +68,14 @@ public abstract class Product {
 		qrImage = QRcode.printQRCode(QR_code);
 	}
 	
-	public boolean isValid() {
-		return false;
-	}
+	public abstract boolean isValid() throws FileNotFoundException, NotFoundException, IOException;
 
 	public double getPrice() {
 		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getType() {

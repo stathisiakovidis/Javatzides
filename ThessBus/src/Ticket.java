@@ -1,3 +1,7 @@
+import java.io.IOException;
+
+import com.google.zxing.WriterException;
+
 public class Ticket extends Product{
 
 	private int no_of_routes;
@@ -12,22 +16,37 @@ public class Ticket extends Product{
 		this.validation_date_time = validation_date_time;
 	}
 	
-	
-	public void setQR (byte[] QRcode) {
-		
+	@Override
+	public void setQR () throws WriterException, IOException {
+		super.setQR();
 	}
 	
 	public void printQR() {
-		
+		super.printQR();
 	}
 	
-	public boolean isValid() {
-		return false;
+    public boolean isValid() {
 		
+		String timeText = getCurrentTime().substring(10, 14);
+		int time = Integer.parseInt(timeText);
+		
+		String purchaseTimeText = getDate_time().substring(10, 14);
+		int purchaseTime = Integer.parseInt(purchaseTimeText);
+				
+		if(no_of_routes > 1) {
+			
+			if(time > purchaseTime + 70) {
+				return false;
+			}
+			else 
+				return true;
+			
+		}
+		return true;
 	}
 	
 	public void Refresh_num_of_routes() {
-		
+		no_of_routes = no_of_routes - 1;
 	}
 
 	public int getBus() {
@@ -38,6 +57,11 @@ public class Ticket extends Product{
 		this.bus = bus;
 	}
 
+	
+
+	public void setNo_of_routes(int no_of_routes) {
+		this.no_of_routes = no_of_routes;
+	}
 
 	public String getValidation_date_time() {
 		return validation_date_time;

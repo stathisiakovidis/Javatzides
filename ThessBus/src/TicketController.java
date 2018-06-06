@@ -1,6 +1,8 @@
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,12 +21,87 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private VBox navBarVBox;
 	@FXML private Hyperlink signOutHyperlink;
 	
-	private Passenger aPassenger;
+	private Passenger owner;
+	private double cost;
 	
-	public void onClickedOneWayNormal(ActionEvent e) {
-		//aPassenger.addProduct(new Ticket(null, 0, aPassenger, null, null, null, 0, 0, null));
+	
+	public void onClickedOneWay(ActionEvent e) {
+		cost = 0.5 * owner.getCheck();
+		Ticket newTicket= new Ticket(null, cost, owner, "Μονής", null, null, 1, 1, null);
+		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to continue?", "Close?",  JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION)
+		{
+		   if(owner.getBalance() < cost) {
+			   JOptionPane.showMessageDialog(null, "You don't have enough money", null, JOptionPane.WARNING_MESSAGE);
+		   }
+		   else {
+			   owner.reduceBalance(cost);
+			   owner.addProduct(newTicket);
+		   }
+		}
 	}
+	
+	public void onClickedTwoWay(ActionEvent e) {
+		cost = 0.6 * owner.getCheck();
+		Ticket newTicket= new Ticket(null, cost, owner, "Διπλής", null, null, 2, 1, null);
+		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to continue?", "Close?",  JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION)
+		{
+		   if(owner.getBalance() < cost) {
+			   JOptionPane.showMessageDialog(null, "You don't have enough money", null, JOptionPane.WARNING_MESSAGE);
+		   }
+		   else {
+			   owner.reduceBalance(cost);
+			   owner.addProduct(newTicket);
+		   }
+		}
+	}
+	
+	/*public void onClickedOneWayRedused(ActionEvent e) {
+		System.out.println("HEY");
+	}
+	
+	public void onClickedTwoWayRedused(ActionEvent e) {
+		System.out.println("HEY");
+	}*/
 
+	
+	/*public void clickedButton(ActionEvent e) {
+		
+		Ticket ticket = new Ticket(null, 1.0, owner, null, null, null, 1, 12, null);
+		
+		if(e.getSource().equals(oneWayNormal)) {
+			ticket.setPrice(1);
+			ticket.setNo_of_routes(1);
+		}
+		else if(e.getSource().equals(oneWayReduced)) {
+			ticket.setPrice(0.5);
+			ticket.setNo_of_routes(1);
+		}
+		else if(e.getSource().equals(twoWayNormal)) {
+			ticket.setPrice(1.20);
+			ticket.setNo_of_routes(2);
+		}
+		else if(e.getSource().equals(twoWayReduced)) {
+			ticket.setPrice(0.60);
+			ticket.setNo_of_routes(2);
+		}
+		
+		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION) {
+			if(owner.getBalance() >= ticket.getPrice()) {
+				owner.reduceBalance(ticket.getPrice());
+				owner.addProduct(ticket);
+			}
+			else
+				 JOptionPane.showMessageDialog(null, "ΒΛΑΧΑ ΒΛΑΧΑ ΦΤΩΧΙΑ ", null, JOptionPane.WARNING_MESSAGE);
+		}
+		
+	}*/
+
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
