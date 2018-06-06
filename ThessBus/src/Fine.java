@@ -10,7 +10,7 @@ public class Fine {
 	public Fine(String date_time, Passenger owner, String inspector_num, int bus) {
 		this.date_time = date_time;
 		this.owner = owner;
-		this.price = countPrice(owner.getPassengerNum());
+		countPrice();
 		this.inspector_num = inspector_num;
 		this.bus = bus;
 		this.paid = false;
@@ -25,17 +25,9 @@ public class Fine {
 		paid = true;
 	}
 	
-	public double countPrice(String passenger_pass_num)
+	public void countPrice()
 	{
-		if(passenger_pass_num != null)
-		{
-			price = 15;
-		}
-		else
-		{
-			price = 30;
-		}
-		return price;
+		this.price = 60/owner.getCheck();
 	}
 
 	public double getPrice() {

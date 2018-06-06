@@ -134,7 +134,7 @@ public class FileManager {
 		
 	}
 	
-	public static void insertProduct(Product product, String filename) {
+	public static void insertProducts(String username, ArrayList<Product> productstoInsert, String filename) {
 		ObjectOutputStream oos = null;
 		try 
 		{
@@ -146,9 +146,17 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			products = (ArrayList) ois.readObject();
 			
-			//add the new product
-			products.add(product);
-			oos.writeObject(users);
+			for(int i = 0; i < products.size(); i++) {
+				if(products.get(i).getOwner().getUsername().equals(username))
+				{
+					products.remove(i);
+				}
+			}
+			
+			//add the new products
+			for (int i = 0; i < productstoInsert.size(); i++)
+				products.add(productstoInsert.get(i));
+			oos.writeObject(products);
 		} 
 		catch (FileNotFoundException e) 
 		{
@@ -160,9 +168,10 @@ public class FileManager {
 		} 
 		catch (ClassNotFoundException e) {
 			//if class not found then first time adding a product so no need to read the list 
-			products.add(product);
+			for (int i = 0; i < productstoInsert.size(); i++)
+				products.add(productstoInsert.get(i));
 			try {
-				oos.writeObject(product);
+				oos.writeObject(products);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -268,7 +277,7 @@ public class FileManager {
 		return foundfines;
 	}
 	
-	public static void updateFines(String username,ArrayList<Fine> updatedfines,String filename){
+	public static void updateFines(String username, ArrayList<Fine> updatedfines, String filename){
 		
 		try 
 		{
@@ -296,8 +305,8 @@ public class FileManager {
 			}
 		}
 		
-		for (int i = 0; i < fines.size(); i++) {
-			insertFine(updatedfines.get(i),filename);
+		for (int i = 0; i < updatedfines.size(); i++) {
+			insertFine(updatedfines.get(i), filename);
 		}
 		
 	}
@@ -343,5 +352,4 @@ public class FileManager {
 		
 	}
 
-	
 }
