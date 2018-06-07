@@ -105,16 +105,29 @@ public class MainController {
 		
 		FXMLLoader loader = (FXMLLoader) primaryStage.getScene().getUserData();
 		String fxmlFile = "";
-		fxmlFile = loader.getLocation().getFile();
+		if(loader != null)
+			fxmlFile = loader.getLocation().getFile();
 		
 		if(fxmlFile.contains("Card.fxml")) {
-			loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
-			Parent root = null;
-			root = loader.load();
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("ThessBus: StartScreen");
-			primaryStage.show();
+			CardController controller = (CardController) loader.getController();
+			if(controller.getNavBarVBox().isMouseTransparent()) {
+				loader = new FXMLLoader(getClass().getResource("VisitorScreen.fxml"));
+				Parent root = null;
+				root = loader.load();
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+				primaryStage.setTitle("ThessBus: Visitor");
+				primaryStage.show();
+			}
+			else {
+				loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+				Parent root = null;
+				root = loader.load();
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+				primaryStage.setTitle("ThessBus: StartScreen");
+				primaryStage.show();
+			}
 		}
 		else if(fxmlFile.contains("Fine.fxml")) {
 			loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
@@ -126,13 +139,25 @@ public class MainController {
 			primaryStage.show();
 		}
 		else if(fxmlFile.contains("Ticket_Panel.fxml")) {
-			loader = new FXMLLoader(getClass().getResource("Startscreen.fxml"));
-			Parent root = null;
-			root = loader.load();
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("ThessBus: StartScreen");
-			primaryStage.show();
+			TicketController controller = (TicketController) loader.getController();
+			if(controller.getNavBarVBox().isMouseTransparent()) {
+				loader = new FXMLLoader(getClass().getResource("VisitorScreen.fxml"));
+				Parent root = null;
+				root = loader.load();
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+				primaryStage.setTitle("ThessBus: Visitor");
+				primaryStage.show();
+			}
+			else {
+				loader = new FXMLLoader(getClass().getResource("Startscreen.fxml"));
+				Parent root = null;
+				root = loader.load();
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+				primaryStage.setTitle("ThessBus: StartScreen");
+				primaryStage.show();
+			}
 		}
 		else if(fxmlFile.contains("Settings.fxml")) {
 			loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
