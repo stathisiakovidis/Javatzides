@@ -5,11 +5,11 @@ import com.google.zxing.WriterException;
 public class Ticket extends Product{
 
 	private int no_of_routes;
-	private int bus;
+	private String bus;
 	private String validation_date_time;
 	
 	
-	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, int bus, String validation_date_time) {
+	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, String bus, String validation_date_time) {
 		super(price, owner, type);
 		this.no_of_routes = no_of_routes;
 		this.bus = bus;
@@ -49,11 +49,11 @@ public class Ticket extends Product{
 		no_of_routes = no_of_routes - 1;
 	}
 
-	public int getBus() {
+	public String getBus() {
 		return bus;
 	}
 
-	public void setBus(int bus) {
+	public void setBus(String bus) {
 		this.bus = bus;
 	}
 
@@ -66,4 +66,9 @@ public class Ticket extends Product{
 	public String getValidation_date_time() {
 		return validation_date_time;
 	}
+
+	public int getNo_of_routes() {
+		return no_of_routes;
+	}
+	
 }

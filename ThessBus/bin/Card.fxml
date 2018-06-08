@@ -94,20 +94,16 @@
 		</VBox>
 		<AnchorPane fx:id="buttonsPane" prefHeight="200.0" prefWidth="200.0">
 			<children>
-				<Button fx:id="monthlyNormal" layoutX="40.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateMonthlyCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 30€" />
-				<Button fx:id="threeMonthsNormal" layoutX="40.0" layoutY="141.0" mnemonicParsing="false" onAction="#generateThreeMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 84€" />
-				<Button fx:id="sixMonthsNormal" layoutX="40.0" layoutY="206.0" mnemonicParsing="false" onAction="#generateSixMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 150€" />
-				<Button fx:id="annualNormal" layoutX="40.0" layoutY="271.0" mnemonicParsing="false" onAction="#generateAnnualCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 270€" />
+				<Button fx:id="monthly" layoutX="56.0" layoutY="106.0" mnemonicParsing="false" onAction="#generateMonthlyCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 30€" />
+				<Button fx:id="threeMonths" layoutX="243.0" layoutY="106.0" mnemonicParsing="false" onAction="#generateThreeMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 84€" />
+				<Button fx:id="sixMonths" layoutX="56.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateSixMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 150€" />
+				<Button fx:id="annual" layoutX="243.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateAnnualCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 270€" />
 				<Hyperlink fx:id="signOutHyperlink" alignment="CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="349.0" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE" underline="true">
 					<font>
 						<Font size="14.0" />
 					</font>
 				</Hyperlink>
 				<Hyperlink layoutX="56.0" layoutY="47.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
-            <Button fx:id="monthlyReduced" layoutX="243.0" layoutY="81.0" mnemonicParsing="false" onAction="#generateMonthlyCard" prefHeight="50.0" prefWidth="150.0" text="Μηνιαία 15€" />
-            <Button fx:id="threeMonthsReduced" layoutX="243.0" layoutY="141.0" mnemonicParsing="false" onAction="#generateThreeMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Τριμηνιαία 42€" />
-            <Button fx:id="sixMonthsReduced" layoutX="243.0" layoutY="206.0" mnemonicParsing="false" onAction="#generateSixMonthsCard" prefHeight="50.0" prefWidth="150.0" text="Εξαμηνιαία 75€" />
-            <Button fx:id="annualReduced" layoutX="243.0" layoutY="271.0" mnemonicParsing="false" onAction="#generateAnnualCard" prefHeight="50.0" prefWidth="150.0" text="Ετήσια 135€" />
 			</children>
 		</AnchorPane>
 	</items>

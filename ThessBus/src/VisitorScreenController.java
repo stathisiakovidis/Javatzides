@@ -52,14 +52,10 @@ public class VisitorScreenController extends MainController implements Initializ
 		CardController ctrl = (CardController)loader.getController();
 		ctrl.getNavBarVBox().setMouseTransparent(true);
 		ctrl.getNavBarVBox().setEffect(new GaussianBlur());
-		ctrl.getAnnualNormal().setMouseTransparent(true);
-		ctrl.getMonthlyNormal().setMouseTransparent(true);
-		ctrl.getSixMonthsNormal().setMouseTransparent(true);
-		ctrl.getThreeMonthsNormal().setMouseTransparent(true);
-		ctrl.getAnnualReduced().setMouseTransparent(true);
-		ctrl.getMonthlyReduced().setMouseTransparent(true);
-		ctrl.getSixMonthsReduced().setMouseTransparent(true);
-		ctrl.getThreeMonthsReduced().setMouseTransparent(true);
+		ctrl.getAnnual().setMouseTransparent(true);
+		ctrl.getMonthly().setMouseTransparent(true);
+		ctrl.getSixMonths().setMouseTransparent(true);
+		ctrl.getThreeMonths().setMouseTransparent(true);
 		ctrl.getButtonsPane().getChildren().remove(ctrl.getSignOutHyperlink());
 		
 		Scene scene = new Scene(root);

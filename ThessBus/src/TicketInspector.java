@@ -12,14 +12,12 @@ import com.google.zxing.NotFoundException;
 public class TicketInspector extends User {
 
 	public String username;
-	public String inspector_num;
 	public HashMap<Integer, Integer> durations = new HashMap<>(); 
 	
-	public TicketInspector(String aName, String aPassword, String username, String inspector_num) {
+	public TicketInspector(String aName, String aPassword, String username) {
 		super(aName, aPassword);
 		
 		this.username = username;
-		this.inspector_num = inspector_num;
 		durations.put(14, 60);
 		durations.put(2, 70);
 	}
@@ -43,6 +41,10 @@ public class TicketInspector extends User {
 	//bus, validation = 0, null if product = card
 	//validation = null if product = 1way ticket
 	
+	public String getInspector_num() {
+		return inspector_num;
+	}
+
 	//Δυνατότητα αγοράς κάρτας 25-5 του μηνός - //τι γίνεται αν κάποιος παρει λεωφ λιγο πριν τις 12
 	public boolean ticketValidation(String date_time, int duration, int bus, String validation_date_time) throws ParseException {
 		String dates = date_time.substring(0,10);

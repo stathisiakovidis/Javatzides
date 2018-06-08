@@ -13,31 +13,22 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class CardController extends MainController implements Initializable {
-	private Passenger owner ;
+	private Passenger owner;
 	private double cost;
 	@FXML
-	private Button monthlyReduced;
+	private Button monthly;
 	@FXML
-	private Button threeMonthsReduced;
+	private Button threeMonths;
 	@FXML
-	private Button sixMonthsReduced;
+	private Button sixMonths;
 	@FXML
-	private Button annualReduced;
+	private Button annual;
 	@FXML
 	private Pane buttonsPane;
 	@FXML
 	private VBox navBarVBox;
 	@FXML
 	private Hyperlink signOutHyperlink;
-	@FXML
-	private Button monthlyNormal;
-	@FXML
-	private Button threeMonthsNormal;
-	@FXML
-	private Button sixMonthsNormal;
-	@FXML
-	private Button annualNormal;
-	
 	
 	public void generateMonthlyCard(ActionEvent event) throws IOException {
 		cost = 15 * owner.getCheck();
@@ -51,7 +42,6 @@ public class CardController extends MainController implements Initializable {
 			else {
 				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
 			}
-			
 		}
 	}
 
@@ -100,36 +90,20 @@ public class CardController extends MainController implements Initializable {
 		}
 	}
 
-	public Button getMonthlyNormal() {
-		return monthlyNormal;
+	public Button getMonthly() {
+		return monthly;
 	}
 
-	public Button getThreeMonthsNormal() {
-		return threeMonthsNormal;
+	public Button getThreeMonths() {
+		return threeMonths;
 	}
 
-	public Button getSixMonthsNormal() {
-		return sixMonthsNormal;
+	public Button getSixMonths() {
+		return sixMonths;
 	}
 
-	public Button getAnnualNormal() {
-		return annualNormal;
-	}
-	
-	public Button getMonthlyReduced() {
-		return monthlyReduced;
-	}
-
-	public Button getThreeMonthsReduced() {
-		return threeMonthsReduced;
-	}
-
-	public Button getSixMonthsReduced() {
-		return sixMonthsReduced;
-	}
-
-	public Button getAnnualReduced() {
-		return annualReduced;
+	public Button getAnnual() {
+		return annual;
 	}
 
 	public Pane getButtonsPane() {
@@ -143,23 +117,10 @@ public class CardController extends MainController implements Initializable {
 	public Hyperlink getSignOutHyperlink() {
 		return signOutHyperlink;
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		if(owner.getCheck() == 1)
-		{
-			monthlyNormal.setMouseTransparent(true);
-			threeMonthsNormal.setMouseTransparent(true);
-			sixMonthsNormal.setMouseTransparent(true);
-			annualNormal.setMouseTransparent(true);
-		}
-		else
-		{
-			monthlyReduced.setMouseTransparent(true);
-			threeMonthsReduced.setMouseTransparent(true);
-			sixMonthsReduced.setMouseTransparent(true);
-			annualReduced.setMouseTransparent(true);
-		}
+		// TODO Auto-generated method stub
 
 	}
 

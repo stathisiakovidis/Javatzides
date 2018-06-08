@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Fine {
 
 	String date_time;
@@ -7,8 +10,8 @@ public class Fine {
 	int bus;
 	boolean paid;
 	
-	public Fine(String date_time, Passenger owner, String inspector_num, int bus) {
-		this.date_time = date_time;
+	public Fine(Passenger owner, String inspector_num, int bus) {
+		this.date_time =new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 		this.owner = owner;
 		countPrice();
 		this.inspector_num = inspector_num;
