@@ -37,7 +37,7 @@ public abstract class Product {
 	}
 
 	public void setProduct_num() {
-		this.product_num= date_time + owner.getPassengerNum();
+		this.product_num= date_time + owner.getUserNum();
 	}
 
 	public String getDate_time() {

@@ -81,6 +81,10 @@ public class Passenger extends User{
 	public void addProduct(Product aProduct) {
 		products.add(aProduct);
 	}
+	
+	public String getPassport() {
+		return passport;
+	}
 
 	
 	
