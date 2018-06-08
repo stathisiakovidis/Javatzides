@@ -38,7 +38,7 @@ public class InspectorController implements Initializable{
 	private Path filePathOfQR;
 	
 	
-	public void onClickedBrowse(ActionEvent actionEvent) {
+	public void onClickedBrowse(ActionEvent actionEvent) throws IOException {
 	
 		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		
@@ -59,15 +59,9 @@ public class InspectorController implements Initializable{
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("PurchaseData.fxml"));
 		Parent root = null;
-		try {
-			root = loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		PurchaseDataController controller = (PurchaseDataController)loader.getController();
-		controller.setDataToFields(product_num);
+		root = loader.load();
+        PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
+		//controller.setDataToFields(product_num);
 		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
