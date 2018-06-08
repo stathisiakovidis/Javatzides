@@ -12,14 +12,12 @@ import com.google.zxing.NotFoundException;
 public class TicketInspector extends User {
 
 	public String username;
-	public String inspector_num;
 	public HashMap<Integer, Integer> durations = new HashMap<>(); 
 	
-	public TicketInspector(String aName, String aPassword, String username, String inspector_num) {
+	public TicketInspector(String aName, String aPassword, String username) {
 		super(aName, aPassword);
 		
 		this.username = username;
-		this.inspector_num = inspector_num;
 		durations.put(14, 60);
 		durations.put(2, 70);
 	}
