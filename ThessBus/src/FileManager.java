@@ -34,13 +34,19 @@ public class FileManager {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//if io exception then first time adding a user so no need to read the list 
+			users.add(user);
+			try {
+				oos.writeObject(users);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		} 
 		catch (ClassNotFoundException e) {
 			//if class not found then first time adding a user so no need to read the list 
 			users.add(user);
 			try {
-				oos.writeObject(user);
+				oos.writeObject(users);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -164,7 +170,14 @@ public class FileManager {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//if io exception then first time adding a product so no need to read the list 
+			for (int i = 0; i < productstoInsert.size(); i++)
+				products.add(productstoInsert.get(i));
+			try {
+				oos.writeObject(products);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		} 
 		catch (ClassNotFoundException e) {
 			//if class not found then first time adding a product so no need to read the list 
@@ -230,15 +243,20 @@ public class FileManager {
 		{
 			e.printStackTrace();
 		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
+		catch (IOException e) {
+			//if io exception then first time adding a fine so no need to read the list 
+			fines.add(issued_fine);
+			try {
+				oos.writeObject(fines);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		} 
 		catch (ClassNotFoundException e) {
 			//if class not found then first time adding a fine so no need to read the list 
 			fines.add(issued_fine);
 			try {
-				oos.writeObject(issued_fine);
+				oos.writeObject(fines);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
