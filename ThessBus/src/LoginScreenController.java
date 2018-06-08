@@ -26,13 +26,20 @@ public class LoginScreenController implements Initializable{
 	@FXML public TextField usernameField;
 	@FXML public PasswordField passwordField;
 	@FXML private Hyperlink visitorHyperlink;
-	
+	private boolean insp=false;
 	public void onClickedLogin(ActionEvent e) throws IOException  {
 		
 		Stage primarystage = Main.getStagefromEvent(e);
 		primarystage.close();
 		
-		if(usernameField.getText().equals("1") && passwordField.getText().equals("1"))
+		
+		if(usernameField.getText().contains("Inspector"))
+			{Main.loginIns = (TicketInspector)FileManager.searchUser(usernameField.getText(), passwordField.getText(), "Inspector File");
+			insp=true;}
+		else
+			Main.loginUser =(Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(), "User File");
+		
+		if(Main.loginUser!=null)
 		{
 			Stage stage = MainController.getStageFromEvent(e);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
@@ -45,7 +52,7 @@ public class LoginScreenController implements Initializable{
 			stage.show();
 		}
 		
-		else if(usernameField.getText().equals("inspector") && passwordField.getText().equals("1")) {
+		else if(insp) {
 			Stage stage = MainController.getStageFromEvent(e);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
 			Parent root = null;
