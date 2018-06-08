@@ -21,7 +21,7 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.stage.Stage;
 
 
-public class LoginScreenController implements Initializable{
+public class LoginScreenController extends MainController implements Initializable{
 	@FXML public Button loginButton;
 	@FXML public TextField usernameField;
 	@FXML public PasswordField passwordField;
