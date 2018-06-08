@@ -14,21 +14,18 @@ import com.google.zxing.NotFoundException;
 public class TicketInspector extends User {
 
 	public String username;
-<<<<<<< HEAD
-	public HashMap<Integer, Integer> durations = new HashMap<>(); 
-=======
+
+	
+
 	public String inspector_num;
 	public HashMap<String, Integer> durations = new HashMap<>(); //Πρέπει να ειναι String λόγω 78Ν 
->>>>>>> FileManager class completed - TicketInspector class completed
+
 	
 	public TicketInspector(String aName, String aPassword, String username) {
 		super(aName, aPassword);
 		
 		this.username = username;
-<<<<<<< HEAD
-		durations.put(14, 60);
-		durations.put(2, 70);
-=======
+
 		this.inspector_num = inspector_num;
 		durations.put("14", 60);
 		durations.put("02", 70);
@@ -36,7 +33,6 @@ public class TicketInspector extends User {
 		durations.put("30", 70);
 		durations.put("78N", 80);
 		
->>>>>>> FileManager class completed - TicketInspector class completed
 	}
 	
 	public Product browseQR(String filepath_of_qr, int type) throws FileNotFoundException, NotFoundException, IOException {			//type: the type of product the inspector is examining

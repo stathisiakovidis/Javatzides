@@ -11,7 +11,7 @@ public class Fine {
 	boolean paid;
 	
 	public Fine(Passenger owner, String inspector_num, int bus) {
-		this.date_time =new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
+		this.date_time =new SimpleDateFormat("yyyy/MM/dd HHmmss").format(Calendar.getInstance().getTime());
 		this.owner = owner;
 		countPrice();
 		this.inspector_num = inspector_num;
