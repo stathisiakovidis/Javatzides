@@ -8,9 +8,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	 static  Passenger loginUser=null;
-	 static  TicketInspector loginIns=null;
-
 	public static void main(String[] args)
 	{
 		launch(args);

@@ -1,15 +1,12 @@
-import java.util.Random;
 
 public abstract class User {
 	
-	protected String username;
-	protected String password;
-	protected int userNum;
+	String username;
+	String password;
 	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
-		setUserNum();
 	}
 	
 // Getters and setters
@@ -26,16 +23,6 @@ public abstract class User {
 		this.password = password;
 	}
 	
-	public int getUserNum() {
-		return userNum;
-	}
-
-	public void setUserNum() {
-		Random random = new Random(System.nanoTime());
-		int randomInt = random.nextInt(1000000000);
-		this.userNum= randomInt;
-	}
-
 	
 	
 	

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Passenger extends User{
 
 	private String email;
-	private String cardNum;
+	private String passengerNum;
 	private String id;
 	private String phoneNum;
 	private String passport;
@@ -20,11 +20,11 @@ public class Passenger extends User{
 	private ArrayList<Fine> fines = new ArrayList<>();
 	
 	
-	public Passenger(String username, String password, String email, String cardNum, String id, String phoneNum, String passport, double balance) {
+	public Passenger(String username, String password, String email, String passengerNum, String id, String phoneNum, String passport, double balance) {
 		super(username, password);
 		
 		this.email = email;
-		this.cardNum = cardNum;
+		this.passengerNum = passengerNum;
 		this.id = id;
 		this.phoneNum = phoneNum;
 		this.balance = balance;	
@@ -34,11 +34,11 @@ public class Passenger extends User{
 	}
 	
 	//Tin kaloume mono apo to controller ton settings
-	public void setNewData(String username, String password, String email, String cardNum, String id, String phoneNum, String passport) {
+	public void setNewData(String username, String password, String email, String passengerNum, String id, String phoneNum, String passport) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.cardNum = cardNum;
+		this.passengerNum = passengerNum;
 		this.id = id;
 		this.phoneNum = phoneNum;
 		this.passport = passport;
@@ -65,6 +65,9 @@ public class Passenger extends User{
 		balance -= reducedMoney;
 	}
 
+	public String getPassengerNum() {
+		return passengerNum;
+	}
 
 	public int getCheck() {
 		return check;
