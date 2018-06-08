@@ -2,15 +2,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -27,9 +24,9 @@ public class RegisterController implements Initializable{
 	@FXML public TextField cardField;
 	
 	public void onClickedRegister(ActionEvent e) throws IOException  {
-		if(passwordField1.getText().equals(passwordField2.getText()));{
-			Passenger newuser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), String id, String phoneNum, String passport, double balance);
-		}s
+		if(passwordField1.getText().equals(passwordField2.getText())){
+			Passenger newuser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
+		}
 		else
 		{
 			Alert alert = new Alert(AlertType.INFORMATION);
