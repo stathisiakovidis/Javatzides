@@ -23,7 +23,7 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private VBox navBarVBox;
 	@FXML private Hyperlink signOutHyperlink;
 	
-	private Passenger owner;
+	private Passenger owner = Main.loginUser;
 	private double cost;
 	
 	
@@ -107,13 +107,14 @@ public class TicketController extends MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	
-		
-		if(owner.getCheck() == 1) {
-			oneWayNormal.setMouseTransparent(true);
-			twoWayNormal.setMouseTransparent(true);
-		}else {
-			oneWayReduced.setMouseTransparent(true);
-			twoWayReduced.setMouseTransparent(true);
+		if(owner != null) {
+			if(owner.getCheck() == 1) {
+				oneWayNormal.setMouseTransparent(true);
+				twoWayNormal.setMouseTransparent(true);}
+			else {
+				oneWayReduced.setMouseTransparent(true);
+				twoWayReduced.setMouseTransparent(true);
+			}
 		}
 		
 	}

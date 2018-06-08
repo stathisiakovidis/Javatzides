@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class CardController extends MainController implements Initializable {
-	private Passenger owner ;
+	private Passenger owner = Main.loginUser;
 	private double cost;
 	@FXML
 	private Button monthlyReduced;
@@ -146,19 +146,19 @@ public class CardController extends MainController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		if(owner.getCheck() == 1)
-		{
-			monthlyNormal.setMouseTransparent(true);
-			threeMonthsNormal.setMouseTransparent(true);
-			sixMonthsNormal.setMouseTransparent(true);
-			annualNormal.setMouseTransparent(true);
-		}
-		else
-		{
-			monthlyReduced.setMouseTransparent(true);
-			threeMonthsReduced.setMouseTransparent(true);
-			sixMonthsReduced.setMouseTransparent(true);
-			annualReduced.setMouseTransparent(true);
+		if(owner != null) {
+			if(owner.getCheck() == 1) {
+				monthlyNormal.setMouseTransparent(true);
+				threeMonthsNormal.setMouseTransparent(true);
+				sixMonthsNormal.setMouseTransparent(true);
+				annualNormal.setMouseTransparent(true);
+			}
+			else {
+				monthlyReduced.setMouseTransparent(true);
+				threeMonthsReduced.setMouseTransparent(true);
+				sixMonthsReduced.setMouseTransparent(true);
+				annualReduced.setMouseTransparent(true);
+			}
 		}
 
 	}
