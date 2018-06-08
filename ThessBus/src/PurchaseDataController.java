@@ -20,10 +20,28 @@ import javafx.stage.Stage;
 public class PurchaseDataController implements Initializable {
 	@FXML private TextField lastNameField;
 	@FXML private Button checkDataButton;
-
-	public void setDataToFields(String product_num)
+	@FXML TextField nameField;
+	@FXML TextField dateField;
+	@FXML TextField timeField;
+	@FXML TextField typeProductField;
+	@FXML TextField idOasthField;
+	@FXML TextField busField;
+	@FXML TextField remainingRoutes;
+	@FXML TextField totalRoutes;
+	
+	public void setDataToFields(String name ,String lastName,String busNum,String type,String date,String time,String idOasth,int routes ,int remainRoutes)
 	{
-		lastNameField.setText(product_num);
+		lastNameField.setText(lastName);
+		nameField.setText(name);
+		dateField.setText(date);
+		timeField.setText(time);
+		typeProductField.setText(type);
+		idOasthField.setText(idOasth);		
+		busField.setText(busNum);
+		totalRoutes.setText(Integer.toString(routes));
+		remainingRoutes.setText(Integer.toString(remainRoutes));
+		
+		
 	}
 	
 	public void onClickedCheckData(ActionEvent actionEvent) {

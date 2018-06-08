@@ -15,8 +15,13 @@
 	<items>
 		<AnchorPane fx:id="leftPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 			<children>
+            <TextField alignment="CENTER" layoutX="62.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Επωνύμου">
+               <font>
+                  <Font name="Baskerville Old Face" size="13.0" />
+               </font>
+            </TextField>
 				<Hyperlink fx:id="backHyperlink" layoutX="41.0" layoutY="34.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
-            <TextField alignment="CENTER" layoutX="62.0" layoutY="105.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Ονόματος">
+            <TextField fx:id="nameField" alignment="CENTER" layoutX="62.0" layoutY="105.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Ονόματος">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -31,11 +36,6 @@
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Text>
-            <TextField alignment="CENTER" layoutX="62.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Επωνύμου">
-               <font>
-                  <Font name="Baskerville Old Face" size="13.0" />
-               </font>
-            </TextField>
             <Text layoutX="62.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Επώνυμο">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
@@ -46,7 +46,7 @@
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
                </image>
             </ImageView>
-            <TextField alignment="CENTER" layoutX="62.0" layoutY="261.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Ταυτότητας">
+            <TextField fx:id="idField" alignment="CENTER" layoutX="62.0" layoutY="261.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Ταυτότητας">
                <font>
                   <Font size="13.0" />
                </font>
@@ -61,6 +61,16 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
+            <TextField fx:id="busField" alignment="CENTER" layoutX="62.0" layoutY="325.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Ταυτότητας">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Text layoutX="63.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αρ. Λεωφορείου">
+               <font>
+                  <Font name="Baskerville Old Face" size="15.0" />
+               </font>
+            </Text>
 			</children>
 		</AnchorPane>
 		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -70,7 +80,7 @@
 		</AnchorPane>
       <Pane prefHeight="400.0" prefWidth="450.0">
          <children>
-            <TextField alignment="CENTER" layoutX="57.0" layoutY="102.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Τηλεφώνου">
+            <TextField fx:id="phoneField" alignment="CENTER" layoutX="57.0" layoutY="102.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Τηλεφώνου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -85,7 +95,7 @@
                   <Image url="@../Images/phone.png" />
                </image>
             </ImageView>
-            <TextField alignment="CENTER" layoutX="59.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="διεύθυνση">
+            <TextField fx:id="adressField" alignment="CENTER" layoutX="59.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="διεύθυνση">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -95,7 +105,7 @@
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Text>
-            <Button layoutX="62.0" layoutY="243.0" mnemonicParsing="false" onAction="#onClickedSignOut" prefHeight="49.0" prefWidth="172.0" text="Έκδοση Προστίμου">
+            <Button layoutX="62.0" layoutY="260.0" mnemonicParsing="false" onAction="#onClickedFine" prefHeight="94.0" prefWidth="172.0" text="Έκδοση Προστίμου">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
