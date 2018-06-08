@@ -55,7 +55,7 @@ public abstract class Product {
 	}*/
 
 	public String getCurrentTime() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/ddHHmmss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HHmmss");
 		Calendar cal = Calendar.getInstance();
 		return  dateFormat.format(cal.getTime());
 	}

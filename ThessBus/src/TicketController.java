@@ -21,7 +21,7 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private VBox navBarVBox;
 	@FXML private Hyperlink signOutHyperlink;
 	
-	private Passenger owner = Main.pass;
+	private Passenger owner ;
 	private double cost;
 	
 	
