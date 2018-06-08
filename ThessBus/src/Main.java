@@ -21,6 +21,8 @@ public class Main extends Application {
 		primaryStage.setTitle("ThessBus");
 		primaryStage.show();
 		
+				
+		
 	}
 
 	public static Stage getStagefromEvent(ActionEvent e) {

@@ -21,18 +21,18 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private VBox navBarVBox;
 	@FXML private Hyperlink signOutHyperlink;
 	
-	private Passenger owner;
+	private Passenger owner = Main.pass;
 	private double cost;
 	
 	
 	public void onClickedOneWay(ActionEvent e) {
 		cost = 0.5 * owner.getCheck();
 		Ticket newTicket= new Ticket(null, cost, owner, "Μονής", null, null, 1, 1, null);
-		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to continue?", "Close?",  JOptionPane.YES_NO_OPTION);
+		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION)
 		{
 		   if(owner.getBalance() < cost) {
-			   JOptionPane.showMessageDialog(null, "You don't have enough money", null, JOptionPane.WARNING_MESSAGE);
+			   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
 		   }
 		   else {
 			   owner.reduceBalance(cost);
@@ -44,11 +44,11 @@ public class TicketController extends MainController implements Initializable {
 	public void onClickedTwoWay(ActionEvent e) {
 		cost = 0.6 * owner.getCheck();
 		Ticket newTicket= new Ticket(null, cost, owner, "Διπλής", null, null, 2, 1, null);
-		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to continue?", "Close?",  JOptionPane.YES_NO_OPTION);
+		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION)
 		{
 		   if(owner.getBalance() < cost) {
-			   JOptionPane.showMessageDialog(null, "You don't have enough money", null, JOptionPane.WARNING_MESSAGE);
+			   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
 		   }
 		   else {
 			   owner.reduceBalance(cost);
@@ -104,7 +104,13 @@ public class TicketController extends MainController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		if(owner.getCheck() == 1) {
+			oneWayNormal.setMouseTransparent(true);
+			twoWayNormal.setMouseTransparent(true);
+		}else {
+			oneWayReduced.setMouseTransparent(true);
+			twoWayReduced.setMouseTransparent(true);
+		}
 		
 	}
 

@@ -30,7 +30,7 @@ public class Passenger extends User{
 		this.balance = balance;	
 		this.passport = passport;
 		
-		check = (this.passport==null)?1:2;
+		check = (this.passport==null)?2:1;
 	}
 	
 	//Tin kaloume mono apo to controller ton settings
