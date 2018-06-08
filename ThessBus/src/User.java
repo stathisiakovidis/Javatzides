@@ -4,7 +4,7 @@ public abstract class User {
 	
 	protected String username;
 	protected String password;
-	protected int userNum;
+	protected String userNum;
 	
 	public User(String username, String password) {
 		this.username = username;
@@ -26,14 +26,14 @@ public abstract class User {
 		this.password = password;
 	}
 	
-	public int getUserNum() {
+	public String getUserNum() {
 		return userNum;
 	}
 
 	public void setUserNum() {
 		Random random = new Random(System.nanoTime());
 		int randomInt = random.nextInt(1000000000);
-		this.userNum= randomInt;
+		this.userNum= Integer.toString(randomInt);
 	}
 
 	
