@@ -24,16 +24,18 @@ public class RegisterController extends MainController implements Initializable{
 	@FXML public TextField cardField;
 	
 	public void onClickedRegister(ActionEvent e) throws IOException  {
-		if(passwordField1.getText().equals(passwordField2.getText())){
-			Passenger newuser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
-		}
+		if(passwordField1.getText().equals(passwordField2.getText())) {
+			if(phoneField.getText().length()==10) {
+				if(emailField.getText().contains("@")){
+				Passenger newuser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
+				FileManager.InsertUser(newuser, "users.ser");
+		}}}
 		else
 		{
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Alert");
 			alert.setHeaderText(null);
 			alert.setContentText("Passwords do not match");
-
 			alert.showAndWait();
 		}
 	}
