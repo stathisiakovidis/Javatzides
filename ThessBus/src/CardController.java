@@ -13,97 +13,123 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class CardController extends MainController implements Initializable {
-	private Passenger owner;
+	private Passenger owner ;
 	private double cost;
 	@FXML
-	private Button monthly;
+	private Button monthlyReduced;
 	@FXML
-	private Button threeMonths;
+	private Button threeMonthsReduced;
 	@FXML
-	private Button sixMonths;
+	private Button sixMonthsReduced;
 	@FXML
-	private Button annual;
+	private Button annualReduced;
 	@FXML
 	private Pane buttonsPane;
 	@FXML
 	private VBox navBarVBox;
 	@FXML
 	private Hyperlink signOutHyperlink;
+	@FXML
+	private Button monthlyNormal;
+	@FXML
+	private Button threeMonthsNormal;
+	@FXML
+	private Button sixMonthsNormal;
+	@FXML
+	private Button annualNormal;
+	
 	
 	public void generateMonthlyCard(ActionEvent event) throws IOException {
 		cost = 15 * owner.getCheck();
-		Card newcard = new Card(cost, owner, "Μηνιαία", 1);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
+		Card newcard = new Card(cost, owner, "ΞΞ·Ξ½ΞΉΞ±Ξ―Ξ±", 1);
+		int reply = JOptionPane.showConfirmDialog(null, "Ξ•Ξ―ΟƒΞ±ΞΉ ΟƒΞ―Ξ³ΞΏΟ…ΟΞΏΟ‚ ΟΟ„ΞΉ ΞΈΞµΟ‚ Ξ½Ξ± ΟƒΟ…Ξ½ΞµΟ‡Ξ―ΟƒΞµΞΉΟ‚;", "Close?",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			if(owner.getBalance() >= newcard.getPrice()) {
 				owner.reduceBalance(newcard.getPrice());
 				owner.addProduct(newcard);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉΟ‚ Ξ±ΟΞΊΞµΟ„Ξ¬ Ο‡ΟΞ®ΞΌΞ±Ο„Ξ± ", null, JOptionPane.WARNING_MESSAGE);
 			}
+			
 		}
 	}
 
 	public void generateThreeMonthsCard(ActionEvent event) throws IOException {
 		cost = 42 * owner.getCheck();
-		Card newcard = new Card(cost, owner, "Τριμηνιαία", 3);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
+		Card newcard = new Card(cost, owner, "Ξ¤ΟΞΉΞΌΞ·Ξ½ΞΉΞ±Ξ―Ξ±", 3);
+		int reply = JOptionPane.showConfirmDialog(null, "Ξ•Ξ―ΟƒΞ±ΞΉ ΟƒΞ―Ξ³ΞΏΟ…ΟΞΏΟ‚ ΟΟ„ΞΉ ΞΈΞµΟ‚ Ξ½Ξ± ΟƒΟ…Ξ½ΞµΟ‡Ξ―ΟƒΞµΞΉΟ‚;", "Close?",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			if(owner.getBalance() >= newcard.getPrice()) {
 				owner.reduceBalance(newcard.getPrice());
 				owner.addProduct(newcard);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉΟ‚ Ξ±ΟΞΊΞµΟ„Ξ¬ Ο‡ΟΞ®ΞΌΞ±Ο„Ξ± ", null, JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
 
 	public void generateSixMonthsCard(ActionEvent event) throws IOException {
 		cost = 75 * owner.getCheck();
-		Card newcard = new Card(cost, owner, "Εξαμινιαία", 6);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
+		Card newcard = new Card(cost, owner, "Ξ•ΞΎΞ±ΞΌΞΉΞ½ΞΉΞ±Ξ―Ξ±", 6);
+		int reply = JOptionPane.showConfirmDialog(null, "Ξ•Ξ―ΟƒΞ±ΞΉ ΟƒΞ―Ξ³ΞΏΟ…ΟΞΏΟ‚ ΟΟ„ΞΉ ΞΈΞµΟ‚ Ξ½Ξ± ΟƒΟ…Ξ½ΞµΟ‡Ξ―ΟƒΞµΞΉΟ‚;", "Close?",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			if(owner.getBalance() >= newcard.getPrice()) {
 				owner.reduceBalance(newcard.getPrice());
 				owner.addProduct(newcard);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉΟ‚ Ξ±ΟΞΊΞµΟ„Ξ¬ Ο‡ΟΞ®ΞΌΞ±Ο„Ξ± ", null, JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
 
 	public void generateAnnualCard(ActionEvent event) throws IOException {
 		cost = 135 * owner.getCheck();
-		Card newcard = new Card(cost, owner, "Ετήσια", 12);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
+		Card newcard = new Card(cost, owner, "Ξ•Ο„Ξ®ΟƒΞΉΞ±", 12);
+		int reply = JOptionPane.showConfirmDialog(null, "Ξ•Ξ―ΟƒΞ±ΞΉ ΟƒΞ―Ξ³ΞΏΟ…ΟΞΏΟ‚ ΟΟ„ΞΉ ΞΈΞµΟ‚ Ξ½Ξ± ΟƒΟ…Ξ½ΞµΟ‡Ξ―ΟƒΞµΞΉΟ‚;", "Close?",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			if(owner.getBalance() >= newcard.getPrice()) {
 				owner.reduceBalance(newcard.getPrice());
 				owner.addProduct(newcard);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Ξ”ΞµΞ½ Ξ­Ο‡ΞµΞΉΟ‚ Ξ±ΟΞΊΞµΟ„Ξ¬ Ο‡ΟΞ®ΞΌΞ±Ο„Ξ± ", null, JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
 
-	public Button getMonthly() {
-		return monthly;
+	public Button getMonthlyNormal() {
+		return monthlyNormal;
 	}
 
-	public Button getThreeMonths() {
-		return threeMonths;
+	public Button getThreeMonthsNormal() {
+		return threeMonthsNormal;
 	}
 
-	public Button getSixMonths() {
-		return sixMonths;
+	public Button getSixMonthsNormal() {
+		return sixMonthsNormal;
 	}
 
-	public Button getAnnual() {
-		return annual;
+	public Button getAnnualNormal() {
+		return annualNormal;
+	}
+	
+	public Button getMonthlyReduced() {
+		return monthlyReduced;
+	}
+
+	public Button getThreeMonthsReduced() {
+		return threeMonthsReduced;
+	}
+
+	public Button getSixMonthsReduced() {
+		return sixMonthsReduced;
+	}
+
+	public Button getAnnualReduced() {
+		return annualReduced;
 	}
 
 	public Pane getButtonsPane() {
@@ -117,10 +143,23 @@ public class CardController extends MainController implements Initializable {
 	public Hyperlink getSignOutHyperlink() {
 		return signOutHyperlink;
 	}
-
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		if(owner.getCheck() == 1)
+		{
+			monthlyNormal.setMouseTransparent(true);
+			threeMonthsNormal.setMouseTransparent(true);
+			sixMonthsNormal.setMouseTransparent(true);
+			annualNormal.setMouseTransparent(true);
+		}
+		else
+		{
+			monthlyReduced.setMouseTransparent(true);
+			threeMonthsReduced.setMouseTransparent(true);
+			sixMonthsReduced.setMouseTransparent(true);
+			annualReduced.setMouseTransparent(true);
+		}
 
 	}
 

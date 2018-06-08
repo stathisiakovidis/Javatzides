@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegisterController implements Initializable{
+public class RegisterController extends MainController implements Initializable{
 	@FXML public Button registerButton;
 	@FXML public TextField nameField;
 	@FXML public TextField surnameField;
