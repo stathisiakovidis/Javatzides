@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Passenger extends User{
+public class Passenger extends User implements Serializable{
 
 	private String email;
 	private String cardNum;
