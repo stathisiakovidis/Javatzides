@@ -13,20 +13,15 @@ import com.google.zxing.NotFoundException;
 
 public class TicketInspector extends User {
 
-	public String username;
-
-	
-
+	public String name;
 	public String inspector_num;
 	public HashMap<String, Integer> durations = new HashMap<>(); //Πρέπει να ειναι String λόγω 78Ν 
 
 	
 	public TicketInspector(String aName, String aPassword, String username) {
-		super(aName, aPassword);
-		
-		this.username = username;
+		super(username, aPassword);
+		this.name = aName;
 
-		this.inspector_num = inspector_num;
 		durations.put("14", 60);
 		durations.put("02", 70);
 		durations.put("31", 65);
