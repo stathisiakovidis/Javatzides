@@ -7,9 +7,11 @@ import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class SettingsController extends MainController implements Initializable {
 	@FXML private TextField nameField;
@@ -33,7 +35,11 @@ public class SettingsController extends MainController implements Initializable 
 					Main.loginUser.setNewData(nameField.getText()+subnameField.getText(),passwordField.getText() , emailField.getText(),null, idField.getText(), phoneField.getText(), passportField.getText());
 		}
 		else
-			JOptionPane.showMessageDialog(null, "Error. Password, Email or Phone number is/are incompitable. Try again", null, JOptionPane.WARNING_MESSAGE);
+			{Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("Error. Password, Email or Phone number is/are incompitable. Try again");
+			alert.showAndWait();}
 
 
 		

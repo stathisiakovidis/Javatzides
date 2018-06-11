@@ -13,10 +13,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.GaussianBlur;
 import javafx.stage.Stage;
 
@@ -65,7 +68,12 @@ public class LoginScreenController extends MainController implements Initializab
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Error", null, JOptionPane.WARNING_MESSAGE);
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("Error. Username or password doesn't match.");
+			alert.showAndWait();
+			
 		}	
 	}
 	public void onClickedSignUp(ActionEvent actionEvent) throws Exception {
