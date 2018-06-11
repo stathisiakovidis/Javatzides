@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Fine {
+public class Fine implements Serializable {
 
 	String date_time;
 	Passenger owner;
@@ -11,7 +12,7 @@ public class Fine {
 	boolean paid;
 	
 	public Fine(Passenger owner, String inspector_num, int bus) {
-		this.date_time =new SimpleDateFormat("yyyy/MM/dd HHmmss").format(Calendar.getInstance().getTime());
+		this.date_time = new SimpleDateFormat("yyyy/MM/dd HHmmss").format(Calendar.getInstance().getTime());
 		this.owner = owner;
 		countPrice();
 		this.inspector_num = inspector_num;

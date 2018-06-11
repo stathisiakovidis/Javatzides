@@ -16,9 +16,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -57,20 +59,27 @@ public class InspectorController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		if(cardRadioButton.isSelected())
 		{
-			Card card = (Card) FileManager.search(product_num, "card.ser");
+			Card card = (Card) FileManager.search(product_num, "Products.dat");
+			
 			if(card == null)
 			{
-				System.out.println("error");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Alert");
+				alert.setHeaderText(null);
+				alert.setContentText("invalid QRCode. No purchased products is encoded in that code");
+				alert.showAndWait();
 			}
 			else 
 			{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("PurchaseData.fxml"));
 				Parent root = null;
 				root = loader.load();
-		        PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
-		        String name="", surname ="",date="",time="";
+		        
+				PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
+		        /*String name="", surname ="",date="",time="";
 		        StringTokenizer st = new StringTokenizer(card.getOwner().getUsername() );
 		        name = st.nextToken();
 		        surname = st.nextToken();
@@ -78,7 +87,8 @@ public class InspectorController implements Initializable{
 		        date = dt.nextToken();
 		        time = dt.nextToken();
 		        
-				ctrl.setDataToFields(name,surname,"","Card",date,time,card.getOwner().getPassport(),0 ,card.getDuration());
+				ctrl.setDataToFields(name,surname,"","Card",date,time,card.getOwner().getPassport(),0 ,card.getDuration());*/
+				ctrl.setDataToFields(card, typeOfProductChecked);
 				
 				Scene scene = new Scene(root);
 				primaryStage.setScene(scene);
@@ -87,18 +97,24 @@ public class InspectorController implements Initializable{
 			}
 		}	
 		else if(ticketRadioButton.isSelected()) {
-			Ticket ticket = (Ticket) FileManager.search(product_num, "ticket.ser");
+			Ticket ticket = (Ticket) FileManager.search(product_num, "Products.dat");
+			
 			if(ticket == null)
 			{
-				System.out.println("error");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Alert");
+				alert.setHeaderText(null);
+				alert.setContentText("invalid QRCode. No purchased products is encoded in that code");
+				alert.showAndWait();
 			}
 			else 
 			{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("PurchaseData.fxml"));
 				Parent root = null;
 				root = loader.load();
-		        PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
-		        String name="", surname ="",date="",time="";
+		        
+				PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
+		        /*String name="", surname ="",date="",time="";
 		        StringTokenizer st = new StringTokenizer(ticket.getOwner().getUsername() );
 		        name = st.nextToken();
 		        surname = st.nextToken();
@@ -106,7 +122,8 @@ public class InspectorController implements Initializable{
 		        date = dt.nextToken();
 		        time = dt.nextToken();
 		        
-				ctrl.setDataToFields(name,surname,ticket.getBus(),"Ticket",date,time,ticket.getOwner().getPassport(),ticket.getNo_of_routes() ,0);
+				ctrl.setDataToFields(name,surname,ticket.getBus(),"Ticket",date,time,ticket.getOwner().getPassport(),ticket.getNo_of_routes() ,0);*/
+				ctrl.setDataToFields(ticket, typeOfProductChecked);
 				
 				Scene scene = new Scene(root);
 				primaryStage.setScene(scene);
@@ -116,7 +133,11 @@ public class InspectorController implements Initializable{
 	
 		}
 		else {
-			System.out.println("Error re pousth");
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("You've not selected the type of product to be checked");
+			alert.showAndWait();
 		}
 	}
 	

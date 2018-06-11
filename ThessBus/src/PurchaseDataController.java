@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,31 +22,68 @@ import javafx.stage.Stage;
 public class PurchaseDataController implements Initializable {
 	@FXML private TextField lastNameField;
 	@FXML private Button checkDataButton;
-	@FXML TextField nameField;
-	@FXML TextField dateField;
-	@FXML TextField timeField;
-	@FXML TextField typeProductField;
-	@FXML TextField idOasthField;
-	@FXML TextField busField;
-	@FXML TextField remainingRoutes;
-	@FXML TextField totalRoutes;
+	@FXML private TextField nameField;
+	@FXML private TextField dateTimeField;
+	@FXML private TextField lastValidationDateTimeField;
+	@FXML private TextField typeProductField;
+	@FXML private TextField productNumField;
+	@FXML private TextField busField;
+	@FXML private TextField routesField;
+	@FXML private TextField priceField;
 	
-	public void setDataToFields(String name ,String lastName,String busNum,String type,String date,String time,String idOasth,int routes ,int remainRoutes)
+	/*public void setDataToFields(String name ,String lastName,String busNum,String type,String dateTime,
+								String lastValidationDateTime,String productNum,int routes, double price)
 	{
 		lastNameField.setText(lastName);
 		nameField.setText(name);
-		dateField.setText(date);
-		timeField.setText(time);
+		dateTimeField.setText(dateTime);
+		lastValidationDateTimeField.setText(lastValidationDateTime);
 		typeProductField.setText(type);
-		idOasthField.setText(idOasth);		
+		productNumField.setText(productNum);		
 		busField.setText(busNum);
-		totalRoutes.setText(Integer.toString(routes));
-		remainingRoutes.setText(Integer.toString(remainRoutes));
+		routesField.setText(Integer.toString(routes));
+		priceField.setText(Double.toString(price));
+	}*/
+	public void setDataToFields(Product productChecked, int typeOfProduct) {
 		
-		
+		String name="", surname ="";
+        StringTokenizer st = new StringTokenizer(productChecked.getOwner().getUsername());
+        name = st.nextToken();
+        surname = st.nextToken();
+        lastNameField.setText(surname);
+        nameField.setText(name);
+        
+        String dateTime = productChecked.getDate_time();
+        dateTimeField.setText(dateTime.substring(0, 13) + ":" + dateTime.substring(13, 15) + ":" + dateTime.substring(15, 17));
+        
+        productNumField.setText(productChecked.getProduct_num());
+        priceField.setText(Double.toString(productChecked.getPrice()));
+        
+        if(typeOfProduct == 0) {
+        	busField.setText("-");
+        	lastValidationDateTimeField.setText("-");
+        	typeProductField.setText("Κάρτα: " + ((Card) productChecked).getDuration() + " μηνών/α");
+        	routesField.setText("Απεριορίστων διαδρομών");
+        }
+        else {
+        	busField.setText(((Ticket) productChecked).getBus());
+        	
+        	String validationDateTime = ((Ticket) productChecked).getValidation_date_time();
+        	lastValidationDateTimeField.setText(validationDateTime.substring(0, 13) + ":" + validationDateTime.substring(13, 15) +
+        										":" + validationDateTime.substring(15, 17));
+        	typeProductField.setText("Εισιτήριο");
+        	String numOfRoutes = (((Ticket) productChecked).getNo_of_routes() == 1) ? "Μονής" :
+        							((Ticket) productChecked).getNo_of_routes() + "-πλής";
+        	routesField.setText(numOfRoutes + " διαδρομής");
+        }
+        		
 	}
 	
-	public void onClickedCheckData(ActionEvent actionEvent) {
+	public void onClickedCheckData(ActionEvent actionEvent) throws NumberFormatException, ParseException {
+		int duration = 120;
+		Main.loginIns.ticketValidation(dateTimeField.getText(), duration, busField.getText(), 
+									lastValidationDateTimeField.getText(), Double.parseDouble(priceField.getText()));
+		
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);

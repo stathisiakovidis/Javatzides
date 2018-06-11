@@ -1,27 +1,27 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Random;
 
 import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 
 import javafx.scene.image.Image;
 
-public abstract class Product {
+public abstract class Product implements Serializable {
 
-	public String date_time;
-	private Passenger owner;
-	private double price;
-	private String type;
-	private String product_num;
-	private byte[] QR_code;
-	private Image qrImage;
+	protected String date_time;
+	protected Passenger owner;
+	protected double price;
+	protected String type;
+	protected String product_num;
+	protected byte[] QR_code;
+	protected Image qrImage;
 	
 	
-	public Product(double price,Passenger owner, String type) {
+	public Product(double price, Passenger owner, String type) {
 		this.date_time = getCurrentTime();
 		this.owner = owner;
 		this.price = price;
@@ -54,7 +54,7 @@ public abstract class Product {
 		this.date_time = dateFormat.format(cal.getTime());
 	}*/
 
-	public String getCurrentTime() {
+	protected String getCurrentTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HHmmss");
 		Calendar cal = Calendar.getInstance();
 		return  dateFormat.format(cal.getTime());

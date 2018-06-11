@@ -22,8 +22,9 @@ public class FileManager {
 			//read previous list of users from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			users = (ArrayList) ois.readObject();
+			users = (ArrayList<User>) ois.readObject();
 			
+			System.out.println("Passenger added 1");
 			//add the new user
 			users.add(user);
 			oos.writeObject(users);
@@ -34,7 +35,8 @@ public class FileManager {
 		} 
 		catch (IOException e) 
 		{
-			//if io exception then first time adding a user so no need to read the list 
+			System.out.println("Passenger added");
+			//if class not found then first time adding a user so no need to read the list 
 			users.add(user);
 			try {
 				oos.writeObject(users);
@@ -46,7 +48,7 @@ public class FileManager {
 			//if class not found then first time adding a user so no need to read the list 
 			users.add(user);
 			try {
-				oos.writeObject(users);
+				oos.writeObject(user);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -60,7 +62,7 @@ public class FileManager {
 		{
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			users = (ArrayList) ois.readObject();
+			users = (ArrayList<User>) ois.readObject();
 		} 
 		catch (FileNotFoundException e) 
 		{
@@ -69,6 +71,7 @@ public class FileManager {
 		catch (IOException e) 
 		{
 			e.printStackTrace();
+			return null;
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -94,14 +97,17 @@ public class FileManager {
 		
 	}
 	
-	public static void updatePassenger(User user, String filename) {
+	public static void updatePassenger(User user, String filename, User newUser) {
 		boolean found;
 		
 		try 
 		{
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			users = (ArrayList) ois.readObject();
+			users = (ArrayList<User>) ois.readObject();
+			/*for (User user1 : users) {
+				System.out.println("username: " + user1.getUsername());
+			}*/
 		} 
 		catch (FileNotFoundException e) 
 		{
@@ -119,10 +125,14 @@ public class FileManager {
 		for (int i = 0; i < users.size(); i++) {
 			if(users.get(i).getUsername().equals(user.getUsername()))
 			{
-				users.set(i, user);
+				System.out.println("Passenger found");
+				//users.set(i, newUser);
+				users.remove(i);
+				users.add(newUser);
 				found=true;
 				try 
 				{
+					System.out.println("Passenger updated");
 					FileOutputStream fout = new FileOutputStream(filename);
 					ObjectOutputStream oos = new ObjectOutputStream(fout);
 					oos.writeObject(users);
@@ -136,6 +146,7 @@ public class FileManager {
 					e.printStackTrace();
 				}
 			}
+
 		}
 		
 	}

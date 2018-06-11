@@ -1,19 +1,26 @@
 import java.io.IOException;
+import java.io.Serializable;
 
 import com.google.zxing.WriterException;
 
-public class Ticket extends Product{
+public class Ticket extends Product implements Serializable {
 
 	private int no_of_routes;
+	private int remaining_routes;
 	private String bus;
 	private String validation_date_time;
 	
 	
-	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, String bus, String validation_date_time) {
+	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, String bus) {
 		super(price, owner, type);
 		this.no_of_routes = no_of_routes;
+		this.remaining_routes = this.no_of_routes - 1;
 		this.bus = bus;
-		this.validation_date_time = validation_date_time;
+	}
+	
+	public void setValidation_date_time() {
+		this.validation_date_time = getCurrentTime();
+		
 	}
 	
 	@Override
@@ -46,7 +53,7 @@ public class Ticket extends Product{
 	}
 	
 	public void Refresh_num_of_routes() {
-		no_of_routes = no_of_routes - 1;
+		remaining_routes = remaining_routes - 1;
 	}
 
 	public String getBus() {
@@ -56,8 +63,6 @@ public class Ticket extends Product{
 	public void setBus(String bus) {
 		this.bus = bus;
 	}
-
-	
 
 	public void setNo_of_routes(int no_of_routes) {
 		this.no_of_routes = no_of_routes;

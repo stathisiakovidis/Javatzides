@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +12,7 @@ import java.util.Set;
 
 import com.google.zxing.NotFoundException;
 
-public class TicketInspector extends User {
+public class TicketInspector extends User implements Serializable {
 
 	public String name;
 	public String inspector_num;
