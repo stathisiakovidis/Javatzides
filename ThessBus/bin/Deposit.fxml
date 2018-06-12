@@ -123,7 +123,7 @@
 						<Insets left="40.0" top="60.0" />
 					</VBox.margin>
 				</Label>
-				<Label text="0.00">
+				<Label fx:id="balanceLabel" text="0.00">
 					<font>
 						<Font size="64.0" />
 					</font>
