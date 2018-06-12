@@ -31,17 +31,13 @@ public class TicketInspector extends User implements Serializable {
 		
 	}
 	
-	public Product browseQR(String filepath_of_qr, int type) throws FileNotFoundException, NotFoundException, IOException {			//type: the type of product the inspector is examining
-		String product_num, filename;
+	public Product browseQR(String filepath_of_qr) throws FileNotFoundException, NotFoundException, IOException {			
+		String product_num;
 		Product product;
 		
 		product_num = QRcode.decodeQRCodeImage(filepath_of_qr);
-		if(type == 0)
-			filename = "Cards.dat";
-		else
-			filename = "Tickets.dat";
 		
-		product = (Product) FileManager.search(product_num, filename);
+		product = (Product) FileManager.search(product_num, "Products.dat");
 		
 		return product;
 	}
@@ -131,10 +127,10 @@ public class TicketInspector extends User implements Serializable {
 //Να μπουν και στο SignOut
 //Να προστεθούν εντολές για retrieve προϊόντων και προστίμων κατά την εγγραφή και τη σύνδεση
 //Πρώτη φορά που αγοράζεται εισιτήριο αποθήκευση της εικόνας
-//Alerts στο login αν δεν συμπληρωμενα πεδία - browseQR όταν δεν έχει επιλεγεί qr  
+//Alerts στο login να μην εξαφανίζουν παράθυρο   
 //Μηνύματα πληροφόρησης στο χρήστη και ελεγκτή ια αγορά προϊόντος, έκδοση προστίμου
 //Να επιστρέφεται boolean μεταβλητή ή το μηνυμα που θα εμφανιστεί στον ελεγκτή; - ticketValidation
-//Login -> StartScreen, Register -> StartScreen, Login -> InspectorScreen αλλαγή stage
+//Register -> StartScreen αλλαγή stage
 //Αυτόματη συμπλήρωση πεδίων στο navBar και την αρχική
 //Αυτόματη εμφάνιση μηνυμάτων για πρόστιμα, εισιτήρια πολλαπλών και ληγμένες κάρτες -> Αρχική
 //DepositController!!

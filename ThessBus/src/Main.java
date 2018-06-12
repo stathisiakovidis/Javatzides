@@ -40,34 +40,6 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus");
-		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			
-			@Override
-			public void handle(WindowEvent arg0) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("Confirmation Alert");
-				alert.setHeaderText(null);
-				alert.setContentText("Θες σίγουρα να βγεις;");
-				
-		        Optional<ButtonType> result = alert.showAndWait();
-		        
-				if(result.get() == ButtonType.OK) {
-					if(Main.loginUser != null) {
-						MainController controller = new MainController();
-						Passenger temp = new Passenger(Main.loginUser.getUsername(), Main.loginUser.getPassword(), 
-													   Main.loginUser.getEmail(), Main.loginUser.getCardNum(), 
-												   	   Main.loginUser.getId(), Main.loginUser.getPhoneNum(), 
-												   	   Main.loginUser.getPassport(), Main.loginUser.getBalance());
-					
-						FileManager.updatePassenger(loginUser, "Users.dat", temp);
-						FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(), "Products.dat");
-						FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(), "Fines.dat");
-					}
-				}
-				else
-					arg0.consume();
-			}
-		});
 		primaryStage.show();
 		
 	}

@@ -34,12 +34,13 @@ public class SettingsController extends MainController implements Initializable 
 					// o arithmos kartas den tha prepei na eisagetai apo ton xrhsth alla apo to systhma..
 					Main.loginUser.setNewData(nameField.getText()+subnameField.getText(),passwordField.getText() , emailField.getText(),null, idField.getText(), phoneField.getText(), passportField.getText());
 		}
-		else
-			{Alert alert = new Alert(AlertType.INFORMATION);
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Alert");
 			alert.setHeaderText(null);
 			alert.setContentText("Error. Password, Email or Phone number is/are incompitable. Try again");
-			alert.showAndWait();}
+			alert.showAndWait();
+		}
 
 
 		
