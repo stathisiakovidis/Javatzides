@@ -72,24 +72,44 @@ public class PurchaseDataController implements Initializable {
         	lastValidationDateTimeField.setText(validationDateTime.substring(0, 13) + ":" + validationDateTime.substring(13, 15) +
         										":" + validationDateTime.substring(15, 17));
         	typeProductField.setText("Εισιτήριο");
-        	String numOfRoutes = (((Ticket) productChecked).getNo_of_routes() == 1) ? "Μονής" :
-        							((Ticket) productChecked).getNo_of_routes() + "-πλής";
-        	routesField.setText(numOfRoutes + " διαδρομής");
+        	routesField.setText(Integer.toString(((Ticket) productChecked).getNo_of_routes()));
         }
         		
 	}
 	
 	public void onClickedCheckData(ActionEvent actionEvent) throws NumberFormatException, ParseException {
-		int duration = 120;
-		Main.loginIns.ticketValidation(dateTimeField.getText(), duration, busField.getText(), 
+		int duration = 0;
+		if(routesField.getText().equals("Απεριορίστων διαδρομών")) {
+			String monthsubstring = typeProductField.getText().substring(7, 8);
+			monthsubstring = monthsubstring + (typeProductField.getText().substring(8, 9).equals(" ")?
+												"":typeProductField.getText().substring(8, 9));
+			duration = Integer.parseInt(monthsubstring);
+		}
+		else {
+			switch(Integer.parseInt(routesField.getText())) {
+			case 2:
+				duration = 70;
+				break;
+			case 3:
+				duration = 90;
+				break;
+			case 4:
+				duration = 120;
+				break;
+			}
+		}
+		
+		boolean valid = Main.loginIns.ticketValidation(dateTimeField.getText(), duration, busField.getText(), 
 									lastValidationDateTimeField.getText(), Double.parseDouble(priceField.getText()));
+		String contentText = (valid)?"Από τον έλεγχο του προϊόντος δεν προέκυψε ανάγκη για έκδοση προστίμου":
+									 "Ο επιβάτης ενδέχεται να βρίσκεται παράνομα στο λεωφορείο";
 		
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Έλεγχος");
-        alert.setHeaderText("Error");
-        alert.setContentText(" ");
+        alert.setHeaderText(null);
+        alert.setContentText(contentText);
         
         Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
         okButton.setText("ΟΚ");

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class User {
+public abstract class User implements Serializable {
 	
 	protected String username;
 	protected String password;

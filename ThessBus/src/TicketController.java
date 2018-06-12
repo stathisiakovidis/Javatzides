@@ -29,7 +29,7 @@ public class TicketController extends MainController implements Initializable {
 	
 	public void onClickedOneWay(ActionEvent e) {
 		cost = 0.5 * owner.getCheck();
-		Ticket newTicket= new Ticket(null, cost, owner, "Μονής", null, null, 1,"1", null);
+		Ticket newTicket= new Ticket(cost, owner, "Μονής", 1, null);
 		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION)
 		{
@@ -45,7 +45,7 @@ public class TicketController extends MainController implements Initializable {
 	
 	public void onClickedTwoWay(ActionEvent e) {
 		cost = 0.6 * owner.getCheck();
-		Ticket newTicket= new Ticket(null, cost, owner, "Διπλής", null, null, 2, "1", null);
+		Ticket newTicket= new Ticket(cost, owner, "Διπλής", 2, null);
 		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION)
 		{

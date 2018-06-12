@@ -36,11 +36,11 @@ public class LoginScreenController extends MainController implements Initializab
 		primarystage.close();
 		
 		
-		if(usernameField.getText().contains("Inspector"))
-			{Main.loginIns = (TicketInspector)FileManager.searchUser(usernameField.getText(), passwordField.getText(), "Inspector File");
+		if(usernameField.getText().contains("inspector"))
+			{Main.loginIns = (TicketInspector)FileManager.searchUser(usernameField.getText(), passwordField.getText(), "Users.dat");
 			insp=true;}
 		else
-			Main.loginUser =(Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(), "User File");
+			Main.loginUser =(Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(), "Users.dat");
 		
 		if(Main.loginUser!=null)
 		{

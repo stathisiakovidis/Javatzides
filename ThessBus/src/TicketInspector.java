@@ -82,10 +82,11 @@ public class TicketInspector extends User implements Serializable {
 			Date expiration_date = cal.getTime();
 			expiration_date = sdf.parse(sdf.format(expiration_date));
 			
-			if((expiration_date.before(current_date)) || (expiration_date.equals(current_date))) {
+			//Η κάρτα δεν έληξε
+			if((expiration_date.after(current_date)) || (expiration_date.equals(current_date))) {
 				return true;
 			}
-			else
+			else //Η κάρτα έχει λήξει
 				return false;
 			
 		}
@@ -97,7 +98,7 @@ public class TicketInspector extends User implements Serializable {
 				return false;
 			
 			if(validation_date_time != null) {
-				String validation_times = validation_date_time.substring(11, 19);
+				String validation_times = validation_date_time.substring(11, 17);
 				Date validation_time = null;
 				validation_time = sdf2.parse(validation_times);
 				long diff = validation_time.getTime() - time.getTime();
@@ -105,16 +106,15 @@ public class TicketInspector extends User implements Serializable {
 				if(diff/(1000*60) <= duration) {
 					
 					long diff2 = current_time.getTime() - validation_time.getTime();
-					if(diff2 > durations.get(bus))
+					if(diff2/(1000*60) > durations.get(bus))
 						return false;
 					return true;
 				}
-				else
-					return false;
+				return false;
 			}
 			else {
 				long diff2 = current_time.getTime() - time.getTime();
-				if(diff2 > durations.get(bus))
+				if(diff2/(1000*60) > durations.get(bus))
 					return false;
 				return true;
 			}
@@ -126,5 +126,15 @@ public class TicketInspector extends User implements Serializable {
 
 }
 
-//Nα διορθωθεί το validation_date_time στο ticket, να βγει από κατασκευαστή και να μπει συνάρτηση που του δίνει τιμή !!!
-//Να προστεθεί πεδίο στο ticket για remaining routes
+//Χρειάζεται να μπουν οι εντολές για ανανέωση των αρχείων στην closeOperation??
+//Να αλλάξει ο τρόπος που τσεκάρεται ο χρήστης στη FileManager για προϊόντα και πρόστιμα
+//Να μπουν και στο SignOut
+//Να προστεθούν εντολές για retrieve προϊόντων και προστίμων κατά την εγγραφή και τη σύνδεση
+//Πρώτη φορά που αγοράζεται εισιτήριο αποθήκευση της εικόνας
+//Alerts στο login αν δεν συμπληρωμενα πεδία - browseQR όταν δεν έχει επιλεγεί qr  
+//Μηνύματα πληροφόρησης στο χρήστη και ελεγκτή ια αγορά προϊόντος, έκδοση προστίμου
+//Να επιστρέφεται boolean μεταβλητή ή το μηνυμα που θα εμφανιστεί στον ελεγκτή; - ticketValidation
+//Login -> StartScreen, Register -> StartScreen, Login -> InspectorScreen αλλαγή stage
+//Αυτόματη συμπλήρωση πεδίων στο navBar και την αρχική
+//Αυτόματη εμφάνιση μηνυμάτων για πρόστιμα, εισιτήρια πολλαπλών και ληγμένες κάρτες -> Αρχική
+//DepositController!!

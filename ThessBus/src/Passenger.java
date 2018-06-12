@@ -87,7 +87,24 @@ public class Passenger extends User implements Serializable{
 		return passport;
 	}
 
-	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public String getCardNum() {
+		return cardNum;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+
+	public ArrayList<Fine> getFines() {
+		return fines;
+	}
 
 }

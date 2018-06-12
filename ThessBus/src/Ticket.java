@@ -11,7 +11,7 @@ public class Ticket extends Product implements Serializable {
 	private String validation_date_time;
 	
 	
-	public Ticket(String date_time, double price,Passenger owner, String type, String product_num, byte[] qRcode, int no_of_routes, String bus) {
+	public Ticket(double price, Passenger owner, String type, int no_of_routes, String bus) {
 		super(price, owner, type);
 		this.no_of_routes = no_of_routes;
 		this.remaining_routes = this.no_of_routes - 1;
