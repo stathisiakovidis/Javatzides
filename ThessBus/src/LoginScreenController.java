@@ -34,19 +34,23 @@ public class LoginScreenController extends MainController implements Initializab
 	public PasswordField passwordField;
 	@FXML
 	private Hyperlink visitorHyperlink;
+	
 	private boolean insp = false;
-
+	
+	
 	public void onClickedLogin(ActionEvent e) throws IOException {
 
 		Stage primarystage = Main.getStagefromEvent(e);
-		primarystage.close();
-
+		 
 		if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Alert");
 			alert.setHeaderText(null);
 			alert.setContentText("Δεν έχεις συμπληρώσει κάποιο/α από τα πεδία μάγκα!");
-			alert.showAndWait();
+			Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                alert.close();
+            }
 		} else {
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
@@ -57,6 +61,7 @@ public class LoginScreenController extends MainController implements Initializab
 						"Users.dat");
 
 			if (Main.loginUser != null) {
+				primarystage.close();
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
@@ -97,6 +102,7 @@ public class LoginScreenController extends MainController implements Initializab
 				});
 				stage.show();
 			} else if (insp) {
+				primarystage.close();
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
 				Parent root = null;
@@ -127,8 +133,10 @@ public class LoginScreenController extends MainController implements Initializab
 				alert.setTitle("Alert");
 				alert.setHeaderText(null);
 				alert.setContentText("Error. Username or password doesn't match.");
-				alert.showAndWait();
-
+				Optional<ButtonType> result = alert.showAndWait();
+	            if (result.get() == ButtonType.OK){
+	                alert.close();
+	            }
 			}
 		}
 	}
