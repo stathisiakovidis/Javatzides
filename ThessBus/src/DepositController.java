@@ -1,17 +1,28 @@
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 
 public class DepositController extends MainController implements Initializable{
 
 	@FXML private Label balanceLabel;
 	
 	public void OnClicked(ActionEvent e) {
-		System.out.println("Yesssss");
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Deposit");
+		dialog.setHeaderText("Put money in your ThessBus account");
+		dialog.setContentText("Please enter your ammount:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    Main.loginUser.updateBalance(Double.parseDouble(result.get()));
+		}
 	}
 	
 	@Override

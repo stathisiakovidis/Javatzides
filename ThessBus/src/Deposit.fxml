@@ -12,11 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity"
-	maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-	prefHeight="400.0" prefWidth="600.0"
-	xmlns="http://javafx.com/javafx/9.0.1"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="DepositController">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DepositController">
 	<items>
 		<VBox maxWidth="150.0" prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -27,18 +23,12 @@
 				</Label>
 				<AnchorPane prefHeight="60.0" prefWidth="200.0">
 					<children>
-						<ImageView fitHeight="40.0" fitWidth="40.0"
-							layoutX="14.0" layoutY="4.0" pickOnBounds="true"
-							preserveRatio="true" />
-						<Label layoutX="61.0" layoutY="6.0" prefHeight="17.0"
-							prefWidth="82.0" text="Όνομα Χρήστη" />
-						<Label layoutX="61.0" layoutY="28.0" prefHeight="17.0"
-							prefWidth="49.0" text="Χρήματα" />
+						<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+						<Label layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Όνομα Χρήστη" />
+						<Label layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
 					</children>
 				</AnchorPane>
-				<Button mnemonicParsing="false"
-					onAction="#onClickedStartScreen" prefHeight="60.0"
-					prefWidth="150.0" text="Αρχική">
+				<Button mnemonicParsing="false" onAction="#onClickedStartScreen" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
 					<font>
 						<Font size="14.0" />
 					</font>
@@ -46,65 +36,55 @@
 						<Insets bottom="20.0" top="20.0" />
 					</padding>
 					<graphic>
-						<ImageView fitHeight="20.0" fitWidth="20.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../Images/web-page-home.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button mnemonicParsing="false" onAction="#onClickedHistory"
-					prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
+				<Button mnemonicParsing="false" onAction="#onClickedHistory" prefHeight="60.0" prefWidth="150.0" text="Ιστορικό">
 					<font>
 						<Font size="14.0" />
 					</font>
 					<graphic>
-						<ImageView fitHeight="20.0" fitWidth="20.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../Images/circular-clock-.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button mnemonicParsing="false" onAction="#onClickedPurchase"
-					prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
+				<Button mnemonicParsing="false" onAction="#onClickedPurchase" prefHeight="60.0" prefWidth="150.0" text="Κατάθεση">
 					<font>
 						<Font size="14.0" />
 					</font>
 					<graphic>
-						<ImageView fitHeight="20.0" fitWidth="20.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../Images/euro-currency-symbol.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button mnemonicParsing="false" onAction="#onClickedSettings"
-					prefHeight="60.0" prefWidth="150.0" text="Ρυθμίσεις">
+				<Button mnemonicParsing="false" onAction="#onClickedSettings" prefHeight="60.0" prefWidth="150.0" text="Ρυθμίσεις">
 					<font>
 						<Font size="14.0" />
 					</font>
 					<graphic>
-						<ImageView fitHeight="20.0" fitWidth="20.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../Images/garage-wrench.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
-				<Button mnemonicParsing="false"
-					onAction="#onClickedInformation" prefHeight="60.0"
-					prefWidth="150.0" text="Πληροφορίες">
+				<Button mnemonicParsing="false" onAction="#onClickedInformation" prefHeight="60.0" prefWidth="150.0" text="Πληροφορίες">
 					<font>
 						<Font size="14.0" />
 					</font>
 					<graphic>
-						<ImageView fitHeight="20.0" fitWidth="20.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../Images/edit-file.png" />
 							</image>
@@ -133,7 +113,7 @@
 				</Label>
 				<ButtonBar prefHeight="40.0" prefWidth="200.0">
 					<buttons>
-						<Button mnemonicParsing="false" text="Τράπεζα">
+						<Button mnemonicParsing="false" onAction="#OnClicked" text="Τράπεζα">
 							<padding>
 								<Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
 							</padding>
@@ -141,7 +121,7 @@
 								<Font size="18.0" />
 							</font>
 						</Button>
-						<Button mnemonicParsing="false" text="PayPal">
+						<Button mnemonicParsing="false" onAction="#OnClicked" text="PayPal">
 							<padding>
 								<Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
 							</padding>
@@ -149,7 +129,7 @@
 								<Font size="18.0" />
 							</font>
 						</Button>
-						<Button mnemonicParsing="false" text="Κάρτα">
+						<Button mnemonicParsing="false" onAction="#OnClicked" text="Κάρτα">
 							<padding>
 								<Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
 							</padding>
