@@ -3,12 +3,16 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -22,41 +26,65 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private Pane buttonsPane;
 	@FXML private VBox navBarVBox;
 	@FXML private Hyperlink signOutHyperlink;
+	@FXML private ComboBox<String> busesComboBox;
 	
+	private String bus = "";
 	private Passenger owner = Main.loginUser;
 	private double cost;
 	
 	
 	public void onClickedOneWay(ActionEvent e) {
-		cost = 0.5 * owner.getCheck();
-		Ticket newTicket= new Ticket(cost, owner, "Μονής", 1, null);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION)
-		{
-		   if(owner.getBalance() < cost) {
-			   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-		   }
-		   else {
-			   owner.reduceBalance(cost);
-			   owner.addProduct(newTicket);
-		   }
+		if(bus != "") {
+			cost = 0.5 * owner.getCheck();
+			Ticket newTicket= new Ticket(cost, owner, "Μονής", 1, null);
+			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
+			if (reply == JOptionPane.YES_OPTION)
+			{
+			   if(owner.getBalance() < cost) {
+				   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
+			   }
+			   else {
+				   owner.reduceBalance(cost);
+				   owner.addProduct(newTicket);
+			   }
+			}
 		}
+		else 
+			noBusSelectedAlert();
 	}
 	
 	public void onClickedTwoWay(ActionEvent e) {
-		cost = 0.6 * owner.getCheck();
-		Ticket newTicket= new Ticket(cost, owner, "Διπλής", 2, null);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION)
-		{
-		   if(owner.getBalance() < cost) {
-			   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-		   }
-		   else {
-			   owner.reduceBalance(cost);
-			   owner.addProduct(newTicket);
-		   }
+		if(bus != "") {
+			cost = 0.6 * owner.getCheck();
+			Ticket newTicket= new Ticket(cost, owner, "Διπλής", 2, null);
+			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",  JOptionPane.YES_NO_OPTION);
+			if (reply == JOptionPane.YES_OPTION)
+			{
+			   if(owner.getBalance() < cost) {
+				   JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
+			   }
+			   else {
+				   owner.reduceBalance(cost);
+				   owner.addProduct(newTicket);
+			   }
+			}
 		}
+		else
+			noBusSelectedAlert();
+	}
+	
+	public void comboBoxChoice(ActionEvent actionEvent) {
+		bus = busesComboBox.getValue().substring(0, 2);
+		bus = bus + ((busesComboBox.getValue().substring(2, 3).equals("Ν")) ? "Ν" : "");
+		System.out.println(bus);
+	}
+	
+	public void noBusSelectedAlert() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Alert");
+		alert.setHeaderText(null);
+		alert.setContentText("Πρώτα διάλεξε λεωφορείο!");
+		alert.showAndWait();
 	}
 	
 	/*public void onClickedOneWayRedused(ActionEvent e) {
@@ -107,6 +135,11 @@ public class TicketController extends MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	
+		busesComboBox.setPromptText("Σε ποιό λεωφορείο είσαι?");
+		busesComboBox.setItems(FXCollections.
+				observableArrayList("14: ’νω Τούμπα - Ν.Σ. Σταθμός", "78Ν ΚΤΕΛ - Αεροδρόμιο Νυχτερινό",
+				"02: Α.Σ. ΙΚΕΑ - Ν.Σ. Σταθμός μέσω Εγνατίας", "31: Βούλγαρη - ΚΤΕΛ", "30: Τριανδρία - Αποθήκη"));
+		
 		if(owner != null) {
 			if(owner.getCheck() == 1) {
 				oneWayNormal.setMouseTransparent(true);
@@ -145,6 +178,10 @@ public class TicketController extends MainController implements Initializable {
 
 	public Pane getButtonsPane() {
 		return buttonsPane;
+	}
+
+	public ComboBox<String> getBusesComboBox() {
+		return busesComboBox;
 	}
 	
 }

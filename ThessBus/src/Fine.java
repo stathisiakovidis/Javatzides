@@ -8,10 +8,10 @@ public class Fine implements Serializable {
 	Passenger owner;
 	double price;	
 	String  inspector_num;
-	int bus;
+	String bus;
 	boolean paid;
 	
-	public Fine(Passenger owner, String inspector_num, int bus) {
+	public Fine(Passenger owner, String inspector_num, String bus) {
 		this.date_time = new SimpleDateFormat("yyyy/MM/dd HHmmss").format(Calendar.getInstance().getTime());
 		this.owner = owner;
 		countPrice();
@@ -37,6 +37,17 @@ public class Fine implements Serializable {
 	public double getPrice() {
 		return price;
 	}
-	
+
+	public String getDate_time() {
+		return date_time;
+	}
+
+	public String getBus() {
+		return bus;
+	}
+
+	public boolean isPaid() {
+		return paid;
+	}
 	
 }

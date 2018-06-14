@@ -32,6 +32,7 @@ public class VisitorScreenController extends MainController implements Initializ
 		ctrl.getTwoWayNormal().setMouseTransparent(true);
 		ctrl.getTwoWayReduced().setMouseTransparent(true);
 		ctrl.getButtonsPane().getChildren().remove(ctrl.getSignOutHyperlink());
+		ctrl.getButtonsPane().getChildren().remove(ctrl.getBusesComboBox());
 		
 		Scene scene = new Scene(root);
 		

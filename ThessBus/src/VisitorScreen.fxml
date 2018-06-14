@@ -22,8 +22,7 @@
 	<items>
 		<VBox fx:id="navBarVBox" prefHeight="400.0" prefWidth="150.0">
 			<children>
-				<Label disable="true" prefHeight="55.0" prefWidth="150.0"
-					text="ThessBus">
+				<Label prefHeight="55.0" prefWidth="150.0" text="ThessBus">
 					<font>
 						<Font size="36.0" />
 					</font>

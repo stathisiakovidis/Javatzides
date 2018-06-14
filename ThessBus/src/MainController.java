@@ -34,7 +34,9 @@ public class MainController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("History.fxml"));
 		Parent root = null;
 		root = loader.load();
+		
 		HistoryController ctrl = (HistoryController)loader.getController();
+		ctrl.setFieldsandData(Main.loginUser.getProducts(), Main.loginUser.getFines());
 		
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -71,7 +73,10 @@ public class MainController {
 	
 	public void onClickedSignOut(ActionEvent actionEvent) throws IOException
 	{
-		Stage primaryStage = getStageFromEvent(actionEvent);
+		Stage stage = getStageFromEvent(actionEvent);
+		stage.close();
+		
+		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
 		Parent root = null;
 		root = loader.load();
