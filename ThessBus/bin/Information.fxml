@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -17,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="informationController">
 	<items>
 		<VBox prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -29,8 +23,8 @@
 				<AnchorPane prefHeight="60.0" prefWidth="200.0">
 					<children>
 						<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-						<Label layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Όνομα Χρήστη" />
-						<Label layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
+						<Label fx:id="usernameMenu" layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Όνομα Χρήστη" />
+						<Label fx:id="balanceMenu" layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
 					</children>
 				</AnchorPane>
 				<Button mnemonicParsing="false" onAction="#onClickedStartScreen" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
@@ -100,12 +94,12 @@
 		</VBox>
 		<Pane prefHeight="400.0" prefWidth="450.0">
 			<children>
-				<Label layoutX="171.0" layoutY="46.0" text="ΠΛΗΡΟΦΟΡΙΕΣ" textAlignment="CENTER">
+				<Label layoutX="171.0" layoutY="33.0" text="ΠΛΗΡΟΦΟΡΙΕΣ" textAlignment="CENTER">
 					<font>
 						<Font name="System Bold" size="14.0" />
 					</font>
 				</Label>
-				<Label layoutX="4.0" layoutY="67.0" prefHeight="327.0" prefWidth="434.0" text="Write Information" textAlignment="CENTER" />
+				<Label alignment="TOP_LEFT" layoutX="15.0" layoutY="67.0" prefHeight="327.0" prefWidth="407.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum ante a finibus rutrum. Duis egestas orci nunc, at vestibulum diam malesuada et. Donec et justo sodales, aliquam quam id, commodo enim. Nulla facilisi. Aliquam placerat eleifend pretium. Pellentesque nec arcu laoreet, rutrum quam at, pulvinar lorem. Ut venenatis venenatis nibh et suscipit. Phasellus ultricies ultricies justo, hendrerit dictum urna dignissim commodo.Morbi quis lectus nec leo dapibus dapibus. Aliquam sapien ante, lacinia in molestie sed, placerat sit amet orci. Suspendisse rhoncus nisl quis libero posuere commodo. Praesent mattis sem vitae leo dictum, nec fringilla urna pharetra. Duis egestas ipsum eu libero bibendum malesuada vel eu velit. Integer fringilla mauris ac lorem feugiat volutpat. Phasellus quis luctus metus.Sed rhoncus ipsum maximus gravida accumsan. Pellentesque lobortis maximus massa, eu vehicula arcu efficitur eget. Vivamus sollicitudin arcu nec ante ultricies tempor. Nullam elementum velit ut nisi molestie, et pretium nulla facilisis. Integer eleifend viverra diam" textOverrun="CLIP" wrapText="true" />
 			</children>
 		</Pane>
 	</items>

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -25,6 +26,8 @@ public class SettingsController extends MainController implements Initializable 
 	@FXML private PasswordField passwordField;
 	@FXML private PasswordField confirmpasswordField;
 	@FXML private Button saveButton;
+	@FXML private Label usernameMenu;
+	@FXML private Label balanceMenu;
 	
 
 	public void onClickSave(ActionEvent e) throws IOException
@@ -60,6 +63,8 @@ public class SettingsController extends MainController implements Initializable 
 		idField.setText(Main.loginUser.getId());
 		passportField.setText(Main.loginUser.getPassport());
 		cardnumField.setText(Main.loginUser.getCardNum());
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 	}
 
 }

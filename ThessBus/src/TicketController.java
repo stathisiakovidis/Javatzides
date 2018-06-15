@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -35,6 +36,10 @@ public class TicketController extends MainController implements Initializable {
 	private Hyperlink signOutHyperlink;
 	@FXML
 	private ComboBox<String> busesComboBox;
+	@FXML
+	private Label usernameMenu;
+	@FXML 
+	private Label balanceMenu;
 
 	private String bus = "";
 	private Passenger owner = Main.loginUser;
@@ -368,6 +373,8 @@ public class TicketController extends MainController implements Initializable {
 				twoWayReduced.setMouseTransparent(true);
 			}
 		}
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 
 	}
 

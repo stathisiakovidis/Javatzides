@@ -11,6 +11,8 @@ import javafx.scene.control.TextInputDialog;
 public class DepositController extends MainController implements Initializable{
 
 	@FXML private Label balanceLabel;
+	@FXML private Label usernameMenu;
+	@FXML private Label balanceMenu;
 	
 	public void OnClicked(ActionEvent e) {
 		TextInputDialog dialog = new TextInputDialog();
@@ -29,6 +31,8 @@ public class DepositController extends MainController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		balanceLabel.setText(Double.toString((Main.loginUser.getBalance())));
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 	}
 
 }
