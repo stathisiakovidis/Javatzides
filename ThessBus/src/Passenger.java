@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+
+import com.google.zxing.WriterException;
+
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Passenger extends User implements Serializable{
@@ -79,7 +83,10 @@ public class Passenger extends User implements Serializable{
 		return balance;
 	}
 	
-	public void addProduct(Product aProduct) {
+	public void addProduct(Product aProduct) throws WriterException, IOException {
+		
+		if(Main.loginUser.getProducts() == null)
+		QRcode.generateQRCodeImage(aProduct.getProduct_num(), 350, 350, ".//QrcodeImages/"+Main.loginUser.getUserNum()+".png");
 		products.add(aProduct);
 	}
 	

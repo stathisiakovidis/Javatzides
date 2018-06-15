@@ -1,7 +1,10 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+
+import com.google.zxing.WriterException;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -40,7 +43,7 @@ public class TicketController extends MainController implements Initializable {
 	private Passenger owner = Main.loginUser;
 	private double cost;
 
-	public void onClickedOneWay(ActionEvent e) {
+	public void onClickedOneWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.5 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, null);
@@ -58,7 +61,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 
-	public void onClickedTwoWay(ActionEvent e) {
+	public void onClickedTwoWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.6 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, null);

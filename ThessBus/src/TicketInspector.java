@@ -32,6 +32,9 @@ public class TicketInspector extends User implements Serializable {
 	}
 	
 	public Product browseQR(String filepath_of_qr) throws FileNotFoundException, NotFoundException, IOException {			
+		//Να αλλαχθεί
+		System.out.println("Mphka!!");
+				
 		String product_num;
 		Product product;
 		
@@ -55,10 +58,10 @@ public class TicketInspector extends User implements Serializable {
 		foo.add(12);
 		
 		String dates = date_time.substring(0,10);
-		String times  = date_time.substring(11, 17);
+		String times  = date_time.substring(11, 19);
 		
 		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		DateFormat sdf2 = new SimpleDateFormat("HHmmss");
+		DateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
 		Date date = null;
 		Date time = null;
 			
@@ -90,11 +93,11 @@ public class TicketInspector extends User implements Serializable {
 		if(date.equals(current_date)) {
 		
 			//Έλεγχος τιμής εισιτηρίου σε περίπτωση που το λεωφορείο είναι το 78Ν
-			if(bus.equals("78N") && (price != 2))
+			if(bus.equals("78N") && (price != 2.0))
 				return false;
 			
-			if(validation_date_time != null) {
-				String validation_times = validation_date_time.substring(11, 17);
+			if(validation_date_time.equals("-") == false) {
+				String validation_times = validation_date_time.substring(11, 19);
 				Date validation_time = null;
 				validation_time = sdf2.parse(validation_times);
 				long diff = validation_time.getTime() - time.getTime();

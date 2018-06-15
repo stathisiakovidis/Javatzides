@@ -31,6 +31,9 @@ public class Main extends Application {
 		//Passenger temp = new Passenger("alex", "123", "fd", "2", "id", "232", "22", 40);
 		//FileManager.InsertUser(temp, "Users.dat");
 		
+		/*TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector12345");
+		FileManager.InsertUser(tempInsp, "Users.dat");*/
+		
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
 		Scene scene = new Scene(root);

@@ -25,9 +25,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.scene.image.Image;
 
 public class QRcode {
-    private static final String QR_CODE_IMAGE_PATH = "./MyQRCode.png";
 
-    private static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
+    public static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
 
