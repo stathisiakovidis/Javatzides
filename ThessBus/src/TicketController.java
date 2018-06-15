@@ -80,7 +80,7 @@ public class TicketController extends MainController implements Initializable {
 					Alert newalert = new Alert(AlertType.CONFIRMATION);
 					newalert.setTitle("Alert");
 					newalert.setHeaderText(null);
-					newalert.setContentText("Γουχου! Το εισητήριο σου αγοράστηκε!");
+					newalert.setContentText("Γουχου! Το εισιτήριο σου αγοράστηκε!");
 					newalert.showAndWait();
 					owner.reduceBalance(cost);
 					owner.addProduct(newTicket);
@@ -449,9 +449,10 @@ public void onClickedAirport(ActionEvent e)  throws WriterException, IOException
 				FourWayNormal.setMouseTransparent(true);
 				AirportReduced.setMouseTransparent(true);
 			}
+			
+			usernameMenu.setText(Main.loginUser.getUsername());
+			balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		}
-		usernameMenu.setText(Main.loginUser.getUsername());
-		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 
 	}
 

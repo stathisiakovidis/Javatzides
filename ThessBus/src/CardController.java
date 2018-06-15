@@ -49,7 +49,7 @@ public class CardController extends MainController implements Initializable {
 	@FXML 
 	private Label balanceMenu;
 	
-	public void CardData(Card newcard) {
+	public void CardData(Card newcard) throws WriterException, IOException {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
 		alert.setHeaderText(null);
@@ -168,9 +168,10 @@ public class CardController extends MainController implements Initializable {
 				sixMonthsReduced.setMouseTransparent(true);
 				annualReduced.setMouseTransparent(true);
 			}
+			
+			usernameMenu.setText(Main.loginUser.getUsername());
+			balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		}
-		usernameMenu.setText(Main.loginUser.getUsername());
-		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 
 	}
 

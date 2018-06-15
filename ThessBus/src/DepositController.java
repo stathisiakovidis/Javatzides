@@ -28,7 +28,7 @@ public class DepositController extends MainController implements Initializable{
 		    Main.loginUser.updateBalance(Double.parseDouble(result.get()));
 		    balanceLabel.setText(Double.toString(Main.loginUser.getBalance()));
 		    
-		    Alert alert = new Alert(AlertType.ERROR);
+		    Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Alert");
 			alert.setHeaderText(null);
 			alert.setContentText("Το ποσό σου ανανεώθηκε!");

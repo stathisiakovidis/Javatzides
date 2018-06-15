@@ -54,6 +54,8 @@ public class HistoryController extends MainController implements Initializable {
 				historyVBox.getChildren().add(titlesHBox);
 				
 				for (Product product : products) {
+					System.out.println("Mphka 1!");
+					
 					HBox hbox = new HBox();
 					hbox.setSpacing(30);
 					hbox.setPadding(new Insets(10, 0, 0, 20));
