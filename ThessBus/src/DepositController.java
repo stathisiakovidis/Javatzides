@@ -22,6 +22,7 @@ public class DepositController extends MainController implements Initializable{
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
 		    Main.loginUser.updateBalance(Double.parseDouble(result.get()));
+		    balanceLabel.setText(Double.toString(Main.loginUser.getBalance()));
 		}
 	}
 	
