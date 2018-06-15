@@ -82,6 +82,7 @@ public class TicketController extends MainController implements Initializable {
 					newalert.setHeaderText(null);
 					newalert.setContentText("Γουχου! Το εισιτήριο σου αγοράστηκε!");
 					newalert.showAndWait();
+					
 					owner.reduceBalance(cost);
 					owner.addProduct(newTicket);
 					

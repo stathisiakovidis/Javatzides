@@ -63,7 +63,14 @@ public class CardController extends MainController implements Initializable {
 				alert1.setHeaderText(null);
 				alert1.setContentText("Δεν έχεις αρκετά χρήματα");
 				alert1.showAndWait();
-			}else {
+			}
+			else {
+				Alert newalert = new Alert(AlertType.CONFIRMATION);
+				newalert.setTitle("Alert");
+				newalert.setHeaderText(null);
+				newalert.setContentText("Γιουχου! Η κάρτα σου αγοράστηκε!");
+				newalert.showAndWait();
+				
 				owner.reduceBalance(cost);
 				owner.addProduct(newcard);
 				
