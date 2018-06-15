@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 import javax.swing.JOptionPane;
 
@@ -20,14 +21,15 @@ public class SettingsController extends MainController implements Initializable 
 	@FXML private TextField phoneField;
 	@FXML private TextField idField;
 	@FXML private TextField passportField;
+	@FXML private TextField cardnumField;
 	@FXML private PasswordField passwordField;
 	@FXML private PasswordField confirmpasswordField;
 	@FXML private Button saveButton;
 	
-	
 
 	public void onClickSave(ActionEvent e) throws IOException
 	{ 
+		
 		if(passwordField.getText().equals(confirmpasswordField.getText())){
 			if(phoneField.getText().length()==10)
 				if(emailField.getText().contains("@"))
@@ -47,8 +49,17 @@ public class SettingsController extends MainController implements Initializable 
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+		String name="", surname ="";
+        StringTokenizer st = new StringTokenizer(Main.loginUser.getUsername());
+        name = st.nextToken();
+        surname = st.nextToken();
+		nameField.setText(name);
+		subnameField.setText(surname);
+		emailField.setText(Main.loginUser.getEmail());
+		phoneField.setText(Main.loginUser.getPhoneNum());
+		idField.setText(Main.loginUser.getId());
+		passportField.setText(Main.loginUser.getPassport());
+		cardnumField.setText(Main.loginUser.getCardNum());
 	}
 
 }
