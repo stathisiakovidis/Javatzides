@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class informationController extends MainController implements Initializable{
+public class InformationController extends MainController implements Initializable{
 
 	@FXML private Label usernameMenu;
 	@FXML private Label balanceMenu;
