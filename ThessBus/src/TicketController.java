@@ -28,6 +28,18 @@ public class TicketController extends MainController implements Initializable {
 	@FXML
 	private Button twoWayReduced;
 	@FXML
+	private Button ThreeWayNormal;
+	@FXML
+	private Button ThreeWayReduced;
+	@FXML
+	private Button FourWayNormal;
+	@FXML
+	private Button FourWayReduced;
+	@FXML
+	private Button NightNormal;
+	@FXML
+	private Button NightReduced;
+	@FXML
 	private Pane buttonsPane;
 	@FXML
 	private VBox navBarVBox;
@@ -39,21 +51,27 @@ public class TicketController extends MainController implements Initializable {
 	private String bus = "";
 	private Passenger owner = Main.loginUser;
 	private double cost;
+	
+	public void TicketData(Ticket newTicket){
+		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
+				JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION) {
+			if (owner.getBalance() < cost) {
+				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
+			} else {
+				owner.reduceBalance(cost);
+				owner.addProduct(newTicket);
+				JOptionPane.showMessageDialog(null, "Σένιο το εισιτηριάκι", null, JOptionPane.WARNING_MESSAGE);
+			}
+		}
+		
+	}
 
 	public void onClickedOneWay(ActionEvent e) {
 		if (bus != "") {
 			cost = 0.5 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, null);
-			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-					JOptionPane.YES_NO_OPTION);
-			if (reply == JOptionPane.YES_OPTION) {
-				if (owner.getBalance() < cost) {
-					JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-				} else {
-					owner.reduceBalance(cost);
-					owner.addProduct(newTicket);
-				}
-			}
+			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
+			TicketData(newTicket);
 		} else
 			noBusSelectedAlert();
 	}
@@ -61,25 +79,44 @@ public class TicketController extends MainController implements Initializable {
 	public void onClickedTwoWay(ActionEvent e) {
 		if (bus != "") {
 			cost = 0.6 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, null);
-			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-					JOptionPane.YES_NO_OPTION);
-			if (reply == JOptionPane.YES_OPTION) {
-				if (owner.getBalance() < cost) {
-					JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-				} else {
-					owner.reduceBalance(cost);
-					owner.addProduct(newTicket);
-				}
-			}
+			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
+			TicketData(newTicket);
 		} else
 			noBusSelectedAlert();
 	}
+	
+	public void onClickedThreeWay(ActionEvent e) {
+		if (bus != "") {
+			cost = 0.8 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Τριπλής", 3, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
+	}
+	
+	public void onClickedFourWay(ActionEvent e) {
+		if (bus != "") {
+			cost = 1.0 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Τετραπλής", 4, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
+	}
+	
+	public void onClickedNight(ActionEvent e) {
+		if (bus != "") {
+			cost = 1.0 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
 
+	}
+	
+	
 	public void comboBoxChoice(ActionEvent actionEvent) {
 		bus = busesComboBox.getValue().substring(0, 2);
 		bus = bus + ((busesComboBox.getValue().substring(2, 3).equals("Ν")) ? "Ν" : "");
-		System.out.println(bus);
 	}
 
 	public void noBusSelectedAlert() {
@@ -363,9 +400,15 @@ public class TicketController extends MainController implements Initializable {
 			if (owner.getCheck() == 1) {
 				oneWayNormal.setMouseTransparent(true);
 				twoWayNormal.setMouseTransparent(true);
+				ThreeWayNormal.setMouseTransparent(true);
+				FourWayNormal.setMouseTransparent(true);
+				NightNormal.setMouseTransparent(true);
 			} else {
 				oneWayReduced.setMouseTransparent(true);
 				twoWayReduced.setMouseTransparent(true);
+				ThreeWayReduced.setMouseTransparent(true);
+				FourWayNormal.setMouseTransparent(true);
+				NightReduced.setMouseTransparent(true);
 			}
 		}
 
