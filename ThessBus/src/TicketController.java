@@ -60,33 +60,8 @@ public class TicketController extends MainController implements Initializable {
 	private double cost;
 	
 	public void TicketData(Ticket newTicket){
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-				JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if (owner.getBalance() < cost) {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-			} else {
-				owner.reduceBalance(cost);
-				owner.addProduct(newTicket);
-				JOptionPane.showMessageDialog(null, "Σένιο το εισιτηριάκι", null, JOptionPane.WARNING_MESSAGE);
-			}
-		}
-		
-	}
-
-	public void onClickedOneWay(ActionEvent e) {
-		if (bus != "") {
-			cost = 0.5 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
-			TicketData(newTicket);
-		} else
-			noBusSelectedAlert();
-	}
-
-	public void onClickedTwoWay(ActionEvent e) {
-		if (bus != "") {
-			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
-			cost = 0.6 * owner.getCheck();			Alert alert = new Alert(AlertType.CONFIRMATION);
+			cost = 0.6 * owner.getCheck();			
+			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
 			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
@@ -106,6 +81,22 @@ public class TicketController extends MainController implements Initializable {
 			} else {
 			    // ... user chose CANCEL or closed the dialog
 			}
+	}
+		
+
+	public void onClickedOneWay(ActionEvent e) {
+		if (bus != "") {
+			cost = 0.5 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
+	}
+
+	public void onClickedTwoWay(ActionEvent e) {
+		if (bus != "") {
+			cost = 0.6 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
 			TicketData(newTicket);
 		} else
 			noBusSelectedAlert();
