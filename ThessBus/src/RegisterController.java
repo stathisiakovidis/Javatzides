@@ -1,8 +1,10 @@
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -41,7 +45,10 @@ public class RegisterController extends MainController implements Initializable{
 					FileManager.InsertUser(Main.loginUser, "Users.dat");
 					//appear the start screen when he register
 			
-					Stage primaryStage = getStageFromEvent(e);
+					Stage stage = Main.getStagefromEvent(e);
+					stage.close();
+					
+					Stage primaryStage = new Stage();
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 					Parent root = null;
 					root = loader.load();
@@ -50,6 +57,35 @@ public class RegisterController extends MainController implements Initializable{
 					Scene scene = new Scene(root);
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: StartScreen");
+					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+						@Override
+						public void handle(WindowEvent arg0) {
+							Alert alert = new Alert(AlertType.CONFIRMATION);
+							alert.setTitle("Confirmation Alert");
+							alert.setHeaderText(null);
+							alert.setContentText("Θες σίγουρα να βγεις;");
+
+							Optional<ButtonType> result = alert.showAndWait();
+
+							if (result.get() == ButtonType.OK) {
+								if (Main.loginUser != null) {
+									Passenger temp = new Passenger(Main.loginUser.getUsername(),
+											Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+											Main.loginUser.getCardNum(), Main.loginUser.getId(),
+											Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+											Main.loginUser.getBalance());
+
+									FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+									FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+											"Products.dat");
+									FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+											"Fines.dat");
+								}
+							} else
+								arg0.consume();
+						}
+					});
 					primaryStage.show();
 					System.out.println(Main.loginUser.getUsername());
 			        }

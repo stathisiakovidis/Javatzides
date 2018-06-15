@@ -24,7 +24,6 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
 			
-			System.out.println("Passenger added 1");
 			//add the new user
 			users.add(user);
 			oos.writeObject(users);
@@ -35,7 +34,6 @@ public class FileManager {
 		} 
 		catch (IOException e) 
 		{
-			System.out.println("Passenger added");
 			//if class not found then first time adding a user so no need to read the list 
 			users.add(user);
 			try {
@@ -83,6 +81,7 @@ public class FileManager {
 			{
 				found = true;
 				foundUser = users.get(i);
+				
 			}
 		}
 		
@@ -105,9 +104,6 @@ public class FileManager {
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
-			/*for (User user1 : users) {
-				System.out.println("username: " + user1.getUsername());
-			}*/
 		} 
 		catch (FileNotFoundException e) 
 		{
@@ -125,14 +121,11 @@ public class FileManager {
 		for (int i = 0; i < users.size(); i++) {
 			if(users.get(i).getUsername().equals(user.getUsername()))
 			{
-				System.out.println("Passenger found");
-				//users.set(i, newUser);
 				users.remove(i);
 				users.add(newUser);
 				found=true;
 				try 
 				{
-					System.out.println("Passenger updated");
 					FileOutputStream fout = new FileOutputStream(filename);
 					ObjectOutputStream oos = new ObjectOutputStream(fout);
 					oos.writeObject(users);
@@ -371,7 +364,7 @@ public class FileManager {
 		}
 		else if(filename.equals("Users.dat")) {
 			for(int i = 0; i < listOfItems.size(); i++) {
-				if(((Passenger) listOfItems.get(i)).getUsername().equals(searchvalue)) {
+				if(((User) listOfItems.get(i)).getUsername().equals(searchvalue)) {
 					return listOfItems.get(i);
 				}
 			}

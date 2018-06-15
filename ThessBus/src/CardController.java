@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import com.google.zxing.WriterException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -83,25 +85,25 @@ public class CardController extends MainController implements Initializable {
 		}
 	}
 	
-	public void generateMonthlyCard(ActionEvent event) throws IOException {
+	public void generateMonthlyCard(ActionEvent event) throws IOException, WriterException {
 		cost = 15 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Μηνιαία", 1);
 		CardData(newcard);
 	}
 
-	public void generateThreeMonthsCard(ActionEvent event) throws IOException {
+	public void generateThreeMonthsCard(ActionEvent event) throws IOException, WriterException {
 		cost = 42 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Τριμηνιαία", 3);
 		CardData(newcard);
 	}
 
-	public void generateSixMonthsCard(ActionEvent event) throws IOException {
+	public void generateSixMonthsCard(ActionEvent event) throws IOException, WriterException {
 		cost = 75 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Εξαμινιαία", 6);
 		CardData(newcard);
 	}
 
-	public void generateAnnualCard(ActionEvent event) throws IOException {
+	public void generateAnnualCard(ActionEvent event) throws IOException, WriterException {
 		cost = 135 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Ετήσια", 12);
 		CardData(newcard);

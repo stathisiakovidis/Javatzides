@@ -35,9 +35,6 @@ public class LoginScreenController extends MainController implements Initializab
 	@FXML
 	private Hyperlink visitorHyperlink;
 	
-	private boolean insp = false;
-	
-	
 	public void onClickedLogin(ActionEvent e) throws IOException {
 
 		Stage primarystage = Main.getStagefromEvent(e);
@@ -55,18 +52,18 @@ public class LoginScreenController extends MainController implements Initializab
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
 						passwordField.getText(), "Users.dat");
-				insp = true;
 			} else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
 						"Users.dat");
 
 			if (Main.loginUser != null) {
 				primarystage.close();
+				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUsername(), "Products.dat"));
+				Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUsername(), "Fines.dat"));
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
 				root = loader.load();
-
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Home");
@@ -83,7 +80,6 @@ public class LoginScreenController extends MainController implements Initializab
 
 						if (result.get() == ButtonType.OK) {
 							if (Main.loginUser != null) {
-								MainController controller = new MainController();
 								Passenger temp = new Passenger(Main.loginUser.getUsername(),
 										Main.loginUser.getPassword(), Main.loginUser.getEmail(),
 										Main.loginUser.getCardNum(), Main.loginUser.getId(),
@@ -101,7 +97,7 @@ public class LoginScreenController extends MainController implements Initializab
 					}
 				});
 				stage.show();
-			} else if (insp) {
+			} else if (Main.loginIns != null) {
 				primarystage.close();
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));

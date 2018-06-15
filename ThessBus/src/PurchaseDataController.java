@@ -31,19 +31,6 @@ public class PurchaseDataController implements Initializable {
 	@FXML private TextField routesField;
 	@FXML private TextField priceField;
 	
-	/*public void setDataToFields(String name ,String lastName,String busNum,String type,String dateTime,
-								String lastValidationDateTime,String productNum,int routes, double price)
-	{
-		lastNameField.setText(lastName);
-		nameField.setText(name);
-		dateTimeField.setText(dateTime);
-		lastValidationDateTimeField.setText(lastValidationDateTime);
-		typeProductField.setText(type);
-		productNumField.setText(productNum);		
-		busField.setText(busNum);
-		routesField.setText(Integer.toString(routes));
-		priceField.setText(Double.toString(price));
-	}*/
 	public void setDataToFields(Product productChecked, int typeOfProduct) {
 		
 		String name="", surname ="";
@@ -68,9 +55,13 @@ public class PurchaseDataController implements Initializable {
         else {
         	busField.setText(((Ticket) productChecked).getBus());
         	
-        	String validationDateTime = ((Ticket) productChecked).getValidation_date_time();
-        	lastValidationDateTimeField.setText(validationDateTime.substring(0, 13) + ":" + validationDateTime.substring(13, 15) +
+        	lastValidationDateTimeField.setText("-");
+        	if(((Ticket) productChecked).getNo_of_routes() != 1) {
+        		String validationDateTime = ((Ticket) productChecked).getValidation_date_time();
+        		lastValidationDateTimeField.setText(validationDateTime.substring(0, 13) + ":" + validationDateTime.substring(13, 15) +
         										":" + validationDateTime.substring(15, 17));
+        	}
+        	
         	typeProductField.setText("Εισιτήριο");
         	routesField.setText(Integer.toString(((Ticket) productChecked).getNo_of_routes()));
         }
@@ -98,7 +89,7 @@ public class PurchaseDataController implements Initializable {
 				break;
 			}
 		}
-		
+				
 		boolean valid = Main.loginIns.ticketValidation(dateTimeField.getText(), duration, busField.getText(), 
 									lastValidationDateTimeField.getText(), Double.parseDouble(priceField.getText()));
 		String contentText = (valid)?"Από τον έλεγχο του προϊόντος δεν προέκυψε ανάγκη για έκδοση προστίμου":

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public  class StartScreenController extends MainController implements Initializable{
 	@FXML private Label usernameMenu;
 	@FXML private Label balanceMenu;
+	@FXML private Label welcome;
 	
 	
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException
@@ -56,6 +57,7 @@ public  class StartScreenController extends MainController implements Initializa
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		usernameMenu.setText(Main.loginUser.getUsername());
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
+		welcome.setText("Γεια σου, "+Main.loginUser.getUsername()+"!");
 	}
 
 }
