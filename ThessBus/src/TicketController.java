@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -13,8 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -31,6 +34,18 @@ public class TicketController extends MainController implements Initializable {
 	@FXML
 	private Button twoWayReduced;
 	@FXML
+	private Button ThreeWayNormal;
+	@FXML
+	private Button ThreeWayReduced;
+	@FXML
+	private Button FourWayNormal;
+	@FXML
+	private Button FourWayReduced;
+	@FXML
+	private Button NightNormal;
+	@FXML
+	private Button NightReduced;
+	@FXML
 	private Pane buttonsPane;
 	@FXML
 	private VBox navBarVBox;
@@ -38,25 +53,48 @@ public class TicketController extends MainController implements Initializable {
 	private Hyperlink signOutHyperlink;
 	@FXML
 	private ComboBox<String> busesComboBox;
+	@FXML
+	private Label usernameMenu;
+	@FXML 
+	private Label balanceMenu;
 
 	private String bus = "";
 	private Passenger owner = Main.loginUser;
 	private double cost;
+	
+	public void TicketData(Ticket newTicket) throws WriterException, IOException{	
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK){
+				if (owner.getBalance() < cost) {
+					Alert alert1 = new Alert(AlertType.ERROR);
+					alert1.setTitle("Alert");
+					alert1.setHeaderText(null);
+					alert1.setContentText("Δεν έχεις αρκετά χρήματα");
+					alert1.showAndWait();
+				}else {
+					Alert newalert = new Alert(AlertType.CONFIRMATION);
+					newalert.setTitle("Alert");
+					newalert.setHeaderText(null);
+					newalert.setContentText("Γουχου! Το εισητήριο σου αγοράστηκε!");
+					newalert.showAndWait();
+					owner.reduceBalance(cost);
+					owner.addProduct(newTicket);
+				}
+			} else {
+			    // ... user chose CANCEL or closed the dialog
+			}
+	}
+		
 
 	public void onClickedOneWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.5 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, null);
-			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-					JOptionPane.YES_NO_OPTION);
-			if (reply == JOptionPane.YES_OPTION) {
-				if (owner.getBalance() < cost) {
-					JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-				} else {
-					owner.reduceBalance(cost);
-					owner.addProduct(newTicket);
-				}
-			}
+			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
+			TicketData(newTicket);
 		} else
 			noBusSelectedAlert();
 	}
@@ -64,25 +102,44 @@ public class TicketController extends MainController implements Initializable {
 	public void onClickedTwoWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.6 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, null);
-			int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-					JOptionPane.YES_NO_OPTION);
-			if (reply == JOptionPane.YES_OPTION) {
-				if (owner.getBalance() < cost) {
-					JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
-				} else {
-					owner.reduceBalance(cost);
-					owner.addProduct(newTicket);
-				}
-			}
+			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
+			TicketData(newTicket);
 		} else
 			noBusSelectedAlert();
 	}
+	
+	public void onClickedThreeWay(ActionEvent e) throws WriterException, IOException {
+		if (bus != "") {
+			cost = 0.8 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Τριπλής", 3, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
+	}
+	
+	public void onClickedFourWay(ActionEvent e) throws WriterException, IOException {
+		if (bus != "") {
+			cost = 1.0 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Τετραπλής", 4, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
+	}
+	
+	public void onClickedNight(ActionEvent e) throws WriterException, IOException {
+		if (bus != "") {
+			cost = 1.0 * owner.getCheck();
+			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);
+			TicketData(newTicket);
+		} else
+			noBusSelectedAlert();
 
+	}
+	
+	
 	public void comboBoxChoice(ActionEvent actionEvent) {
 		bus = busesComboBox.getValue().substring(0, 2);
 		bus = bus + ((busesComboBox.getValue().substring(2, 3).equals("Ν")) ? "Ν" : "");
-		System.out.println(bus);
 	}
 
 	public void noBusSelectedAlert() {
@@ -366,11 +423,19 @@ public class TicketController extends MainController implements Initializable {
 			if (owner.getCheck() == 1) {
 				oneWayNormal.setMouseTransparent(true);
 				twoWayNormal.setMouseTransparent(true);
+				ThreeWayNormal.setMouseTransparent(true);
+				FourWayNormal.setMouseTransparent(true);
+				NightNormal.setMouseTransparent(true);
 			} else {
 				oneWayReduced.setMouseTransparent(true);
 				twoWayReduced.setMouseTransparent(true);
+				ThreeWayReduced.setMouseTransparent(true);
+				FourWayNormal.setMouseTransparent(true);
+				NightReduced.setMouseTransparent(true);
 			}
 		}
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 
 	}
 

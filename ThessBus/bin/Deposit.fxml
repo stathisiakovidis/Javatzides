@@ -24,8 +24,8 @@
 				<AnchorPane prefHeight="60.0" prefWidth="200.0">
 					<children>
 						<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-						<Label layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Όνομα Χρήστη" />
-						<Label layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
+						<Label fx:id="usernameMenu" layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="82.0" text="Όνομα Χρήστη" />
+						<Label fx:id="balanceMenu" layoutX="61.0" layoutY="28.0" prefHeight="17.0" prefWidth="49.0" text="Χρήματα" />
 					</children>
 				</AnchorPane>
 				<Button mnemonicParsing="false" onAction="#onClickedStartScreen" prefHeight="60.0" prefWidth="150.0" text="Αρχική">
@@ -120,6 +120,9 @@
 							<font>
 								<Font size="18.0" />
 							</font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
 						</Button>
 						<Button mnemonicParsing="false" onAction="#OnClicked" text="PayPal">
 							<padding>
@@ -128,6 +131,9 @@
 							<font>
 								<Font size="18.0" />
 							</font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
 						</Button>
 						<Button mnemonicParsing="false" onAction="#OnClicked" text="Κάρτα">
 							<padding>
@@ -136,6 +142,9 @@
 							<font>
 								<Font size="18.0" />
 							</font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
 						</Button>
 					</buttons>
 					<VBox.margin>

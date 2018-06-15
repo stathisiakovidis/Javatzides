@@ -16,6 +16,8 @@ public class HistoryController extends MainController implements Initializable {
 	@FXML private Label historystatusLabel;
 	@FXML private VBox historyVBox;
 	@FXML private VBox navBarVBox;
+	@FXML private Label usernameMenu;
+	@FXML private Label balanceMenu;
 	
 	public void setFieldsandData(ArrayList<Product> products, ArrayList<Fine> fines) {
 		if(products.isEmpty() && fines.isEmpty())
@@ -148,6 +150,9 @@ public class HistoryController extends MainController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		historystatusLabel.setText("");
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
+		
 	}
 
 	public Label getHistorystatusLabel() {
