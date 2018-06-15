@@ -37,9 +37,9 @@ public class TicketController extends MainController implements Initializable {
 	@FXML
 	private Button FourWayReduced;
 	@FXML
-	private Button NightNormal;
+	private Button AirportNormal;
 	@FXML
-	private Button NightReduced;
+	private Button AirportReduced;
 	@FXML
 	private Pane buttonsPane;
 	@FXML
@@ -108,7 +108,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
-	public void onClickedNight(ActionEvent e) {
+	public void onClickedAirport(ActionEvent e) {
 		if (bus != "") {
 			cost = 1.0 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);
@@ -407,13 +407,13 @@ public class TicketController extends MainController implements Initializable {
 				twoWayNormal.setMouseTransparent(true);
 				ThreeWayNormal.setMouseTransparent(true);
 				FourWayNormal.setMouseTransparent(true);
-				NightNormal.setMouseTransparent(true);
+				AirportNormal.setMouseTransparent(true);
 			} else {
 				oneWayReduced.setMouseTransparent(true);
 				twoWayReduced.setMouseTransparent(true);
 				ThreeWayReduced.setMouseTransparent(true);
 				FourWayNormal.setMouseTransparent(true);
-				NightReduced.setMouseTransparent(true);
+				AirportReduced.setMouseTransparent(true);
 			}
 		}
 		usernameMenu.setText(Main.loginUser.getUsername());
@@ -443,6 +443,32 @@ public class TicketController extends MainController implements Initializable {
 
 	public Button getTwoWayReduced() {
 		return twoWayReduced;
+	}
+	
+	
+
+	public Button getThreeWayNormal() {
+		return ThreeWayNormal;
+	}
+
+	public Button getThreeWayReduced() {
+		return ThreeWayReduced;
+	}
+
+	public Button getFourWayNormal() {
+		return FourWayNormal;
+	}
+
+	public Button getFourWayReduced() {
+		return FourWayReduced;
+	}
+
+	public Button getAirportNormal() {
+		return AirportNormal;
+	}
+
+	public Button getAirportReduced() {
+		return AirportReduced;
 	}
 
 	public Pane getButtonsPane() {

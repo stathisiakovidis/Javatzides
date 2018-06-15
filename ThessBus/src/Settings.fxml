@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
 	<items>
 		<VBox prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -234,7 +234,7 @@
 						<Image url="@../Images/loginscreen_icons/lock-24-512.png" />
 					</image>
 				</ImageView>
-				<Hyperlink layoutX="26.0" layoutY="33.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
+				<Hyperlink layoutX="41.0" layoutY="24.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
 			</children>
 		</Pane>
 	</items>

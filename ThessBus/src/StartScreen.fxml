@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
 	<items>
 		<VBox prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -132,7 +132,7 @@
 						<Insets right="55.0" />
 					</padding>
 				</ButtonBar>
-				<Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="334.0" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE" underline="true">
+				<Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="355.0" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE" underline="true">
 					<font>
 						<Font size="14.0" />
 					</font>

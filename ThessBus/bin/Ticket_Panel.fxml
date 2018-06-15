@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketController">
 
 	<items>
@@ -113,8 +112,8 @@
             <Button fx:id="ThreeWayReduced" layoutX="237.0" layoutY="183.0" mnemonicParsing="false" onAction="#onClickedThreeWay" prefHeight="40.0" prefWidth="150.0" text="Τρ.Δ/Μειωμένο 0,80€  &gt;" />
             <Button fx:id="FourWayNormal" layoutX="41.0" layoutY="245.0" mnemonicParsing="false" onAction="#onClickedFourWay" prefHeight="40.0" prefWidth="150.0" text="Τε.Δ/Κανονικό 2,00€  &gt;" />
             <Button fx:id="FourWayReduced" layoutX="237.0" layoutY="245.0" mnemonicParsing="false" onAction="#onClickedFourWay" prefHeight="40.0" prefWidth="150.0" text="Τε.Δ/Μειωμένο 1,00€  &gt;" />
-            <Button fx:id="NightNormal" layoutX="41.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedNight" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 2,00€ &gt;" />
-            <Button fx:id="NightReduced" layoutX="237.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedNight" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 1,00€  &gt;" />
+            <Button fx:id="AirportNormal" layoutX="41.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedAirport" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 2,00€ &gt;" />
+            <Button fx:id="AirportReduced" layoutX="237.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedAirport" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 1,00€  &gt;" />
 			</children>
 		</Pane>
 	</items>

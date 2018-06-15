@@ -31,6 +31,12 @@ public class VisitorScreenController extends MainController implements Initializ
 		ctrl.getOneWayReduced().setMouseTransparent(true);
 		ctrl.getTwoWayNormal().setMouseTransparent(true);
 		ctrl.getTwoWayReduced().setMouseTransparent(true);
+		ctrl.getThreeWayNormal().setMouseTransparent(true);
+		ctrl.getThreeWayReduced().setMouseTransparent(true);
+		ctrl.getFourWayNormal().setMouseTransparent(true);
+		ctrl.getFourWayReduced().setMouseTransparent(true);
+		ctrl.getAirportNormal().setMouseTransparent(true);
+		ctrl.getAirportReduced().setMouseTransparent(true);
 		ctrl.getButtonsPane().getChildren().remove(ctrl.getSignOutHyperlink());
 		ctrl.getButtonsPane().getChildren().remove(ctrl.getBusesComboBox());
 		
