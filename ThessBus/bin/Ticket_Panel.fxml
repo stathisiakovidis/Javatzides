@@ -13,7 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketController">
+
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketController">
+
 	<items>
 		<VBox fx:id="navBarVBox" prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -96,17 +98,23 @@
 		</VBox>
 		<Pane fx:id="buttonsPane" prefHeight="400.0" prefWidth="450.0">
 			<children>
-				<Button fx:id="oneWayNormal" layoutX="50.0" layoutY="116.0" mnemonicParsing="false" onAction="#onClickedOneWay" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="Κανονικό 1,00€  &gt;" textAlignment="CENTER" />
-				<Button fx:id="oneWayReduced" layoutX="246.0" layoutY="116.0" mnemonicParsing="false" onAction="#onClickedOneWay" prefHeight="50.0" prefWidth="150.0" text="Μειωμένο 0,50€  &gt;" textAlignment="CENTER" />
-				<Button fx:id="twoWayNormal" layoutX="50.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickedTwoWay" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Κανονικό 1,20€  &gt;" />
-				<Button fx:id="twoWayReduced" layoutX="246.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickedTwoWay" prefHeight="50.0" prefWidth="150.0" text="Δ.Δ/Μειωμένο 0,60€  &gt;" />
-				<Hyperlink fx:id="signOutHyperlink" alignment="CENTER" contentDisplay="CENTER" layoutX="311.0" layoutY="348.0" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE" underline="true">
+				<Button fx:id="oneWayNormal" layoutX="41.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickedOneWay" pickOnBounds="false" prefHeight="40.0" prefWidth="150.0" text="Κανονικό 1,00€  &gt;" textAlignment="CENTER" />
+				<Button fx:id="oneWayReduced" layoutX="237.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickedOneWay" prefHeight="40.0" prefWidth="150.0" text="Μειωμένο 0,50€  &gt;" textAlignment="CENTER" />
+				<Button fx:id="twoWayNormal" layoutX="41.0" layoutY="121.0" mnemonicParsing="false" onAction="#onClickedTwoWay" prefHeight="40.0" prefWidth="150.0" text="Δ.Δ/Κανονικό 1,20€  &gt;" />
+				<Button fx:id="twoWayReduced" layoutX="237.0" layoutY="121.0" mnemonicParsing="false" onAction="#onClickedTwoWay" prefHeight="40.0" prefWidth="150.0" text="Δ.Δ/Μειωμένο 0,60€  &gt;" />
+				<Hyperlink fx:id="signOutHyperlink" alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="355.0" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" textFill="DEEPSKYBLUE" underline="true">
 					<font>
 						<Font size="14.0" />
 					</font>
 				</Hyperlink>
-				<Hyperlink layoutX="50.0" layoutY="33.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
-			<ComboBox fx:id="busesComboBox" layoutX="50.0" layoutY="75.0" onAction="#comboBoxChoice" prefHeight="25.0" prefWidth="184.0" />
+				<Hyperlink layoutX="41.0" layoutY="24.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
+			<ComboBox fx:id="busesComboBox" layoutX="129.0" layoutY="23.0" onAction="#comboBoxChoice" prefHeight="25.0" prefWidth="184.0" />
+            <Button fx:id="ThreeWayNormal" layoutX="41.0" layoutY="183.0" mnemonicParsing="false" onAction="#onClickedThreeWay" prefHeight="40.0" prefWidth="150.0" text="Τρ.Δ/Κανονικό 1,50€  &gt;" />
+            <Button fx:id="ThreeWayReduced" layoutX="237.0" layoutY="183.0" mnemonicParsing="false" onAction="#onClickedThreeWay" prefHeight="40.0" prefWidth="150.0" text="Τρ.Δ/Μειωμένο 0,80€  &gt;" />
+            <Button fx:id="FourWayNormal" layoutX="41.0" layoutY="245.0" mnemonicParsing="false" onAction="#onClickedFourWay" prefHeight="40.0" prefWidth="150.0" text="Τε.Δ/Κανονικό 2,00€  &gt;" />
+            <Button fx:id="FourWayReduced" layoutX="237.0" layoutY="245.0" mnemonicParsing="false" onAction="#onClickedFourWay" prefHeight="40.0" prefWidth="150.0" text="Τε.Δ/Μειωμένο 1,00€  &gt;" />
+            <Button fx:id="NightNormal" layoutX="41.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedNight" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 2,00€ &gt;" />
+            <Button fx:id="NightReduced" layoutX="237.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedNight" prefHeight="40.0" prefWidth="150.0" text="Αεροδρόμιο 1,00€  &gt;" />
 			</children>
 		</Pane>
 	</items>
