@@ -79,6 +79,7 @@ public class Passenger extends User implements Serializable{
 		return balance;
 	}
 	
+	
 	public void addProduct(Product aProduct) {
 		products.add(aProduct);
 	}

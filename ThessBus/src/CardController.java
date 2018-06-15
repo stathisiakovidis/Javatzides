@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -37,6 +38,10 @@ public class CardController extends MainController implements Initializable {
 	private Button sixMonthsNormal;
 	@FXML
 	private Button annualNormal;
+	@FXML
+	private Label usernameMenu;
+	@FXML 
+	private Label balanceMenu;
 	
 	
 	public void generateMonthlyCard(ActionEvent event) throws IOException {
@@ -160,6 +165,8 @@ public class CardController extends MainController implements Initializable {
 				annualReduced.setMouseTransparent(true);
 			}
 		}
+		usernameMenu.setText(Main.loginUser.getUsername());
+		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 
 	}
 
