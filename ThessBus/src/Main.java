@@ -28,13 +28,9 @@ public class Main extends Application {
 	}
 	
 	public void start(Stage primaryStage) throws Exception{
-		Passenger temp = new Passenger("alex", "123", "fd", "2", "id", "232", "22", 40);
+		//Passenger temp = new Passenger("alex", "123", "fd", "2", "id", "232", "22", 40);
+		//FileManager.InsertUser(temp, "Users.dat");
 		
-		ObjectOutputStream oos = null;
-		FileOutputStream fout = new FileOutputStream("Users.dat");
-		oos = new ObjectOutputStream(fout);
-		FileManager.InsertUser(temp, "Users.dat");
-		oos.close();
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
 		Scene scene = new Scene(root);
