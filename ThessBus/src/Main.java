@@ -28,8 +28,8 @@ public class Main extends Application {
 	}
 	
 	public void start(Stage primaryStage) throws Exception{
-		Passenger temp = new Passenger("alex bla", "123", "fd@asd", "1234567890", "id", "1234567890", "22", 40);
-		FileManager.InsertUser(temp, "Users.dat");
+		//Passenger temp = new Passenger("alex bla", "123", "fd@asd", "1234567890", "id", "1234567890", "22", 40);
+		//FileManager.InsertUser(temp, "Users.dat");
 		
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));

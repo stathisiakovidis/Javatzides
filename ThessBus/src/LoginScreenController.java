@@ -62,11 +62,11 @@ public class LoginScreenController extends MainController implements Initializab
 
 			if (Main.loginUser != null) {
 				primarystage.close();
+				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUsername(), "Products.dat"));
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
 				root = loader.load();
-
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Home");
@@ -83,7 +83,6 @@ public class LoginScreenController extends MainController implements Initializab
 
 						if (result.get() == ButtonType.OK) {
 							if (Main.loginUser != null) {
-								MainController controller = new MainController();
 								Passenger temp = new Passenger(Main.loginUser.getUsername(),
 										Main.loginUser.getPassword(), Main.loginUser.getEmail(),
 										Main.loginUser.getCardNum(), Main.loginUser.getId(),

@@ -75,6 +75,10 @@ public class Passenger extends User implements Serializable{
 		return products;
 	}
 
+	public void setProducts(ArrayList<Product> products) {
+		this.products = products;
+	}
+
 	public double getBalance() {
 		return balance;
 	}
