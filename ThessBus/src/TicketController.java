@@ -59,8 +59,7 @@ public class TicketController extends MainController implements Initializable {
 	private Passenger owner = Main.loginUser;
 	private double cost;
 	
-	public void TicketData(Ticket newTicket){
-			cost = 0.6 * owner.getCheck();			
+	public void TicketData(Ticket newTicket){	
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
@@ -75,6 +74,11 @@ public class TicketController extends MainController implements Initializable {
 					alert1.setContentText("Δεν έχεις αρκετά χρήματα");
 					alert1.showAndWait();
 				}else {
+					Alert newalert = new Alert(AlertType.CONFIRMATION);
+					newalert.setTitle("Alert");
+					newalert.setHeaderText(null);
+					newalert.setContentText("Γουχου! Το εισητήριο σου αγοράστηκε!");
+					newalert.showAndWait();
 					owner.reduceBalance(cost);
 					owner.addProduct(newTicket);
 				}
