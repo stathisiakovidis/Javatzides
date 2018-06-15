@@ -35,9 +35,6 @@ public class LoginScreenController extends MainController implements Initializab
 	@FXML
 	private Hyperlink visitorHyperlink;
 	
-	private boolean insp = false;
-	
-	
 	public void onClickedLogin(ActionEvent e) throws IOException {
 
 		Stage primarystage = Main.getStagefromEvent(e);
@@ -55,7 +52,6 @@ public class LoginScreenController extends MainController implements Initializab
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
 						passwordField.getText(), "Users.dat");
-				insp = true;
 			} else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
 						"Users.dat");
@@ -101,7 +97,7 @@ public class LoginScreenController extends MainController implements Initializab
 					}
 				});
 				stage.show();
-			} else if (insp) {
+			} else if (Main.loginIns != null) {
 				primarystage.close();
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));

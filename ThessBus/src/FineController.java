@@ -1,12 +1,21 @@
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class FineController extends MainController implements Initializable {
 
@@ -25,12 +34,38 @@ public class FineController extends MainController implements Initializable {
 		
 	}
 
-	public void onClickedFine(ActionEvent actionEvent)
+	public void onClickedFine(ActionEvent actionEvent) throws IOException
 	{
-//		String name = nameField.getText() + " " + lastNameField.getText();
-//		User user = (User) FileManager.search(name, "Users.ser");
-//		Fine fine = new Fine(user,inspector.getInspector_num,busField.getText());
-//		FileManager.insertFine(fine, "UserFine.ser");
+		if(nameField.getText().isEmpty() || lastNameField.getText().isEmpty() || busField.getText().isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("Συμπλήρωσε όλα τα απαραίτητα πεδία μάγκα μου!");
+			alert.showAndWait();
+		}
+		else {
+			String name = nameField.getText() + " " + lastNameField.getText();
+			Passenger passenger = (Passenger) FileManager.search(name, "Users.dat");
+			Fine fine = new Fine(passenger, Main.loginIns.getUserNum(), busField.getText());
+			FileManager.insertFine(fine, "Fines.dat");
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("Το πρόστιμο κόπηκε με επιτυχία");
+			Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+            	Stage stage = Main.getStagefromEvent(actionEvent);
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
+				Parent root = null;
+				root = loader.load();
+
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.setTitle("ThessBus: Inspector");
+				stage.show();
+            }
+		}
 	}
 	public Pane getLeftPane() {
 		return leftPane;

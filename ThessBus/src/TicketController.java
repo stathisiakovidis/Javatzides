@@ -1,8 +1,11 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+
+import com.google.zxing.WriterException;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -59,12 +62,11 @@ public class TicketController extends MainController implements Initializable {
 	private Passenger owner = Main.loginUser;
 	private double cost;
 	
-	public void TicketData(Ticket newTicket){	
+	public void TicketData(Ticket newTicket) throws WriterException, IOException{	
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
 			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
-
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				if (owner.getBalance() < cost) {
@@ -88,7 +90,7 @@ public class TicketController extends MainController implements Initializable {
 	}
 		
 
-	public void onClickedOneWay(ActionEvent e) {
+	public void onClickedOneWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.5 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
@@ -97,7 +99,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 
-	public void onClickedTwoWay(ActionEvent e) {
+	public void onClickedTwoWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.6 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
@@ -106,7 +108,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
-	public void onClickedThreeWay(ActionEvent e) {
+	public void onClickedThreeWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.8 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Τριπλής", 3, bus);
@@ -115,7 +117,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
-	public void onClickedFourWay(ActionEvent e) {
+	public void onClickedFourWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 1.0 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Τετραπλής", 4, bus);
@@ -124,7 +126,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
-	public void onClickedNight(ActionEvent e) {
+	public void onClickedNight(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 1.0 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);

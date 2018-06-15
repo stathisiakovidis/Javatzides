@@ -88,6 +88,9 @@ public class MainController {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
+		
+		//Να μπει και στο signout του ελεγκτή
+		Main.loginUser = null;
 	}
 	
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException

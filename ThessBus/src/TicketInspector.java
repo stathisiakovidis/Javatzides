@@ -32,6 +32,9 @@ public class TicketInspector extends User implements Serializable {
 	}
 	
 	public Product browseQR(String filepath_of_qr) throws FileNotFoundException, NotFoundException, IOException {			
+		//Να αλλαχθεί
+		System.out.println("Mphka!!");
+				
 		String product_num;
 		Product product;
 		
@@ -55,10 +58,10 @@ public class TicketInspector extends User implements Serializable {
 		foo.add(12);
 		
 		String dates = date_time.substring(0,10);
-		String times  = date_time.substring(11, 17);
+		String times  = date_time.substring(11, 19);
 		
 		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		DateFormat sdf2 = new SimpleDateFormat("HHmmss");
+		DateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
 		Date date = null;
 		Date time = null;
 			
@@ -90,11 +93,11 @@ public class TicketInspector extends User implements Serializable {
 		if(date.equals(current_date)) {
 		
 			//Έλεγχος τιμής εισιτηρίου σε περίπτωση που το λεωφορείο είναι το 78Ν
-			if(bus.equals("78N") && (price != 2))
+			if(bus.equals("78N") && (price != 2.0))
 				return false;
 			
-			if(validation_date_time != null) {
-				String validation_times = validation_date_time.substring(11, 17);
+			if(validation_date_time.equals("-") == false) {
+				String validation_times = validation_date_time.substring(11, 19);
 				Date validation_time = null;
 				validation_time = sdf2.parse(validation_times);
 				long diff = validation_time.getTime() - time.getTime();
@@ -122,15 +125,16 @@ public class TicketInspector extends User implements Serializable {
 
 }
 
-//Χρειάζεται να μπουν οι εντολές για ανανέωση των αρχείων στην closeOperation??
-//Να αλλάξει ο τρόπος που τσεκάρεται ο χρήστης στη FileManager για προϊόντα και πρόστιμα
-//Να μπουν και στο SignOut
+//Χρειάζεται να μπουν οι εντολές για ανανέωση των αρχείων στην closeOperation?? ν
+//Να αλλάξει ο τρόπος που τσεκάρεται ο χρήστης στη FileManager για προϊόντα και πρόστιμα 
+//Να μπουν και στο SignOut ν
 //Να προστεθούν εντολές για retrieve προϊόντων και προστίμων κατά την εγγραφή και τη σύνδεση
-//Πρώτη φορά που αγοράζεται εισιτήριο αποθήκευση της εικόνας
-//Alerts στο login να μην εξαφανίζουν παράθυρο   
-//Μηνύματα πληροφόρησης στο χρήστη και ελεγκτή ια αγορά προϊόντος, έκδοση προστίμου
-//Να επιστρέφεται boolean μεταβλητή ή το μηνυμα που θα εμφανιστεί στον ελεγκτή; - ticketValidation
-//Register -> StartScreen αλλαγή stage
-//Αυτόματη συμπλήρωση πεδίων στο navBar και την αρχική
+//Πρώτη φορά που αγοράζεται εισιτήριο αποθήκευση της εικόνας ν
+//Alerts στο login να μην εξαφανίζουν παράθυρο ν 
+//Μηνύματα πληροφόρησης στο χρήστη και ελεγκτή για αγορά προϊόντος, έκδοση προστίμου ν
+//Να επιστρέφεται boolean μεταβλητή ή το μηνυμα που θα εμφανιστεί στον ελεγκτή; - ticketValidation ν
+//Register -> StartScreen αλλαγή stage ν
+//Αυτόματη συμπλήρωση πεδίων στο navBar και την αρχική ν
 //Αυτόματη εμφάνιση μηνυμάτων για πρόστιμα, εισιτήρια πολλαπλών και ληγμένες κάρτες -> Αρχική
-//DepositController!!
+//DepositController!! ν
+//Έλεγχος εισιτηρίου: να δοκιμαστούν διάφορα

@@ -47,28 +47,13 @@ public class InspectorController implements Initializable{
 			Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 			
 			String filepathofQR = filePathOfQR.toString();
-			/*String product_num = "";
-			try {
-				product_num = QRcode.decodeQRCodeImage(filepathofQR);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
 			
 			if(cardRadioButton.isSelected())
 			{
-				/*Card card = (Card) FileManager.search(product_num, "Products.dat");*/
 				Card card = null;
 				try {
 					card = (Card) Main.loginIns.browseQR(filepathofQR);
 				} catch (NotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -87,15 +72,6 @@ public class InspectorController implements Initializable{
 					root = loader.load();
 			        
 					PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
-			        /*String name="", surname ="",date="",time="";
-			        StringTokenizer st = new StringTokenizer(card.getOwner().getUsername() );
-			        name = st.nextToken();
-			        surname = st.nextToken();
-			        StringTokenizer dt = new StringTokenizer(card.getDate_time() );
-			        date = dt.nextToken();
-			        time = dt.nextToken();
-			        
-					ctrl.setDataToFields(name,surname,"","Card",date,time,card.getOwner().getPassport(),0 ,card.getDuration());*/
 					ctrl.setDataToFields(card, typeOfProductChecked);
 					
 					Scene scene = new Scene(root);
@@ -105,12 +81,10 @@ public class InspectorController implements Initializable{
 				}
 			}	
 			else if(ticketRadioButton.isSelected()) {
-				/*Ticket ticket = (Ticket) FileManager.search(product_num, "Products.dat");*/
 				Ticket ticket = null;
 				try {
 					ticket = (Ticket) Main.loginIns.browseQR(filepathofQR);
 				} catch (NotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -129,15 +103,6 @@ public class InspectorController implements Initializable{
 					root = loader.load();
 			        
 					PurchaseDataController ctrl = (PurchaseDataController)loader.getController();
-			        /*String name="", surname ="",date="",time="";
-			        StringTokenizer st = new StringTokenizer(ticket.getOwner().getUsername() );
-			        name = st.nextToken();
-			        surname = st.nextToken();
-			        StringTokenizer dt = new StringTokenizer(ticket.getDate_time() );
-			        date = dt.nextToken();
-			        time = dt.nextToken();
-			        
-					ctrl.setDataToFields(name,surname,ticket.getBus(),"Ticket",date,time,ticket.getOwner().getPassport(),ticket.getNo_of_routes() ,0);*/
 					ctrl.setDataToFields(ticket, typeOfProductChecked);
 					
 					Scene scene = new Scene(root);
@@ -168,13 +133,13 @@ public class InspectorController implements Initializable{
 	
 	public void onClickedPrintImage() {
 		FileChooser fc = new FileChooser();
-		//fc.setInitialDirectory(new File ("C:\\JavaCodeRepository\\TicketInspectorUI\\"));
+		fc.setInitialDirectory(new File (".\\QrcodeImages\\"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PNG Files","*.png"));
 		File selectedFile = fc.showOpenDialog(null);
-		filePathOfQR = selectedFile.toPath();
 		
 		if(selectedFile !=  null)
 		{
+			filePathOfQR = selectedFile.toPath();
 			Image img = new Image(selectedFile.toURI().toString());
 			QRimage.setImage(img);
 		}

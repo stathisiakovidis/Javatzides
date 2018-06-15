@@ -25,9 +25,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.scene.image.Image;
 
 public class QRcode {
-    private static final String QR_CODE_IMAGE_PATH = "./MyQRCode.png";
 
-    private static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
+    public static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
 
@@ -75,20 +74,4 @@ public class QRcode {
     	    return qrCodeResult.getText();
     }
 
-    public static void main(String[] args) {
-        try {
-            generateQRCodeImage("This is my first QR Code", 350, 350, QR_CODE_IMAGE_PATH);
-            generateQRCodeImage("12/12/1213:51004556", 640, 480, QR_CODE_IMAGE_PATH);
-        	/*byte[] pngData = generateQRCode("This is my first QR Code", 350, 350);
-            String text1 = decodeQRCode(pngData);*/
-            String text1 = decodeQRCodeImage(QR_CODE_IMAGE_PATH);
-            System.out.println(text1);
-        } catch (WriterException e) {
-            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
-        } catch (NotFoundException e) {
-			e.printStackTrace();
-		}
-    }
 }
