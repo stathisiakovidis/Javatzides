@@ -15,8 +15,8 @@ public class DepositController extends MainController implements Initializable{
 	public void OnClicked(ActionEvent e) {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Deposit");
-		dialog.setHeaderText("Put money in your ThessBus account");
-		dialog.setContentText("Please enter your ammount:");
+		dialog.setHeaderText("Εισαγωγή χρημάτων στον λογαριασμό ThessBus");
+		dialog.setContentText("Παρακαλούμε εισάγετε ποσό:");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
