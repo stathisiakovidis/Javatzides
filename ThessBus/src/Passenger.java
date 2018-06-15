@@ -67,6 +67,10 @@ public class Passenger extends User implements Serializable{
 	}
 
 
+	public void setFines(ArrayList<Fine> fines) {
+		this.fines = fines;
+	}
+
 	public int getCheck() {
 		return check;
 	}

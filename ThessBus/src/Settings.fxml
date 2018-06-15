@@ -148,6 +148,12 @@
 						<Font name="Baskerville Old Face" size="15.0" />
 					</font>
 				</Text>
+				<PasswordField fx:id="passwordField" alignment="CENTER" layoutX="18.0" layoutY="271.0" prefHeight="29.0" prefWidth="172.0" promptText="Κωδικός" />
+				<PasswordField fx:id="confirmpasswordField" alignment="CENTER" layoutX="20.0" layoutY="338.0" prefHeight="29.0" prefWidth="172.0" promptText="Επαλήθευση Κωδικού">
+					<font>
+						<Font size="13.0" />
+					</font>
+				</PasswordField>
 				<TextField fx:id="phoneField" alignment="CENTER" layoutX="224.0" layoutY="89.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Τηλεφώνου">
 					<font>
 						<Font name="Baskerville Old Face" size="13.0" />
@@ -208,12 +214,11 @@
 						<Image url="@../Images/id2.png" />
 					</image>
 				</ImageView>
-				<Button fx:id="saveButton" layoutX="273.0" layoutY="339.0" mnemonicParsing="false" onAction="#onClickSave" text="Αποθήκευση">
+				<Button fx:id="saveButton" layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#onClickSave" text="Αποθήκευση">
 					<font>
 						<Font name="Baskerville Old Face" size="15.0" />
 					</font>
 				</Button>
-				<PasswordField fx:id="passwordField" alignment="CENTER" layoutX="18.0" layoutY="271.0" prefHeight="29.0" prefWidth="172.0" promptText="Κωδικός" />
 				<ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="@../Images/loginscreen_icons/lock-24-512.png" />
@@ -224,11 +229,6 @@
 						<Font name="Baskerville Old Face" size="15.0" />
 					</font>
 				</Text>
-				<PasswordField fx:id="confirmpasswordField" alignment="CENTER" layoutX="20.0" layoutY="338.0" prefHeight="29.0" prefWidth="172.0" promptText="Επαλήθευση Κωδικού">
-					<font>
-						<Font size="13.0" />
-					</font>
-				</PasswordField>
 				<ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="@../Images/loginscreen_icons/lock-24-512.png" />

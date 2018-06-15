@@ -63,6 +63,7 @@ public class LoginScreenController extends MainController implements Initializab
 			if (Main.loginUser != null) {
 				primarystage.close();
 				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUsername(), "Products.dat"));
+				Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUsername(), "Fines.dat"));
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
