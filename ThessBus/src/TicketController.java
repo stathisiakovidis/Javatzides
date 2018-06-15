@@ -1,4 +1,5 @@
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -58,19 +60,29 @@ public class TicketController extends MainController implements Initializable {
 	private double cost;
 	
 	public void TicketData(Ticket newTicket){
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θέλεις να συνεχίσεις;", "Κλείσιμο;",
-				JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if (owner.getBalance() < cost) {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα", null, JOptionPane.WARNING_MESSAGE);
+			cost = 0.6 * owner.getCheck();			
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
+
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK){
+				if (owner.getBalance() < cost) {
+					Alert alert1 = new Alert(AlertType.ERROR);
+					alert1.setTitle("Alert");
+					alert1.setHeaderText(null);
+					alert1.setContentText("Δεν έχεις αρκετά χρήματα");
+					alert1.showAndWait();
+				}else {
+					owner.reduceBalance(cost);
+					owner.addProduct(newTicket);
+				}
 			} else {
-				owner.reduceBalance(cost);
-				owner.addProduct(newTicket);
-				JOptionPane.showMessageDialog(null, "Σένιο το εισιτηριάκι", null, JOptionPane.WARNING_MESSAGE);
+			    // ... user chose CANCEL or closed the dialog
 			}
-		}
-		
 	}
+		
 
 	public void onClickedOneWay(ActionEvent e) {
 		if (bus != "") {
