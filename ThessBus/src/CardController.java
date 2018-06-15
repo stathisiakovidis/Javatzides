@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -7,9 +8,12 @@ import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -43,66 +47,64 @@ public class CardController extends MainController implements Initializable {
 	@FXML 
 	private Label balanceMenu;
 	
+	public void CardData(Card newcard) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText(null);
+		alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			if (owner.getBalance() < cost) {
+				Alert alert1 = new Alert(AlertType.ERROR);
+				alert1.setTitle("Alert");
+				alert1.setHeaderText(null);
+				alert1.setContentText("Δεν έχεις αρκετά χρήματα");
+				alert1.showAndWait();
+			}else {
+				owner.reduceBalance(cost);
+				owner.addProduct(newcard);
+				
+				Passenger temp = new Passenger(Main.loginUser.getUsername(),
+				Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+				Main.loginUser.getCardNum(), Main.loginUser.getId(),
+				Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+				Main.loginUser.getBalance());
+
+				FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+				FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+								"Products.dat");
+				/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+								"Fines.dat");*/
+			}
+		}
+		else {
+		    // ... user chose CANCEL or closed the dialog
+		}
+	}
 	
 	public void generateMonthlyCard(ActionEvent event) throws IOException {
 		cost = 15 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Μηνιαία", 1);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if(owner.getBalance() >= newcard.getPrice()) {
-				owner.reduceBalance(newcard.getPrice());
-				owner.addProduct(newcard);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
-			}
-			
-		}
+		CardData(newcard);
 	}
 
 	public void generateThreeMonthsCard(ActionEvent event) throws IOException {
 		cost = 42 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Τριμηνιαία", 3);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if(owner.getBalance() >= newcard.getPrice()) {
-				owner.reduceBalance(newcard.getPrice());
-				owner.addProduct(newcard);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
-			}
-		}
+		CardData(newcard);
 	}
 
 	public void generateSixMonthsCard(ActionEvent event) throws IOException {
 		cost = 75 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Εξαμινιαία", 6);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if(owner.getBalance() >= newcard.getPrice()) {
-				owner.reduceBalance(newcard.getPrice());
-				owner.addProduct(newcard);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
-			}
-		}
+		CardData(newcard);
 	}
 
 	public void generateAnnualCard(ActionEvent event) throws IOException {
 		cost = 135 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Ετήσια", 12);
-		int reply = JOptionPane.showConfirmDialog(null, "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",  JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			if(owner.getBalance() >= newcard.getPrice()) {
-				owner.reduceBalance(newcard.getPrice());
-				owner.addProduct(newcard);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Δεν έχεις αρκετά χρήματα ", null, JOptionPane.WARNING_MESSAGE);
-			}
-		}
+		CardData(newcard);
 	}
 
 	public Button getMonthlyNormal() {

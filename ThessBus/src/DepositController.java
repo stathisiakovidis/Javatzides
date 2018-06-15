@@ -5,8 +5,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 
 public class DepositController extends MainController implements Initializable{
 
@@ -25,6 +27,24 @@ public class DepositController extends MainController implements Initializable{
 		if (result.isPresent()){
 		    Main.loginUser.updateBalance(Double.parseDouble(result.get()));
 		    balanceLabel.setText(Double.toString(Main.loginUser.getBalance()));
+		    
+		    Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Alert");
+			alert.setHeaderText(null);
+			alert.setContentText("Το ποσό σου ανανεώθηκε!");
+			alert.showAndWait();
+			
+		    Passenger temp = new Passenger(Main.loginUser.getUsername(),
+			Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+			Main.loginUser.getCardNum(), Main.loginUser.getId(),
+			Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+			Main.loginUser.getBalance());
+
+			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+			FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+							"Products.dat");
+			/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+							"Fines.dat");*/
 		}
 	}
 	

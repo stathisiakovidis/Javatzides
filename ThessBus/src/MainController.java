@@ -79,6 +79,18 @@ public class MainController {
 		Stage stage = getStageFromEvent(actionEvent);
 		stage.close();
 		
+		Passenger temp = new Passenger(Main.loginUser.getUsername(),
+		Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+		Main.loginUser.getCardNum(), Main.loginUser.getId(),
+		Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+		Main.loginUser.getBalance());
+
+		FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+		FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+								"Products.dat");
+		/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+								"Fines.dat");*/
+		
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
 		Parent root = null;

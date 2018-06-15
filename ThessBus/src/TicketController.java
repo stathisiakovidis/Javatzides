@@ -59,8 +59,7 @@ public class TicketController extends MainController implements Initializable {
 	private Passenger owner = Main.loginUser;
 	private double cost;
 	
-	public void TicketData(Ticket newTicket){
-			cost = 0.6 * owner.getCheck();			
+	public void TicketData(Ticket newTicket){			
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
@@ -77,8 +76,21 @@ public class TicketController extends MainController implements Initializable {
 				}else {
 					owner.reduceBalance(cost);
 					owner.addProduct(newTicket);
+					
+					Passenger temp = new Passenger(Main.loginUser.getUsername(),
+					Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+					Main.loginUser.getCardNum(), Main.loginUser.getId(),
+					Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+					Main.loginUser.getBalance());
+
+					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+					FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+							"Products.dat");
+					/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+							"Fines.dat");*/
 				}
-			} else {
+			} 
+			else {
 			    // ... user chose CANCEL or closed the dialog
 			}
 	}
