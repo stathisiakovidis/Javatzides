@@ -39,7 +39,7 @@ public class RegisterController extends MainController implements Initializable{
 		else
 		{
 			if(passwordField1.getText().equals(passwordField2.getText())) {
-				if(phoneField.getText().length()==10) {
+				if(phoneField.getText().length()==10 || phoneField.getText().contains("[a-zA-Z]+") == true) {
 					if(emailField.getText().contains("@")){
 				    Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
 					FileManager.InsertUser(Main.loginUser, "Users.dat");
@@ -96,7 +96,7 @@ public class RegisterController extends MainController implements Initializable{
 				}
 				else
 				{
-					showAlert("The phone number must have 10 digits");
+					showAlert("The phone number must have 10 digits, and only digits");
 				}
 			}
 			else

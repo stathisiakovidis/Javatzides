@@ -35,7 +35,7 @@ public class Passenger extends User implements Serializable{
 		this.balance = balance;	
 		this.passport = passport;
 		
-		check = (this.passport==null)?2:1;
+		check = (this.passport.equals(""))?2:1;
 	}
 	
 	//Tin kaloume mono apo to controller ton settings
@@ -47,6 +47,8 @@ public class Passenger extends User implements Serializable{
 		this.id = id;
 		this.phoneNum = phoneNum;
 		this.passport = passport;
+		
+		check = (this.passport.equals(""))?2:1;
 	}
 	
 	public void payFine() {

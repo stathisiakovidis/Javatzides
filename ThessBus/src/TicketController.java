@@ -447,7 +447,7 @@ public void onClickedAirport(ActionEvent e)  throws WriterException, IOException
 				oneWayReduced.setMouseTransparent(true);
 				twoWayReduced.setMouseTransparent(true);
 				ThreeWayReduced.setMouseTransparent(true);
-				FourWayNormal.setMouseTransparent(true);
+				FourWayReduced.setMouseTransparent(true);
 				AirportReduced.setMouseTransparent(true);
 			}
 			
