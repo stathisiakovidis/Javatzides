@@ -67,7 +67,7 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <Hyperlink layoutX="14.0" layoutY="22.0" text="Πίσω" />
+            <Hyperlink layoutX="61.0" layoutY="33.0" text="Πίσω" />
             <Text layoutX="62.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αγοράς/Επικύρωσης ">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
@@ -144,6 +144,11 @@
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </Text>
+            <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="33.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </Pane>
    </items>

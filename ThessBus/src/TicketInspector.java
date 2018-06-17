@@ -16,7 +16,8 @@ public class TicketInspector extends User implements Serializable {
 
 	public String name;
 	public String inspector_num;
-	public HashMap<String, Integer> durations = new HashMap<>(); //Πρέπει να ειναι String λόγω 78Ν 
+	//ενδεικτικές διάρκειες δρομολογίων 
+	public HashMap<String, Integer> durations = new HashMap<>(); 
 
 	
 	public TicketInspector(String aName, String aPassword, String username) {
@@ -32,9 +33,6 @@ public class TicketInspector extends User implements Serializable {
 	}
 	
 	public Product browseQR(String filepath_of_qr) throws FileNotFoundException, NotFoundException, IOException {			
-		//Να αλλαχθεί
-		System.out.println("Mphka!!");
-				
 		String product_num;
 		Product product;
 		
@@ -48,8 +46,8 @@ public class TicketInspector extends User implements Serializable {
 	//duration = {70, 90, 120, 1, 3, 6, 12} depending on the product (multi-way ticket or card)
 	//bus, validation = 0, null if product = card
 	//validation = null if product = 1way ticket
-
-	//Δυνατότητα αγοράς κάρτας 25-5 του μηνός - //τι γίνεται αν κάποιος παρει λεωφ λιγο πριν τις 12
+	
+	//τι γίνεται αν κάποιος παρει λεωφ λιγο πριν τις 12
 	public boolean ticketValidation(String date_time, int duration, String bus, String validation_date_time, double price) throws ParseException {
 		Set<Integer> foo = new HashSet<>();
 		foo.add(1);
@@ -93,7 +91,7 @@ public class TicketInspector extends User implements Serializable {
 		if(date.equals(current_date)) {
 		
 			//Έλεγχος τιμής εισιτηρίου σε περίπτωση που το λεωφορείο είναι το 78Ν
-			if(bus.equals("78N") && (price != 2.0))
+			if((bus.equals("N1") || bus.equals("N1A")) && (price != 2.0))
 				return false;
 			
 			if(validation_date_time.equals("-") == false) {

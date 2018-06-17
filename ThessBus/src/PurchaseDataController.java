@@ -19,7 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class PurchaseDataController implements Initializable {
+public class PurchaseDataController extends MainController implements Initializable {
 	@FXML private TextField lastNameField;
 	@FXML private Button checkDataButton;
 	@FXML private TextField nameField;

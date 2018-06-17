@@ -25,7 +25,7 @@
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </TextField>
-				<Hyperlink fx:id="backHyperlink" layoutX="41.0" layoutY="34.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
+				<Hyperlink fx:id="backHyperlink" layoutX="61.0" layoutY="33.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
             <TextField fx:id="nameField" alignment="CENTER" layoutX="62.0" layoutY="105.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Ονόματος">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
@@ -115,6 +115,11 @@
                   <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Button>
+            <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="33.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickedSignOut" prefHeight="29.0" prefWidth="108.0" text="Αποσύνδεση" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </Pane>
 	</items>

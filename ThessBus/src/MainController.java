@@ -76,15 +76,25 @@ public class MainController {
 	
 	public void onClickedSignOut(ActionEvent actionEvent) throws IOException
 	{
-		Stage stage = getStageFromEvent(actionEvent);
-		stage.close();
+		Stage primaryStage = getStageFromEvent(actionEvent);
+		primaryStage.close();
 		
-		Passenger temp = new Passenger(Main.loginUser.getUsername(),
-		Main.loginUser.getPassword(), Main.loginUser.getEmail(),
-		Main.loginUser.getCardNum(), Main.loginUser.getId(),
-		Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-		Main.loginUser.getBalance());
+		FXMLLoader loader = (FXMLLoader) primaryStage.getScene().getUserData();
+		String fxmlFile = "";
+		if(loader != null)
+			fxmlFile = loader.getLocation().getFile();
+		
+		if(fxmlFile.contains("Inspector.fxml") || fxmlFile.contains("Fine.fxml") || fxmlFile.contains("PurchaseData.fxml")) {
+			Main.loginIns = null;
+		}
+		else {
+			Passenger temp = new Passenger(Main.loginUser.getUsername(),
+			Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+			Main.loginUser.getCardNum(), Main.loginUser.getId(),
+			Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+			Main.loginUser.getBalance());
 
+<<<<<<< HEAD
 		FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 		for(Product p : Main.loginUser.getProducts()) {
 			System.out.println(p.getDate_time());
@@ -96,15 +106,30 @@ public class MainController {
 		Main.loginUser = null;
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
+=======
+			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+			FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+											"Products.dat");
+			/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+											"Fines.dat");*/
+					
+			Main.loginUser = null;
+		}
+		
+		Stage stage = new Stage();
+		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
+>>>>>>> d56307d34b4c9432ec3b12e709e1d19b09f2900f
 		Parent root = null;
-		root = loader.load();
-        LoginScreenController ctrl = (LoginScreenController)loader.getController();
+		root = loader1.load();
 		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("ThessBus: Login");
-		primaryStage.show();
+		stage.setScene(scene);
+		stage.setTitle("ThessBus: Login");
+		stage.show();
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> d56307d34b4c9432ec3b12e709e1d19b09f2900f
 	}
 	
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException

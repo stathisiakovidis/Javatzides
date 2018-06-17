@@ -45,7 +45,7 @@ public class SettingsController extends MainController implements Initializable 
 		else
 		{
 			if(passwordField.getText().equals(confirmpasswordField.getText())) {
-				if(phoneField.getText().length()==10 || phoneField.getText().contains("[a-zA-Z]+") == true) {
+				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
 					if(emailField.getText().contains("@")){
 						Main.loginUser.setNewData(nameField.getText()+" "+subnameField.getText(), passwordField.getText(), emailField.getText(), cardnumField.getText(), idField.getText(), phoneField.getText(), passportField.getText());
 						Passenger updatedPassenger = new Passenger(nameField.getText()+" "+subnameField.getText(), passwordField.getText(), emailField.getText(), cardnumField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),Main.loginUser.getBalance());

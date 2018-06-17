@@ -43,6 +43,35 @@ public class RegisterController extends MainController implements Initializable 
 		if (nameField.getText().equals("") || surnameField.getText().equals("") || passwordField1.getText().equals("")
 				|| passwordField2.getText().equals("")) {
 			showAlert("Complete the necessary fields");
+<<<<<<< HEAD
+=======
+			
+		}
+		else
+		{if(passportField.getText().length()<=12)
+			if(passwordField1.getText().equals(passwordField2.getText())) {
+				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
+					if(emailField.getText().contains("@")){
+				    Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
+					FileManager.InsertUser(Main.loginUser, "Users.dat");
+					//appear the start screen when he register
+			
+					Stage stage = Main.getStagefromEvent(e);
+					stage.close();
+					
+					Stage primaryStage = new Stage();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+					Parent root = null;
+					root = loader.load();					
+					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+		    		scene.setUserData(loader);
+					
+					primaryStage.setScene(scene);
+					primaryStage.setTitle("ThessBus: StartScreen");
+					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+>>>>>>> d56307d34b4c9432ec3b12e709e1d19b09f2900f
 
 		} else {
 			if (passportField.getText().length() <= 12)
