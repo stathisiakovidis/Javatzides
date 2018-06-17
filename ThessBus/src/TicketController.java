@@ -93,8 +93,8 @@ public class TicketController extends MainController implements Initializable {
 					Main.loginUser.getBalance());
 
 					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-					FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-							"Products.dat");
+					/*FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+							"Products.dat");*/
 					/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
 							"Fines.dat");*/
 				}
@@ -437,7 +437,7 @@ public void onClickedAirport(ActionEvent e)  throws WriterException, IOException
 						"Ν1: ΚΤΕΛ - Αεροδρόμιο Νυχτερινό"));
 
 		if (owner != null) {
-			if (owner.getCheck() == 1) {
+			if (owner.getCheck() == 2) {
 				oneWayNormal.setMouseTransparent(true);
 				twoWayNormal.setMouseTransparent(true);
 				ThreeWayNormal.setMouseTransparent(true);

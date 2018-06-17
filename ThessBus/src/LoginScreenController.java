@@ -94,6 +94,7 @@ public class LoginScreenController extends MainController implements Initializab
 										"Products.dat");
 								FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
 										"Fines.dat");
+								Main.loginUser=null;
 							}
 						} else
 							arg0.consume();

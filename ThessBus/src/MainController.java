@@ -90,7 +90,8 @@ public class MainController {
 								"Products.dat");
 		/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
 								"Fines.dat");*/
-		
+		//Να μπει και στο signout του ελεγκτή
+		Main.loginUser = null;
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
 		Parent root = null;
@@ -101,8 +102,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 		
-		//Να μπει και στο signout του ελεγκτή
-		Main.loginUser = null;
+		
 	}
 	
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException
