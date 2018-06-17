@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
 	<items>
 		<VBox prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -101,14 +101,10 @@
 						<Font size="24.0" />
 					</font>
 				</Label>
-				<Pane layoutX="58.0" layoutY="118.0" prefHeight="40.0" prefWidth="347.0" style="-fx-border-color: red; -fx-border-width: 2;">
+				<Pane layoutX="29.0" layoutY="118.0" prefHeight="40.0" prefWidth="376.0" style="-fx-border-color: red; -fx-border-width: 2;">
 					<children>
-						<Hyperlink accessibleRole="BUTTON" layoutX="209.0" layoutY="9.0" opacity="0.72" text="Πληρωμή Τώρα" underline="true">
-							<padding>
-								<Insets left="20.0" />
-							</padding>
-						</Hyperlink>
-						<Label layoutX="24.0" layoutY="13.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
+                  <Hyperlink fx:id="payNow" layoutX="251.0" layoutY="6.0" onAction="#onClickPayNow" text="Πληρωμή Τώρα" textFill="DEEPSKYBLUE" underline="true" />
+						<Label fx:id="fineLabel" layoutX="7.0" layoutY="11.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
 							<font>
 								<Font size="13.0" />
 							</font>

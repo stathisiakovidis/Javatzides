@@ -13,7 +13,7 @@ public class Passenger extends User implements Serializable{
 	private String phoneNum;
 	private String passport;
 	private double balance;
-	
+	private double totalFines=0;
 	//Checks if the passenger if reduced.
 	//Price * 2 for normal
 	//Price * 1 for reduced
@@ -35,7 +35,7 @@ public class Passenger extends User implements Serializable{
 		this.balance = balance;	
 		this.passport = passport;
 		
-		check = (this.passport.equals(""))?2:1;
+		this.check = (this.passport.isEmpty())?2:1;
 	}
 	
 	//Tin kaloume mono apo to controller ton settings
@@ -48,21 +48,29 @@ public class Passenger extends User implements Serializable{
 		this.phoneNum = phoneNum;
 		this.passport = passport;
 		
-		check = (this.passport.equals(""))?2:1;
+		this.check = (this.passport.isEmpty())?2:1;
 	}
 	
-	public void payFine() {
+	/*public void payFine() {
 		
-		double totalCost = 0;
+		double totalCost;
 		
-		for(Fine fine: fines) {
-			totalCost += fine.getPrice();
-		}
+		totalCost= calculateTotalFines();
+		reduceBalance(totalCost);
 		
-		balance -= totalCost;
 		fines.clear();
+		this.totalFines=0;
 		
+	}*/
+	
+	public double calculateTotalFines()
+	{	
+		for(Fine fine: fines) {
+			this.totalFines += fine.getPrice();
+		}
+		return this.totalFines;
 	}
+	
 	
 	public void updateBalance(double additionalMoney) {
 		balance += additionalMoney;

@@ -37,7 +37,7 @@ public class RegisterController extends MainController implements Initializable{
 			
 		}
 		else
-		{
+		{if(passportField.getText().length()<=12)
 			if(passwordField1.getText().equals(passwordField2.getText())) {
 				if(phoneField.getText().length()==10 || phoneField.getText().contains("[a-zA-Z]+") == true) {
 					if(emailField.getText().contains("@")){
@@ -103,7 +103,12 @@ public class RegisterController extends MainController implements Initializable{
 			{
 				showAlert("Passwords do not match");
 			}
+		else
+		{
+			showAlert("The passport number must have 12 digits");
 		}
+		}
+		
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

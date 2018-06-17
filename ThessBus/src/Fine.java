@@ -26,7 +26,7 @@ public class Fine implements Serializable {
 
 	public void finePaid()
 	{
-		paid = true;
+		this.paid = true;
 	}
 	
 	public void countPrice()
