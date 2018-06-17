@@ -95,8 +95,6 @@ public class TicketController extends MainController implements Initializable {
 					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 					FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
 							"Products.dat");
-					/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-							"Fines.dat");*/
 				}
 			} 
 			else {

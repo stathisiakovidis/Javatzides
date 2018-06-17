@@ -86,11 +86,14 @@ public class MainController {
 		Main.loginUser.getBalance());
 
 		FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-		FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-								"Products.dat");
+		for(Product p : Main.loginUser.getProducts()) {
+			System.out.println(p.getDate_time());
+		}
+		
 		/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
 								"Fines.dat");*/
-		
+		//Να μπει και στο signout του ελεγκτή
+		Main.loginUser = null;
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
 		Parent root = null;
@@ -101,8 +104,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 		
-		//Να μπει και στο signout του ελεγκτή
-		Main.loginUser = null;
+		
 	}
 	
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException
