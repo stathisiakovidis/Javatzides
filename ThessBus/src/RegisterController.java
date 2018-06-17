@@ -39,7 +39,7 @@ public class RegisterController extends MainController implements Initializable{
 		else
 		{if(passportField.getText().length()<=12)
 			if(passwordField1.getText().equals(passwordField2.getText())) {
-				if(phoneField.getText().length()==10 || phoneField.getText().contains("[a-zA-Z]+") == true) {
+				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
 					if(emailField.getText().contains("@")){
 				    Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
 					FileManager.InsertUser(Main.loginUser, "Users.dat");
@@ -51,10 +51,12 @@ public class RegisterController extends MainController implements Initializable{
 					Stage primaryStage = new Stage();
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 					Parent root = null;
-					root = loader.load();
-			        StartScreenController ctrl = (StartScreenController)loader.getController();
-					
+					root = loader.load();					
 					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+		    		scene.setUserData(loader);
+					
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: StartScreen");
 					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

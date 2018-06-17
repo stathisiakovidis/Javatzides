@@ -25,38 +25,22 @@ import javafx.stage.Stage;
 
 public class TicketController extends MainController implements Initializable {
 
-	@FXML
-	private Button oneWayNormal;
-	@FXML
-	private Button oneWayReduced;
-	@FXML
-	private Button twoWayNormal;
-	@FXML
-	private Button twoWayReduced;
-	@FXML
-	private Button ThreeWayNormal;
-	@FXML
-	private Button ThreeWayReduced;
-	@FXML
-	private Button FourWayNormal;
-	@FXML
-	private Button FourWayReduced;
-	@FXML
-	private Button AirportNormal;
-	@FXML
-	private Button AirportReduced;
-	@FXML
-	private Pane buttonsPane;
-	@FXML
-	private VBox navBarVBox;
-	@FXML
-	private Hyperlink signOutHyperlink;
-	@FXML
-	private ComboBox<String> busesComboBox;
-	@FXML
-	private Label usernameMenu;
-	@FXML 
-	private Label balanceMenu;
+	@FXML private Button oneWayNormal;
+	@FXML private Button oneWayReduced;
+	@FXML private Button twoWayNormal;
+	@FXML private Button twoWayReduced;
+	@FXML private Button ThreeWayNormal;
+	@FXML private Button ThreeWayReduced;
+	@FXML private Button FourWayNormal;
+	@FXML private Button FourWayReduced;
+	@FXML private Button AirportNormal;
+	@FXML private Button AirportReduced;
+	@FXML private Pane buttonsPane;
+	@FXML private VBox navBarVBox;
+	@FXML private Hyperlink signOutHyperlink;
+	@FXML private ComboBox<String> busesComboBox;
+	@FXML private Label usernameMenu;
+	@FXML private Label balanceMenu;
 
 	private String bus = "";
 	private Passenger owner = Main.loginUser;
@@ -68,6 +52,7 @@ public class TicketController extends MainController implements Initializable {
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
 			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
+			
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				if (owner.getBalance() < cost) {
@@ -76,7 +61,8 @@ public class TicketController extends MainController implements Initializable {
 					alert1.setHeaderText(null);
 					alert1.setContentText("Δεν έχεις αρκετά χρήματα");
 					alert1.showAndWait();
-				}else {
+					}
+				else {
 					Alert newalert = new Alert(AlertType.CONFIRMATION);
 					newalert.setTitle("Alert");
 					newalert.setHeaderText(null);
@@ -110,7 +96,8 @@ public class TicketController extends MainController implements Initializable {
 			cost = 0.5 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
 			TicketData(newTicket);
-		} else
+		}
+		else
 			noBusSelectedAlert();
 	}
 
@@ -119,7 +106,8 @@ public class TicketController extends MainController implements Initializable {
 			cost = 0.6 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
 			TicketData(newTicket);
-		} else
+		}
+		else
 			noBusSelectedAlert();
 	}
 	
@@ -128,7 +116,8 @@ public class TicketController extends MainController implements Initializable {
 			cost = 0.8 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Τριπλής", 3, bus);
 			TicketData(newTicket);
-		} else
+		}
+		else
 			noBusSelectedAlert();
 	}
 	
@@ -137,18 +126,20 @@ public class TicketController extends MainController implements Initializable {
 			cost = 1.0 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Τετραπλής", 4, bus);
 			TicketData(newTicket);
-		} else
+		}
+		else
 			noBusSelectedAlert();
 	}
 	
 
-public void onClickedAirport(ActionEvent e)  throws WriterException, IOException {
+	public void onClickedAirport(ActionEvent e)  throws WriterException, IOException {
 
 		if (bus != "") {
 			cost = 1.0 * owner.getCheck();
 			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);
 			TicketData(newTicket);
-		} else
+		}
+		else
 			noBusSelectedAlert();
 
 	}
@@ -156,7 +147,7 @@ public void onClickedAirport(ActionEvent e)  throws WriterException, IOException
 	
 	public void comboBoxChoice(ActionEvent actionEvent) {
 		bus = busesComboBox.getValue().substring(0, 2);
-		bus = bus + ((busesComboBox.getValue().substring(2, 3).equals("Ν")) ? "Ν" : "");
+		bus = bus + (Character.isLetter((busesComboBox.getValue().charAt(2))) ? busesComboBox.getValue().charAt(2) : "");
 	}
 
 	public void noBusSelectedAlert() {

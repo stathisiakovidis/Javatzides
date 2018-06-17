@@ -48,11 +48,13 @@ public class LoginScreenController extends MainController implements Initializab
             if (result.get() == ButtonType.OK){
                 alert.close();
             }
-		} else {
+		} 
+		else {
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
 						passwordField.getText(), "Users.dat");
-			} else
+			}
+			else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
 						"Users.dat");
 
@@ -68,6 +70,10 @@ public class LoginScreenController extends MainController implements Initializab
 				Parent root = null;
 				root = loader.load();
 				Scene scene = new Scene(root);
+				
+				//setUserData so that the fxml file of the loader can be retrieved
+	    		scene.setUserData(loader);
+				
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Home");
 				stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -97,18 +103,24 @@ public class LoginScreenController extends MainController implements Initializab
 							}
 						} else
 							arg0.consume();
+						
+						Main.loginUser = null;
 					}
 				});
 				stage.show();
 				
-			} else if (Main.loginIns != null) {
+			}
+			else if (Main.loginIns != null) {
 				primarystage.close();
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
 				Parent root = null;
 				root = loader.load();
-
 				Scene scene = new Scene(root);
+				
+				//setUserData so that the fxml file of the loader can be retrieved
+	    		scene.setUserData(loader);
+				
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Inspector");
 				stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -125,10 +137,13 @@ public class LoginScreenController extends MainController implements Initializab
 						if (result.get() == ButtonType.CANCEL) {
 							arg0.consume();
 						}
+						
+						Main.loginIns = null;
 					}
 				});
 				stage.show();
-			} else {
+			}
+			else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Alert");
 				alert.setHeaderText(null);

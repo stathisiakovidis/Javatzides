@@ -27,7 +27,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class InspectorController implements Initializable{
+public class InspectorController extends MainController implements Initializable{
 
 	@FXML private Button browseButton;
 	@FXML private Button printImageButton;
@@ -75,6 +75,10 @@ public class InspectorController implements Initializable{
 					ctrl.setDataToFields(card, typeOfProductChecked);
 					
 					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+		    		scene.setUserData(loader);
+					
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: PurchaseData");
 					primaryStage.show();
@@ -106,6 +110,10 @@ public class InspectorController implements Initializable{
 					ctrl.setDataToFields(ticket, typeOfProductChecked);
 					
 					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+		    		scene.setUserData(loader);
+					
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: PurchaseData");
 					primaryStage.show();
