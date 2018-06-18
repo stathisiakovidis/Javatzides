@@ -119,7 +119,6 @@ public class FileManager {
 		try {
 			FileOutputStream fout = new FileOutputStream(filename);
 			oos = new ObjectOutputStream(fout);
-
 			// read previous list of products from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
@@ -130,7 +129,6 @@ public class FileManager {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("geia");
 			// if io exception then first time adding a product so no need to read the list
 				products.add(producttoInsert);
 			try {
@@ -139,7 +137,6 @@ public class FileManager {
 				e1.printStackTrace();
 			}
 		} catch (ClassNotFoundException e) {
-			System.out.println("geia 1");
 			// if class not found then first time adding a product so no need to read the
 			// list
 				products.add(producttoInsert);
