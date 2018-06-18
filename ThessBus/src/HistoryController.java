@@ -97,7 +97,7 @@ public class HistoryController extends MainController implements Initializable {
 						alert.setHeaderText(null);
 						alert.setContentText("Ημερομηνία: " + dateTime.substring(0, 10) + " "
 								+ dateTime.substring(11, 13) + ":" + dateTime.substring(13, 15) + ":"
-								+ dateTime.substring(15, 17) + "\n\n Λεωφορείο: " + ((Ticket) product).getBus());
+								+ dateTime.substring(15, 17));
 						ImageView temp = new ImageView();
 						temp.setImage(QRcode.printQRCode(product.getQR_code()));
 						temp.setFitHeight(200);
