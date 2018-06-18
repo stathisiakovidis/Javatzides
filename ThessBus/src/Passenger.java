@@ -103,15 +103,14 @@ public class Passenger extends User implements Serializable{
 		return count;
 	}
 	
-	public double calculateTotalFines()
+	/*public double calculateTotalFines()
 	{	
 		totalFines = 0;
 		for(Fine fine: fines) {
 			this.totalFines += fine.getPrice();
 		}
 		return this.totalFines;
-	}
-	
+	}*/
 	
 	public void updateBalance(double additionalMoney) {
 		balance += additionalMoney;

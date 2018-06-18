@@ -87,11 +87,6 @@ public class MainController {
 					Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
 			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-			/*for (Product p : Main.loginUser.getProducts()) {
-				System.out.println(p.getDate_time());
-			}
-			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);*/
-			
 			FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
 			
 			Main.loginUser = null;
