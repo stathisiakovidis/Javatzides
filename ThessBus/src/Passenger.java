@@ -66,7 +66,7 @@ public class Passenger extends User implements Serializable{
 	public int countNotValidCards() {
 		int count = 0;
 		for (Product product : products) {
-			if(((Card) product).isValid() == false)
+			if(product instanceof Card && ((Card) product).isValid() == false)
 				count++;
 		}
 		return count;
@@ -75,7 +75,7 @@ public class Passenger extends User implements Serializable{
 	public int countMultiWayNotValidatedTickets() {
 		int count = 0;
 		for (Product product : products) {
-			if(((Ticket) product).getRemaining_routes() > 0)
+			if(product instanceof Ticket && ((Ticket)product).getRemaining_routes() > 0)
 				count++;
 		}
 		return count;
