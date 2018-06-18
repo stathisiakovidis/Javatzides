@@ -155,37 +155,6 @@ public class TicketController extends MainController implements Initializable {
 		alert.showAndWait();
 	}
 
-	/*
-	 * public void onClickedOneWayRedused(ActionEvent e) {
-	 * System.out.println("HEY"); }
-	 * 
-	 * public void onClickedTwoWayRedused(ActionEvent e) {
-	 * System.out.println("HEY"); }
-	 */
-
-	/*
-	 * public void clickedButton(ActionEvent e) {
-	 * 
-	 * Ticket ticket = new Ticket(null, 1.0, owner, null, null, null, 1, 12, null);
-	 * 
-	 * if(e.getSource().equals(oneWayNormal)) { ticket.setPrice(1);
-	 * ticket.setNo_of_routes(1); } else if(e.getSource().equals(oneWayReduced)) {
-	 * ticket.setPrice(0.5); ticket.setNo_of_routes(1); } else
-	 * if(e.getSource().equals(twoWayNormal)) { ticket.setPrice(1.20);
-	 * ticket.setNo_of_routes(2); } else if(e.getSource().equals(twoWayReduced)) {
-	 * ticket.setPrice(0.60); ticket.setNo_of_routes(2); }
-	 * 
-	 * int reply = JOptionPane.showConfirmDialog(null,
-	 * "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",
-	 * JOptionPane.YES_NO_OPTION); if (reply == JOptionPane.YES_OPTION) {
-	 * if(owner.getBalance() >= ticket.getPrice()) {
-	 * owner.reduceBalance(ticket.getPrice()); owner.addProduct(ticket); } else
-	 * JOptionPane.showMessageDialog(null, "ΒΛΑΧΑ ΒΛΑΧΑ ΦΤΩΧΙΑ ", null,
-	 * JOptionPane.WARNING_MESSAGE); }
-	 * 
-	 * }
-	 */
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
