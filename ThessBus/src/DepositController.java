@@ -41,10 +41,6 @@ public class DepositController extends MainController implements Initializable{
 			Main.loginUser.getBalance());
 
 			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-			FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-							"Products.dat");
-			/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-							"Fines.dat");*/
 		}
 	}
 	

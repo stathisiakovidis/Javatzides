@@ -61,7 +61,7 @@ public class LoginScreenController extends MainController implements Initializab
 			if (Main.loginUser != null) {
 				primarystage.close();
 				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUsername(), "Products.dat"));
-				Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUsername(), "Fines.dat"));
+				//Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUsername(), "Fines.dat"));
 				for (Product product : Main.loginUser.getProducts()) {
 					System.out.println(product.getDate_time());
 				}
@@ -96,10 +96,8 @@ public class LoginScreenController extends MainController implements Initializab
 										Main.loginUser.getBalance());
 
 								FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-								FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-										"Products.dat");
-								FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-										"Fines.dat");
+								/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
+										"Fines.dat");*/
 							}
 						} else
 							arg0.consume();

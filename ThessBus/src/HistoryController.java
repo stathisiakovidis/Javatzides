@@ -140,7 +140,7 @@ public class HistoryController extends MainController implements Initializable {
 					hbox.getChildren().add(timeLabel);		
 					hbox.getChildren().add(busLabel);
 					hbox.getChildren().add(paidLabel);
-					historyVBox.getChildren().add(hbox);
+					historyVBox.getChildren().add(hbox);					
 				}
 				
 			}

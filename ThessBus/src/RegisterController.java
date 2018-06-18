@@ -19,22 +19,30 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegisterController extends MainController implements Initializable{
-	@FXML public TextField nameField;
-	@FXML public TextField surnameField;
-	@FXML public TextField emailField;
-	@FXML public PasswordField passwordField1;
-	@FXML public PasswordField passwordField2;
-	@FXML public TextField passportField;
-	@FXML public TextField phoneField;
-	@FXML public TextField idField;
-	@FXML public TextField cardField;
-	
-	public void onClickedRegister(ActionEvent e) throws IOException  {
-		if(nameField.getText().equals("")||surnameField.getText().equals("")||passwordField1.getText().equals("")||passwordField2.getText().equals(""))
-		{
-			showAlert("Complete the necessary fields");
-			
+public class RegisterController extends MainController implements Initializable {
+	@FXML
+	public TextField nameField;
+	@FXML
+	public TextField surnameField;
+	@FXML
+	public TextField emailField;
+	@FXML
+	public PasswordField passwordField1;
+	@FXML
+	public PasswordField passwordField2;
+	@FXML
+	public TextField passportField;
+	@FXML
+	public TextField phoneField;
+	@FXML
+	public TextField idField;
+	@FXML
+	public TextField cardField;
+
+	public void onClickedRegister(ActionEvent e) throws IOException {
+		if (nameField.getText().equals("") || surnameField.getText().equals("") || passwordField1.getText().equals("")
+				|| passwordField2.getText().equals("")) {
+			showAlert("Complete the necessary fields");	
 		}
 		else
 		{if(passportField.getText().length()<=12)
@@ -60,69 +68,61 @@ public class RegisterController extends MainController implements Initializable{
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: StartScreen");
 					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+								@Override
+								public void handle(WindowEvent arg0) {
+									Alert alert = new Alert(AlertType.CONFIRMATION);
+									alert.setTitle("Confirmation Alert");
+									alert.setHeaderText(null);
+									alert.setContentText("Θες σίγουρα να βγεις;");
 
-						@Override
-						public void handle(WindowEvent arg0) {
-							Alert alert = new Alert(AlertType.CONFIRMATION);
-							alert.setTitle("Confirmation Alert");
-							alert.setHeaderText(null);
-							alert.setContentText("Θες σίγουρα να βγεις;");
+									Optional<ButtonType> result = alert.showAndWait();
 
-							Optional<ButtonType> result = alert.showAndWait();
+									if (result.get() == ButtonType.OK) {
+										if (Main.loginUser != null) {
+											Passenger temp = new Passenger(Main.loginUser.getUsername(),
+													Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+													Main.loginUser.getCardNum(), Main.loginUser.getId(),
+													Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+													Main.loginUser.getBalance());
 
-							if (result.get() == ButtonType.OK) {
-								if (Main.loginUser != null) {
-									Passenger temp = new Passenger(Main.loginUser.getUsername(),
-											Main.loginUser.getPassword(), Main.loginUser.getEmail(),
-											Main.loginUser.getCardNum(), Main.loginUser.getId(),
-											Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-											Main.loginUser.getBalance());
-
-									FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-									FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-											"Products.dat");
-									FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-											"Fines.dat");
-								}
-							} else
-								arg0.consume();
+											FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+											/*
+											 * FileManager.updateFines(Main.loginUser.getUsername(),
+											 * Main.loginUser.getFines(), "Fines.dat");
+											 */
+										}
+									} else
+										arg0.consume();
+								}});
+							primaryStage.show();
+							System.out.println(Main.loginUser.getUsername());
+						} else {
+							showAlert("The email address is not valid");
 						}
-					});
-					primaryStage.show();
-					System.out.println(Main.loginUser.getUsername());
-			        }
-					else 
-					{
-						showAlert("The email address is not valid");
+					} else {
+						showAlert("The phone number must have 10 digits, and only digits");
 					}
+				} else {
+					showAlert("Passwords do not match");
 				}
-				else
-				{
-					showAlert("The phone number must have 10 digits, and only digits");
-				}
+			else {
+				showAlert("The passport number must have 12 digits");
 			}
-			else
-			{
-				showAlert("Passwords do not match");
-			}
-		else
-		{
-			showAlert("The passport number must have 12 digits");
 		}
-		}
-		
+
 	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 	}
-	public void showAlert(String message)
-	{
+
+	public void showAlert(String message) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Alert");
 		alert.setHeaderText(null);
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
-		
+
 }
