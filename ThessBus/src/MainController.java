@@ -20,7 +20,6 @@ public class MainController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Deposit.fxml"));
 		Parent root = null;
 		root = loader.load();
-		DepositController ctrl = (DepositController) loader.getController();
 
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -113,13 +112,11 @@ public class MainController {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
 		Parent root = null;
-		root = loader.load();
-		SettingsController ctrl = (SettingsController) loader.getController();
-
-		Scene scene = new Scene(root);
-
-		// setUserData so that the fxml file of the loader can be retrieved
-		scene.setUserData(loader);
+		root = loader.load();		
+        Scene scene = new Scene(root);
+        
+        //setUserData so that the fxml file of the loader can be retrieved
+        scene.setUserData(loader);
 
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Login");

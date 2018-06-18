@@ -101,10 +101,10 @@
 						<Font size="24.0" />
 					</font>
 				</Label>
-				<Pane layoutX="29.0" layoutY="118.0" prefHeight="40.0" prefWidth="376.0" style="-fx-border-color: red; -fx-border-width: 2;">
+				<Pane fx:id="payNowPane" layoutX="29.0" layoutY="118.0" prefHeight="40.0" prefWidth="376.0" style="-fx-border-color: red; -fx-border-width: 2;">
 					<children>
-                  <Hyperlink fx:id="payNow" layoutX="251.0" layoutY="6.0" onAction="#onClickPayNow" text="Πληρωμή Τώρα" textFill="DEEPSKYBLUE" underline="true" />
-						<Label fx:id="fineLabel" layoutX="7.0" layoutY="11.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
+                  		<Hyperlink fx:id="payNow" layoutX="251.0" layoutY="6.0" onAction="#onClickPayNow" text="Πληρωμή Τώρα" textFill="DEEPSKYBLUE" underline="true" />
+						<Label fx:id="fineLabel" layoutX="7.0" layoutY="11.0" text="">
 							<font>
 								<Font size="13.0" />
 							</font>

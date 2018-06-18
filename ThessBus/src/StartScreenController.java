@@ -1,4 +1,3 @@
-import java.awt.List;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,10 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StartScreenController extends MainController implements Initializable {
@@ -29,13 +31,13 @@ public class StartScreenController extends MainController implements Initializab
 	private Label fineLabel;
 	@FXML
 	private Hyperlink payNow;
+	@FXML private Pane payNowPane;
 
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Ticket_Panel.fxml"));
 		Parent root = null;
 		root = loader.load();
-		TicketController ctrl = (TicketController) loader.getController();
 
 		Scene scene = new Scene(root);
 
@@ -52,7 +54,6 @@ public class StartScreenController extends MainController implements Initializab
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Card.fxml"));
 		Parent root = null;
 		root = loader.load();
-		CardController ctrl = (CardController) loader.getController();
 
 		Scene scene = new Scene(root);
 
@@ -66,22 +67,33 @@ public class StartScreenController extends MainController implements Initializab
 	public void onClickPayNow(ActionEvent e) throws IOException {
 		ArrayList<String> choices = new ArrayList<>();
 		for (Fine f : Main.loginUser.getFines()) {
-			choices.add("Date Time:" + f.getDate_time() + ", Bus:" + f.getBus() + ", Price"
-					+ Double.toString(f.getPrice()));
+			if(f.isPaid() == false)
+				choices.add("Date Time:" + f.getDate_time() + ", Bus:" + f.getBus() + ", Price"
+							+ Double.toString(f.getPrice()));
 		}
+		
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("Επιλογή Προστίμου", choices);
 		dialog.setTitle("Pay Fine");
 		dialog.setHeaderText(null);
-		dialog.setContentText("Διάλεξε το πρόστιμο που θέλεις να πληρώσεις: ");
+		dialog.setContentText("Διάλεξε το πρόστιμο" + System.lineSeparator() +"που θέλεις να πληρώσεις: ");
 		Optional<String> result = dialog.showAndWait();
+		
 		if (result.isPresent()) {
 			for (Fine f : Main.loginUser.getFines()) {
 				if (result.get().contains(f.getDate_time())) {
-					if (f.getPrice() >= Main.loginUser.getBalance()) {
+					if (f.getPrice() <= Main.loginUser.getBalance()) {
 						f.finePaid();
 						Main.loginUser.reduceBalance(f.getPrice());
-						break;
-					} else {
+						
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Alert");
+						alert.setHeaderText(null);
+						alert.setContentText("Το πρόστιμο σου πληρώθηκε");
+						alert.showAndWait();
+						
+						//initialize();
+					} 
+					else {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Alert");
 						alert.setHeaderText(null);
@@ -92,7 +104,6 @@ public class StartScreenController extends MainController implements Initializab
 
 				}
 			}
-
 		}
 	}
 
@@ -101,11 +112,24 @@ public class StartScreenController extends MainController implements Initializab
 		usernameMenu.setText(Main.loginUser.getUsername());
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		welcome.setText("Γεια σου, " + Main.loginUser.getUsername() + "!");
-		if (Main.loginUser.getFines().isEmpty())
+		
+		fineLabel.setText("Έχεις (" + Main.loginUser.countUnpaidFines() + ") πρόστιμο/α απλήρωτο/α" 
+				/*") πρόστιμο/α που κοστίζουν: " + Double.toString(Main.loginUser.calculateTotalFines()) + "€"*/);
+		
+		if(Main.loginUser.countUnpaidFines() == 0) {
 			payNow.setMouseTransparent(true);
-
-		fineLabel.setText("Έχεις (" + Integer.toString(Main.loginUser.getFines().size())
-				+ ") πρόστιμο/α που κοστίζουν: " + Double.toString(Main.loginUser.calculateTotalFines()) + "€");
+			payNow.setEffect(new GaussianBlur());
+			fineLabel.setText("Δεν έχεις πρόστιμα προς πληρωμή");
+		}
+		
+		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
+			//label ενημέρωσης - κουμπί για λίστα επιλογής
+		}
+		
+		if(Main.loginUser.countNotValidCards() > 0) {
+			//label ενημέρωσης - κουμπί για την προβολή τους?
+		}
+		
 	}
 
 }

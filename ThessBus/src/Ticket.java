@@ -40,16 +40,29 @@ public class Ticket extends Product implements Serializable {
 		String purchaseTimeText = getDate_time().substring(10, 14);
 		int purchaseTime = Integer.parseInt(purchaseTimeText);
 				
-		if(no_of_routes > 1) {
+		int duration = 0;
+		/*if(no_of_routes > 1) {*/
 			
-			if(time > purchaseTime + 70) {
+			switch(no_of_routes) {
+			case 2:
+				duration = 70;
+				break;
+			case 3:
+				duration = 90;
+				break;
+			case 4:
+				duration = 120;
+				break;
+			}
+			
+			if(time > purchaseTime + duration) {
 				return false;
 			}
 			else 
 				return true;
 			
-		}
-		return true;
+		/*}
+		return true;*/
 	}
 	
 	public void Refresh_num_of_routes() {
@@ -59,7 +72,6 @@ public class Ticket extends Product implements Serializable {
 	public String getBus() {
 		return bus;
 	}
-
 
 	public void setNo_of_routes(int no_of_routes) {
 		this.no_of_routes = no_of_routes;
@@ -71,6 +83,10 @@ public class Ticket extends Product implements Serializable {
 
 	public int getNo_of_routes() {
 		return no_of_routes;
+	}
+
+	public int getRemaining_routes() {
+		return remaining_routes;
 	}
 	
 }

@@ -59,8 +59,11 @@ public class FineController extends MainController implements Initializable {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
 				Parent root = null;
 				root = loader.load();
-
 				Scene scene = new Scene(root);
+				
+				//setUserData so that the fxml file of the loader can be retrieved
+		        scene.setUserData(loader);
+				
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Inspector");
 				stage.show();

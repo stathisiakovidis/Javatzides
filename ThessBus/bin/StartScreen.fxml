@@ -101,16 +101,16 @@
 						<Font size="24.0" />
 					</font>
 				</Label>
-				<Pane layoutX="29.0" layoutY="118.0" prefHeight="40.0" prefWidth="376.0" style="-fx-border-color: red; -fx-border-width: 2;">
+				<VBox fx:id="payNowPane" layoutX="29.0" layoutY="118.0" prefHeight="40.0" prefWidth="376.0" style="-fx-border-color: red; -fx-border-width: 2;">
 					<children>
-                  <Hyperlink fx:id="payNow" layoutX="251.0" layoutY="6.0" onAction="#onClickPayNow" text="Πληρωμή Τώρα" textFill="DEEPSKYBLUE" underline="true" />
-						<Label fx:id="fineLabel" layoutX="7.0" layoutY="11.0" text="Έχεις ένα (1) πρόστιμο 15€. ">
+                  		<Hyperlink fx:id="payNow" layoutX="251.0" layoutY="6.0" onAction="#onClickPayNow" text="Πληρωμή Τώρα" textFill="DEEPSKYBLUE" underline="true" />
+						<Label fx:id="fineLabel" layoutX="7.0" layoutY="11.0" text="">
 							<font>
 								<Font size="13.0" />
 							</font>
 						</Label>
 					</children>
-				</Pane>
+				</VBox>
 				<ButtonBar layoutX="-23.0" layoutY="222.0" prefHeight="100.0" prefWidth="467.0">
 					<buttons>
 						<Button mnemonicParsing="false" onAction="#onClickedTicket" prefHeight="53.0" prefWidth="60.0" text="Εισιτήριο">
