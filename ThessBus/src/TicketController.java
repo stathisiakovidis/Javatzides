@@ -43,7 +43,6 @@ public class TicketController extends MainController implements Initializable {
 	@FXML private Label balanceMenu;
 
 	private String bus = "";
-	private Passenger owner = Main.loginUser;
 	private double cost;
 	
 
@@ -55,7 +54,7 @@ public class TicketController extends MainController implements Initializable {
 			
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
-				if (owner.getBalance() < cost) {
+				if (Main.loginUser.getBalance() < cost) {
 					Alert alert1 = new Alert(AlertType.ERROR);
 					alert1.setTitle("Alert");
 					alert1.setHeaderText(null);
@@ -69,8 +68,8 @@ public class TicketController extends MainController implements Initializable {
 					newalert.setContentText("Γουχου! Το εισιτήριο σου αγοράστηκε!");
 					newalert.showAndWait();
 					
-					owner.reduceBalance(cost);
-					owner.addProduct(newTicket);
+					Main.loginUser.reduceBalance(cost);
+					Main.loginUser.addProduct(newTicket);
 					
 					Passenger temp = new Passenger(Main.loginUser.getUsername(),
 					Main.loginUser.getPassword(), Main.loginUser.getEmail(),
@@ -79,7 +78,7 @@ public class TicketController extends MainController implements Initializable {
 					Main.loginUser.getBalance());
 
 					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-					FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
+					FileManager.insertProducts(Main.loginUser.getUsername(), newTicket,
 							"Products.dat");
 				}
 			} 
@@ -91,8 +90,8 @@ public class TicketController extends MainController implements Initializable {
 
 	public void onClickedOneWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
-			cost = 0.5 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Μονής", 1, bus);
+			cost = 0.5 * Main.loginUser.getCheck();
+			Ticket newTicket = new Ticket(cost, Main.loginUser, "Μονής", 1, bus);
 			TicketData(newTicket);
 		}
 		else
@@ -101,8 +100,8 @@ public class TicketController extends MainController implements Initializable {
 
 	public void onClickedTwoWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
-			cost = 0.6 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Διπλής", 2, bus);
+			cost = 0.6 * Main.loginUser.getCheck();
+			Ticket newTicket = new Ticket(cost, Main.loginUser, "Διπλής", 2, bus);
 			TicketData(newTicket);
 		}
 		else
@@ -111,8 +110,8 @@ public class TicketController extends MainController implements Initializable {
 	
 	public void onClickedThreeWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
-			cost = 0.8 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Τριπλής", 3, bus);
+			cost = 0.8 * Main.loginUser.getCheck();
+			Ticket newTicket = new Ticket(cost, Main.loginUser, "Τριπλής", 3, bus);
 			TicketData(newTicket);
 		}
 		else
@@ -121,8 +120,8 @@ public class TicketController extends MainController implements Initializable {
 	
 	public void onClickedFourWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
-			cost = 1.0 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Τετραπλής", 4, bus);
+			cost = 1.0 * Main.loginUser.getCheck();
+			Ticket newTicket = new Ticket(cost, Main.loginUser, "Τετραπλής", 4, bus);
 			TicketData(newTicket);
 		}
 		else
@@ -133,8 +132,8 @@ public class TicketController extends MainController implements Initializable {
 	public void onClickedAirport(ActionEvent e)  throws WriterException, IOException {
 
 		if (bus != "") {
-			cost = 1.0 * owner.getCheck();
-			Ticket newTicket = new Ticket(cost, owner, "Αεροδρόμιο", 1, bus);
+			cost = 1.0 * Main.loginUser.getCheck();
+			Ticket newTicket = new Ticket(cost, Main.loginUser, "Αεροδρόμιο", 1, bus);
 			TicketData(newTicket);
 		}
 		else
@@ -425,8 +424,8 @@ public class TicketController extends MainController implements Initializable {
 						"N1A: ΚΤΕΛ - Αεροδρόμιο Νυχτερινό μέσω Α.Σ. Ι.Κ.Ε.Α.",
 						"Ν1: ΚΤΕΛ - Αεροδρόμιο Νυχτερινό"));
 
-		if (owner != null) {
-			if (owner.getCheck() == 1) {
+		if (Main.loginUser != null) {
+			if (Main.loginUser.getCheck() == 1) {
 				oneWayNormal.setMouseTransparent(true);
 				twoWayNormal.setMouseTransparent(true);
 				ThreeWayNormal.setMouseTransparent(true);

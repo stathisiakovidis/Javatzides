@@ -114,7 +114,7 @@ public class FileManager {
 
 	}
 
-	public static void insertProducts(String username, ArrayList<Product> productstoInsert, String filename) {
+	public static void insertProducts(String username, Product producttoInsert, String filename) {
 		ObjectOutputStream oos = null;
 		try {
 			FileOutputStream fout = new FileOutputStream(filename);
@@ -124,24 +124,15 @@ public class FileManager {
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			products = (ArrayList) ois.readObject();
-
-			for (int i = 0; i <= products.size(); i++) {
-				if (products.get(i).getOwner().getUsername().equals(username)) {
-					products.remove(i);
-				}
-			}
-
 			// add the new products
-			for (int i = 0; i < productstoInsert.size(); i++)
-				products.add(productstoInsert.get(i));
+			products.add(producttoInsert);
 			oos.writeObject(products);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("geia");
 			// if io exception then first time adding a product so no need to read the list
-			for (int i = 0; i < productstoInsert.size(); i++)
-				products.add(productstoInsert.get(i));
+				products.add(producttoInsert);
 			try {
 				oos.writeObject(products);
 			} catch (IOException e1) {
@@ -151,8 +142,7 @@ public class FileManager {
 			System.out.println("geia 1");
 			// if class not found then first time adding a product so no need to read the
 			// list
-			for (int i = 0; i < productstoInsert.size(); i++)
-				products.add(productstoInsert.get(i));
+				products.add(producttoInsert);
 			try {
 				oos.writeObject(products);
 			} catch (IOException e1) {

@@ -81,8 +81,8 @@ public class CardController extends MainController implements Initializable {
 				Main.loginUser.getBalance());
 
 				FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-				FileManager.insertProducts(Main.loginUser.getUsername(), Main.loginUser.getProducts(),
-								"Products.dat");
+				FileManager.insertProducts(Main.loginUser.getUsername(), newcard,
+							"Products.dat");
 				/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
 								"Fines.dat");*/
 			}

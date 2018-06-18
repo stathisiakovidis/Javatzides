@@ -91,9 +91,9 @@ public class MainController {
 				System.out.println(p.getDate_time());
 			}
 			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-			/*
-			 * FileManager.updateFines(Main.loginUser.getUsername(),
-			 * Main.loginUser.getFines(), "Fines.dat");
+			
+			/*FileManager.updateFines(Main.loginUser.getUsername(),
+			Main.loginUser.getFines(), "Fines.dat");
 			 */
 		}
 
