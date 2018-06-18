@@ -60,8 +60,8 @@ public class LoginScreenController extends MainController implements Initializab
 
 			if (Main.loginUser != null) {
 				primarystage.close();
-				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUsername(), "Products.dat"));
-				//Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUsername(), "Fines.dat"));
+				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUserNum(), "Products.dat"));
+				Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUserNum(), "Fines.dat"));
 				for (Product product : Main.loginUser.getProducts()) {
 					System.out.println(product.getDate_time());
 				}
@@ -88,17 +88,14 @@ public class LoginScreenController extends MainController implements Initializab
 						Optional<ButtonType> result = alert.showAndWait();
 
 						if (result.get() == ButtonType.OK) {
-							if (Main.loginUser != null) {
-								Passenger temp = new Passenger(Main.loginUser.getUsername(),
+							Passenger temp = new Passenger(Main.loginUser.getUsername(),
 										Main.loginUser.getPassword(), Main.loginUser.getEmail(),
 										Main.loginUser.getCardNum(), Main.loginUser.getId(),
 										Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-										Main.loginUser.getBalance());
+										Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
-								FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-								/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-										"Fines.dat");*/
-							}
+							FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+							FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
 						} else
 							arg0.consume();
 						

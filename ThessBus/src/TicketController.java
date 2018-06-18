@@ -72,10 +72,10 @@ public class TicketController extends MainController implements Initializable {
 					Main.loginUser.addProduct(newTicket);
 					
 					Passenger temp = new Passenger(Main.loginUser.getUsername(),
-					Main.loginUser.getPassword(), Main.loginUser.getEmail(),
-					Main.loginUser.getCardNum(), Main.loginUser.getId(),
-					Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-					Main.loginUser.getBalance());
+							Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+							Main.loginUser.getCardNum(), Main.loginUser.getId(),
+							Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+							Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
 					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 					FileManager.insertProducts(Main.loginUser.getUsername(), newTicket,

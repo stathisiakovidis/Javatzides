@@ -46,9 +46,15 @@ public class SettingsController extends MainController implements Initializable 
 		{
 			if(passwordField.getText().equals(confirmpasswordField.getText())) {
 				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
-					if(emailField.getText().contains("@")){
+					if(emailField.getText().contains("@")) {
+						System.out.println(nameField.getText()+" "+subnameField.getText());
 						Main.loginUser.setNewData(nameField.getText()+" "+subnameField.getText(), passwordField.getText(), emailField.getText(), cardnumField.getText(), idField.getText(), phoneField.getText(), passportField.getText());
-						Passenger updatedPassenger = new Passenger(nameField.getText()+" "+subnameField.getText(), passwordField.getText(), emailField.getText(), cardnumField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),Main.loginUser.getBalance());
+						System.out.println(Main.loginUser.getUsername());
+						Passenger updatedPassenger = new Passenger(Main.loginUser.getUsername(),
+									Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+									Main.loginUser.getCardNum(), Main.loginUser.getId(),
+									Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+									Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 						FileManager.updatePassenger(Main.loginUser, "Users.dat", updatedPassenger);
 				    
 						showAlert("Τα στοιχεία σου μεταβλήθηκαν!");

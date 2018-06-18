@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -15,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
+<SplitPane dividerPositions="0.25585284280936454" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
 	<items>
 		<VBox prefHeight="400.0" prefWidth="150.0">
 			<children>
@@ -229,7 +235,7 @@
 						<Font name="Baskerville Old Face" size="15.0" />
 					</font>
 				</Text>
-				<ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
+				<ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="@../Images/loginscreen_icons/lock-24-512.png" />
 					</image>

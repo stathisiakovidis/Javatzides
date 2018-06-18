@@ -13,7 +13,13 @@ public abstract class User implements Serializable {
 		setUserNum();
 	}
 	
-// Getters and setters
+	public User(String username, String password, String userNum) {
+		this.username = username;
+		this.password = password;
+		this.userNum = userNum;
+	}
+	
+	// Getters and setters
 	public String getUsername() {
 		return username;
 	}

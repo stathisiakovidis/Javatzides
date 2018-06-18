@@ -77,23 +77,24 @@ public class MainController {
 		if (loader != null)
 			fxmlFile = loader.getLocation().getFile();
 
-		if (fxmlFile.contains("Inspector.fxml") || fxmlFile.contains("Fine.fxml")
-				|| fxmlFile.contains("PurchaseData.fxml")) {
+		if (fxmlFile.contains("Inspector.fxml") || fxmlFile.contains("Fine.fxml") || fxmlFile.contains("PurchaseData.fxml")) {
 			Main.loginIns = null;
 		} else {
-			Passenger temp = new Passenger(Main.loginUser.getUsername(), Main.loginUser.getPassword(),
-					Main.loginUser.getEmail(), Main.loginUser.getCardNum(), Main.loginUser.getId(),
-					Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(), Main.loginUser.getBalance());
+			Passenger temp = new Passenger(Main.loginUser.getUsername(),
+					Main.loginUser.getPassword(),Main.loginUser.getEmail(),
+					Main.loginUser.getCardNum(), Main.loginUser.getId(),
+					Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+					Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
 			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-			for (Product p : Main.loginUser.getProducts()) {
+			/*for (Product p : Main.loginUser.getProducts()) {
 				System.out.println(p.getDate_time());
 			}
-			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);*/
 			
-			/*FileManager.updateFines(Main.loginUser.getUsername(),
-			Main.loginUser.getFines(), "Fines.dat");
-			 */
+			FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
+			
+			Main.loginUser = null;
 		}
 
 		Stage stage = new Stage();

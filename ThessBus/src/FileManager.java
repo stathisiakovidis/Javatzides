@@ -95,11 +95,13 @@ public class FileManager {
 		}
 
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getUsername().equals(user.getUsername())) {
+			if (users.get(i).getUserNum().equals(user.getUserNum())) {
+				System.out.println("Passenger found");
 				users.remove(i);
 				users.add(newUser);
 				found = true;
 				try {
+					System.out.println("Passenger updated");
 					FileOutputStream fout = new FileOutputStream(filename);
 					ObjectOutputStream oos = new ObjectOutputStream(fout);
 					oos.writeObject(users);
@@ -151,7 +153,7 @@ public class FileManager {
 		}
 	}
 
-	public static ArrayList<Product> getProducts(String username, String filename) {
+	public static ArrayList<Product> getProducts(String usernum, String filename) {
 		ArrayList<Product> foundproducts = new ArrayList<Product>();
 
 		try {
@@ -159,7 +161,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			products = (ArrayList) ois.readObject();
 			for (int i = 0; i < products.size(); i++) {
-				if (products.get(i).getOwner().getUsername().equals(username)) {
+				if (products.get(i).getOwner().getUserNum().equals(usernum)) {
 					foundproducts.add(products.get(i));
 				}
 			}
@@ -211,7 +213,7 @@ public class FileManager {
 		}
 	}
 
-	public static ArrayList<Fine> getFines(String username, String filename) {
+	public static ArrayList<Fine> getFines(String usernum, String filename) {
 		ArrayList<Fine> foundfines = new ArrayList<Fine>();
 
 		try {
@@ -227,7 +229,7 @@ public class FileManager {
 		}
 
 		for (int i = 0; i < fines.size(); i++) {
-			if (fines.get(i).getOwner().getUsername().equals(username)) {
+			if (fines.get(i).getOwner().getUserNum().equals(usernum)) {
 				foundfines.add(fines.get(i));
 			}
 		}
@@ -235,7 +237,7 @@ public class FileManager {
 		return foundfines;
 	}
 
-	public static void updateFines(String username, ArrayList<Fine> updatedfines, String filename) {
+	public static void updateFines(String usernum, ArrayList<Fine> updatedfines, String filename) {
 
 		try {
 			FileInputStream fin = new FileInputStream(filename);
@@ -250,7 +252,7 @@ public class FileManager {
 		}
 
 		for (int i = 0; i < fines.size(); i++) {
-			if (fines.get(i).getOwner().getUsername().equals(username)) {
+			if (fines.get(i).getOwner().getUserNum().equals(usernum)) {
 				fines.remove(i);
 			}
 		}

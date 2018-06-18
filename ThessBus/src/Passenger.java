@@ -18,15 +18,28 @@ public class Passenger extends User implements Serializable{
 	//Price * 2 for normal
 	//Price * 1 for reduced
 	private int check;
-	
 	private ArrayList<Product> products = new ArrayList<>();
-	
 	//An to apothikeuoume na mi to kanei remove
 	private ArrayList<Fine> fines = new ArrayList<>();
 	
 	
-	public Passenger(String username, String password, String email, String cardNum, String id, String phoneNum, String passport, double balance) {
+	public Passenger(String username, String password, String email, String cardNum,
+					 String id, String phoneNum, String passport, double balance) {
 		super(username, password);
+		
+		this.email = email;
+		this.cardNum = cardNum;
+		this.id = id;
+		this.phoneNum = phoneNum;
+		this.balance = balance;	
+		this.passport = passport;
+		
+		this.check = (this.passport.isEmpty())?2:1;
+	}
+	
+	public Passenger(String username, String password, String email, String cardNum, 
+					 String id, String phoneNum, String passport, double balance, String userNum) {
+		super(username, password, userNum);
 		
 		this.email = email;
 		this.cardNum = cardNum;

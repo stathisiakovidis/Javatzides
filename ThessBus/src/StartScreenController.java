@@ -68,7 +68,7 @@ public class StartScreenController extends MainController implements Initializab
 		ArrayList<String> choices = new ArrayList<>();
 		for (Fine f : Main.loginUser.getFines()) {
 			if(f.isPaid() == false)
-				choices.add("Date Time:" + f.getDate_time() + ", Bus:" + f.getBus() + ", Price"
+				choices.add("Date Time: " + f.getDate_time() + ", Bus: " + f.getBus() + ", Price: "
 							+ Double.toString(f.getPrice()));
 		}
 		
@@ -113,13 +113,13 @@ public class StartScreenController extends MainController implements Initializab
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		welcome.setText("Γεια σου, " + Main.loginUser.getUsername() + "!");
 		
-		fineLabel.setText("Έχεις (" + Main.loginUser.countUnpaidFines() + ") πρόστιμο/α απλήρωτο/α" 
+		fineLabel.setText("   Έχεις (" + Main.loginUser.countUnpaidFines() + ") πρόστιμο/α απλήρωτο/α" 
 				/*") πρόστιμο/α που κοστίζουν: " + Double.toString(Main.loginUser.calculateTotalFines()) + "€"*/);
 		
 		if(Main.loginUser.countUnpaidFines() == 0) {
 			payNow.setMouseTransparent(true);
 			payNow.setEffect(new GaussianBlur());
-			fineLabel.setText("Δεν έχεις πρόστιμα προς πληρωμή");
+			fineLabel.setText("   Δεν έχεις πρόστιμα προς πληρωμή");
 		}
 		
 		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
