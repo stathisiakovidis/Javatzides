@@ -101,7 +101,7 @@
       </VBox>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ScrollPane layoutX="-2.0" layoutY="60.0" prefHeight="340.0" prefWidth="450.0">
+            <ScrollPane layoutX="-2.0" layoutY="60.0" prefHeight="340.0" prefWidth="445.0">
                <content>
                   <VBox fx:id="historyVBox" prefHeight="338.0" prefWidth="450.0">
                      <children>
@@ -120,7 +120,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </ScrollPane>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Ιστορικό">
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="450.0" text="Ιστορικό">
                <font>
                   <Font name="Berlin Sans FB" size="29.0" />
                </font>

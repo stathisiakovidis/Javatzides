@@ -31,7 +31,7 @@ public class Fine implements Serializable {
 	
 	public void countPrice()
 	{
-		this.price = 60/owner.getCheck();
+		this.price = 30*owner.getCheck();
 	}
 
 	public double getPrice() {

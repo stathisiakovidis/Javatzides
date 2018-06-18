@@ -13,7 +13,7 @@ public class Passenger extends User implements Serializable{
 	private String phoneNum;
 	private String passport;
 	private double balance;
-	private double totalFines=0;
+	private double totalFines;
 	//Checks if the passenger if reduced.
 	//Price * 2 for normal
 	//Price * 1 for reduced
@@ -63,8 +63,36 @@ public class Passenger extends User implements Serializable{
 		
 	}*/
 	
+	public int countNotValidCards() {
+		int count = 0;
+		for (Product product : products) {
+			if(((Card) product).isValid() == false)
+				count++;
+		}
+		return count;
+	}
+	
+	public int countMultiWayNotValidatedTickets() {
+		int count = 0;
+		for (Product product : products) {
+			if(((Ticket) product).getRemaining_routes() > 0)
+				count++;
+		}
+		return count;
+	}
+	
+	public int countUnpaidFines() {
+		int count = 0;
+		for(Fine fine: fines) {
+			 if(fine.isPaid() == false)
+				 count++;
+		}
+		return count;
+	}
+	
 	public double calculateTotalFines()
 	{	
+		totalFines = 0;
 		for(Fine fine: fines) {
 			this.totalFines += fine.getPrice();
 		}
