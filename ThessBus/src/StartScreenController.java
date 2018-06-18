@@ -173,36 +173,24 @@ public class StartScreenController extends MainController implements Initializab
 											 "είναι εκτός των χρονικών ορίων που ορίζονται γι αυτο!" + System.lineSeparator() +
 											 "ΣΥΝΕΧΕΙΑ;");
 						Optional<ButtonType> result1 = alert.showAndWait();
-						if(result1.get() == ButtonType.CANCEL) {
-							Main.getStagefromEvent(e).show();
+						if(result1.get() == ButtonType.CANCEL)
 							break;
-						}
 					}
 					
-					if (p.getPrice() <= Main.loginUser.getBalance()) {
-						((Ticket)p).Refresh_num_of_routes();
-						((Ticket)p).setValidation_date_time();
-						FileManager.updateProduct(p, "Products.dat");
+					((Ticket)p).Refresh_num_of_routes();
+					((Ticket)p).setValidation_date_time();
+					FileManager.updateProduct(p, "Products.dat");
 						
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Alert");
-						alert.setHeaderText(null);
-						alert.setContentText("Το εισιτήριο σου επικυρώθηκε");
-						alert.showAndWait();
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Alert");
+					alert.setHeaderText(null);
+					alert.setContentText("Το εισιτήριο σου επικυρώθηκε");
+					alert.showAndWait();
 						
-						//initialize();
-					} 
-					else {
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Alert");
-						alert.setHeaderText(null);
-						alert.setContentText("Το υπόλοιπό σου δεν επαρκεί!");
-						alert.showAndWait();
-					}
+					//initialize();
 
 				}
 			}
 		}
 	}
-
 }
