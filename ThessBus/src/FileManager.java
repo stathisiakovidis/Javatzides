@@ -122,7 +122,7 @@ public class FileManager {
 			// read previous list of products from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			products = (ArrayList) ois.readObject();
+			products = (ArrayList<Product>) ois.readObject();
 			// add the new products
 			products.add(producttoInsert);
 			oos.writeObject(products);
@@ -154,7 +154,7 @@ public class FileManager {
 		try {
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			products = (ArrayList) ois.readObject();
+			products = (ArrayList<Product>) ois.readObject();
 			for (int i = 0; i < products.size(); i++) {
 				if (products.get(i).getOwner().getUserNum().equals(usernum)) {
 					foundproducts.add(products.get(i));
