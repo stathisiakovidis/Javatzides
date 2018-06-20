@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PurchaseDataController">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PurchaseDataController">
    <items>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -55,7 +55,7 @@
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </Text>
-            <Hyperlink layoutX="61.0" layoutY="33.0" text="Πίσω" />
+            <Hyperlink layoutX="61.0" layoutY="33.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
             <Text layoutX="62.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αγοράς/Επικύρωσης ">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />

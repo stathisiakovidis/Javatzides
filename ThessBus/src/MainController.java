@@ -186,7 +186,18 @@ public class MainController {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("ThessBus: StartScreen");
 			primaryStage.show();
-		} else { // RegisterScreen.fxml, VisitorScreen.fxml
+		} 
+		else if(fxmlFile.contains("PurchaseData.fxml")) {
+			loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
+			Parent root = null;
+			root = loader.load();
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("ThessBus: Inspector");
+			primaryStage.show();
+			
+		}
+		else { // RegisterScreen.fxml, VisitorScreen.fxml
 			loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
 			Parent root = null;
 			root = loader.load();
