@@ -56,7 +56,7 @@ public class PurchaseDataController extends MainController implements Initializa
         	busField.setText(((Ticket) productChecked).getBus());
         	
         	lastValidationDateTimeField.setText("-");
-        	if(((Ticket) productChecked).getNo_of_routes() != 1) {
+        	if(((Ticket) productChecked).getNo_of_routes() != 1 && ((Ticket) productChecked).getValidation_date_time() != null) {
         		String validationDateTime = ((Ticket) productChecked).getValidation_date_time();
         		lastValidationDateTimeField.setText(validationDateTime.substring(0, 13) + ":" + validationDateTime.substring(13, 15) +
         										":" + validationDateTime.substring(15, 17));
