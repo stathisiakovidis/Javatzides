@@ -1,44 +1,43 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StartScreenController extends MainController implements Initializable {
-	
-	@FXML private Label usernameMenu;
-	@FXML private Label balanceMenu;
-	@FXML private Label welcome;
-	@FXML private Label fineLabel;
-	@FXML private Hyperlink payNow;
-	@FXML private VBox payNowPane;
+	@FXML
+	private Label usernameMenu;
+	@FXML
+	private Label balanceMenu;
+	@FXML
+	private Label welcome;
+	@FXML
+	private Label fineLabel;
+	@FXML
+	private Hyperlink payNow;
+	@FXML private Pane payNowPane;
+	@FXML
+	private Label warningLabel;
+	@FXML
+	private Button okButton;
+	private Card falseProduct;
 
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -83,7 +82,6 @@ public class StartScreenController extends MainController implements Initializab
 		dialog.setTitle("Pay Fine");
 		dialog.setHeaderText(null);
 		dialog.setContentText("Διάλεξε το πρόστιμο" + System.lineSeparator() +"που θέλεις να πληρώσεις: ");
-		dialog.setGraphic(null);
 		Optional<String> result = dialog.showAndWait();
 		
 		if (result.isPresent()) {
@@ -107,6 +105,7 @@ public class StartScreenController extends MainController implements Initializab
 						alert.setHeaderText(null);
 						alert.setContentText("Το υπόλοιπό σου δεν επαρκεί!");
 						alert.showAndWait();
+						break;
 					}
 
 				}
@@ -130,30 +129,20 @@ public class StartScreenController extends MainController implements Initializab
 		}
 		
 		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
-			HBox MultiWayTicketsHBox = new HBox();
-			MultiWayTicketsHBox.setSpacing(30);
-			MultiWayTicketsHBox.setPadding(new Insets(0, 0, 0, 20));
-			
-			Label multiWayTicketsLabel = new Label("Έχεις (" + Main.loginUser.countMultiWayNotValidatedTickets() + ") εισιτήριο/α πολλαπλών"
-									+ System.lineSeparator() + "διαδρομών σε εκκρεμότητα");
-			multiWayTicketsLabel.setFont(new Font(13));
-			Hyperlink viewTicketslink = new Hyperlink("Προβολή");
-			//viewTicketslink.setTextFill(new );
-			viewTicketslink.setUnderline(true);
-			viewTicketslink.setOnAction((ActionEvent e) -> {
-			    onClickViewTickets(e);
-			});
-			MultiWayTicketsHBox.getChildren().add(multiWayTicketsLabel);
-			MultiWayTicketsHBox.getChildren().add(viewTicketslink);
-			
-			payNowPane.getChildren().add(MultiWayTicketsHBox);
+			//label ενημέρωσης - κουμπί για λίστα επιλογής
 		}
-		
-		if(Main.loginUser.countNotValidCards() > 0) {
-			//label ενημέρωσης - κουμπί για την προβολή τους?
+		ArrayList<Product> products = Main.loginUser.getProducts();
+		for (Product product : products) {
+			if(product instanceof Card /*&& ((Card) product).isValid() == false*/ && ((Card) product).isFlag() == false) {
+				warningLabel.setVisible(true);
+				okButton.setVisible(true);
+				falseProduct = ((Card) product);
+			}
+				
 		}
 		
 	}
+<<<<<<< HEAD
 	
 	public void onClickViewTickets(ActionEvent e) {
 		ArrayList<String> choices = new ArrayList<>();
@@ -480,5 +469,13 @@ public class StartScreenController extends MainController implements Initializab
 			
 		});
 		
+=======
+	public void OnClickedOk(ActionEvent actionEvent)
+	{
+		warningLabel.setVisible(false);
+		okButton.setVisible(false);
+        falseProduct.setFlagTrue();
+>>>>>>> 3880393120ae473a62b51e54278605206c453eb5
 	}
+		
 }

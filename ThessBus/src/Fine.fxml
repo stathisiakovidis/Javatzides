@@ -11,21 +11,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.5, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FineController">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FineController">
 	<items>
 		<AnchorPane fx:id="leftPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 			<children>
-            <TextField fx:id="nameField" alignment="CENTER" layoutX="62.0" layoutY="105.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Ονόματος">
-               <font>
-                  <Font name="Baskerville Old Face" size="13.0" />
-               </font>
-            </TextField>
             <TextField fx:id="lastNameField" alignment="CENTER" layoutX="62.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Επωνύμου">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </TextField>
 				<Hyperlink fx:id="backHyperlink" layoutX="61.0" layoutY="33.0" onAction="#onHyperlinkGoBack" text="Πίσω" />
+            <TextField fx:id="nameField" alignment="CENTER" layoutX="62.0" layoutY="105.0" prefHeight="29.0" prefWidth="172.0" promptText="  Εισαγωγή Ονόματος">
+               <font>
+                  <Font name="Baskerville Old Face" size="13.0" />
+               </font>
+            </TextField>
             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="65.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/loginscreen_icons/αρχείο%20λήψης.png" />
@@ -61,7 +61,7 @@
                   <Image url="@../Images/id2.png" />
                </image>
             </ImageView>
-            <TextField fx:id="busField" alignment="CENTER" layoutX="62.0" layoutY="325.0" prefHeight="29.0" prefWidth="172.0" promptText="Αριθμός Λεωφορείου">
+            <TextField fx:id="busField" alignment="CENTER" layoutX="62.0" layoutY="325.0" prefHeight="29.0" prefWidth="172.0" promptText="     Εισαγωγή Ταυτότητας">
                <font>
                   <Font size="13.0" />
                </font>
@@ -73,14 +73,9 @@
             </Text>
             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="64.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/loginscreen_icons/bus-front_318-33490.jpg" />
+                  <Image url="@../Images/images.png" />
                </image>
             </ImageView>
-			</children>
-		</AnchorPane>
-		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-			<children>
-				<Button layoutX="103.0" layoutY="223.0" mnemonicParsing="false" text="Button" />
 			</children>
 		</AnchorPane>
       <Pane prefHeight="400.0" prefWidth="450.0">
@@ -100,7 +95,7 @@
                   <Image url="@../Images/phone.png" />
                </image>
             </ImageView>
-            <TextField fx:id="adressField" alignment="CENTER" layoutX="59.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="Διεύθυνση">
+            <TextField fx:id="adressField" alignment="CENTER" layoutX="59.0" layoutY="185.0" prefHeight="29.0" prefWidth="172.0" promptText="διεύθυνση">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
@@ -120,7 +115,7 @@
                   <Font size="14.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="62.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="62.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/location2.png" />
                </image>

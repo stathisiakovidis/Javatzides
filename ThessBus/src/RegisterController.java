@@ -44,83 +44,70 @@ public class RegisterController extends MainController implements Initializable 
 				|| passwordField2.getText().equals("")) {
 			showAlert("Complete the necessary fields");	
 		}
-		else {
-			if(passportField.getText().length()<=12) {
-				if(passwordField1.getText().equals(passwordField2.getText())) {
-					if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
-						if(emailField.getText().contains("@")) {
-							Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), 
-															emailField.getText(), cardField.getText(), 
-															idField.getText(), phoneField.getText(), 
-															passportField.getText(), 0);
-							
-							if(FileManager.searchUser(Main.loginUser.getUsername(), Main.loginUser.getPassword(), "Users.dat") == null) {
-								FileManager.InsertUser(Main.loginUser, "Users.dat");
-								
-								Stage stage = Main.getStagefromEvent(e);
-								stage.close();
-							
-								Stage primaryStage = new Stage();
-								FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
-								Parent root = null;
-								root = loader.load();					
-								Scene scene = new Scene(root);
-							
-								//setUserData so that the fxml file of the loader can be retrieved
-								scene.setUserData(loader);
-							
-								primaryStage.setScene(scene);
-								primaryStage.setTitle("ThessBus: StartScreen");
-								primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-											@Override
-											public void handle(WindowEvent arg0) {
-												Alert alert = new Alert(AlertType.CONFIRMATION);
-												alert.setTitle("Confirmation Alert");
-												alert.setHeaderText(null);
-												alert.setContentText("Θες σίγουρα να βγεις;");
+		else
+		{if(passportField.getText().length()<=12)
+			if(passwordField1.getText().equals(passwordField2.getText())) {
+				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
+					if(emailField.getText().contains("@")){
+				    Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
+					FileManager.InsertUser(Main.loginUser, "Users.dat");
+					//appear the start screen when he register
+			
+					Stage stage = Main.getStagefromEvent(e);
+					stage.close();
+					
+					Stage primaryStage = new Stage();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
+					Parent root = null;
+					root = loader.load();					
+					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+		    		scene.setUserData(loader);
+					
+					primaryStage.setScene(scene);
+					primaryStage.setTitle("ThessBus: StartScreen");
+					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+								@Override
+								public void handle(WindowEvent arg0) {
+									Alert alert = new Alert(AlertType.CONFIRMATION);
+									alert.setTitle("Confirmation Alert");
+									alert.setHeaderText(null);
+									alert.setContentText("Θες σίγουρα να βγεις;");
 
-												Optional<ButtonType> result = alert.showAndWait();
+									Optional<ButtonType> result = alert.showAndWait();
 
-												if (result.get() == ButtonType.OK) {
-													if (Main.loginUser != null) {
-														Passenger temp = new Passenger(Main.loginUser.getUsername(),
-																Main.loginUser.getPassword(), Main.loginUser.getEmail(),
-																Main.loginUser.getCardNum(), Main.loginUser.getId(),
-																Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-																Main.loginUser.getBalance());
+									if (result.get() == ButtonType.OK) {
+										if (Main.loginUser != null) {
+											Passenger temp = new Passenger(Main.loginUser.getUsername(),
+													Main.loginUser.getPassword(), Main.loginUser.getEmail(),
+													Main.loginUser.getCardNum(), Main.loginUser.getId(),
+													Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
+													Main.loginUser.getBalance());
 
-														//FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-														
-														/*FileManager.updateFines(Main.loginUser.getUsername(), 
-																Main.loginUser.getFines(), "Fines.dat");*/
-														 
-													}
-												} 
-												else
-													arg0.consume();
-											}});
-								primaryStage.show();
-								System.out.println(Main.loginUser.getUsername());
-							}
-							else
-								showAlert("Είσαι ήδη εγγεγραμμένος! Πάνε πίσω και συνδέσου!");
-						} 
-						else {
+											//FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+											/*
+											 * FileManager.updateFines(Main.loginUser.getUsername(),
+											 * Main.loginUser.getFines(), "Fines.dat");
+											 */
+										}
+									} else
+										arg0.consume();
+								}});
+							primaryStage.show();
+							System.out.println(Main.loginUser.getUsername());
+						} else {
 							showAlert("The email address is not valid");
 						}
-					} 
-					else {
+					} else {
 						showAlert("The phone number must have 10 digits, and only digits");
 					}
-				} 
-				else {
+				} else {
 					showAlert("Passwords do not match");
 				}
-			}
 			else {
 				showAlert("The passport number must have 12 digits");
 			}
-			
 		}
 
 	}

@@ -55,7 +55,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not Found");
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -96,10 +96,12 @@ public class FileManager {
 
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getUserNum().equals(user.getUserNum())) {
+				System.out.println("Passenger found");
 				users.remove(i);
 				users.add(newUser);
 				found = true;
 				try {
+					System.out.println("Passenger updated");
 					FileOutputStream fout = new FileOutputStream(filename);
 					ObjectOutputStream oos = new ObjectOutputStream(fout);
 					oos.writeObject(users);
@@ -119,16 +121,18 @@ public class FileManager {
 		try {
 			FileOutputStream fout = new FileOutputStream(filename);
 			oos = new ObjectOutputStream(fout);
+
 			// read previous list of products from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			products = (ArrayList<Product>) ois.readObject();
+			products = (ArrayList) ois.readObject();
 			// add the new products
 			products.add(producttoInsert);
 			oos.writeObject(products);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("geia");
 			// if io exception then first time adding a product so no need to read the list
 				products.add(producttoInsert);
 			try {
@@ -137,6 +141,7 @@ public class FileManager {
 				e1.printStackTrace();
 			}
 		} catch (ClassNotFoundException e) {
+			System.out.println("geia 1");
 			// if class not found then first time adding a product so no need to read the
 			// list
 				products.add(producttoInsert);
@@ -154,14 +159,14 @@ public class FileManager {
 		try {
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			products = (ArrayList<Product>) ois.readObject();
+			products = (ArrayList) ois.readObject();
 			for (int i = 0; i < products.size(); i++) {
 				if (products.get(i).getOwner().getUserNum().equals(usernum)) {
 					foundproducts.add(products.get(i));
 				}
 			}
 		} catch (FileNotFoundException e) {
-			
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -172,44 +177,6 @@ public class FileManager {
 
 		return foundproducts;
 	}
-	
-	public static void updateProduct(Product product, String filename) {
-		boolean found;
-
-		try {
-			FileInputStream fin = new FileInputStream(filename);
-			ObjectInputStream ois = new ObjectInputStream(fin);
-			products = (ArrayList<Product>) ois.readObject();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		for (int i = 0; i < products.size(); i++) {
-			if (products.get(i).getOwner().getUserNum().equals(product.getOwner().getUserNum()) && 
-				products.get(i).getDate_time().equals(product.getDate_time())) {
-
-				products.remove(i);
-				products.add(product);
-				found = true;
-				try {
-					FileOutputStream fout = new FileOutputStream(filename);
-					ObjectOutputStream oos = new ObjectOutputStream(fout);
-					oos.writeObject(products);
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-
-	}
-
 
 	public static void insertFine(Fine issued_fine, String filename) {
 		ObjectOutputStream oos = null;
@@ -254,7 +221,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			fines = (ArrayList) ois.readObject();
 		} catch (FileNotFoundException e) {
-			
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -277,7 +244,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			fines = (ArrayList) ois.readObject();
 		} catch (FileNotFoundException e) {
-			
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

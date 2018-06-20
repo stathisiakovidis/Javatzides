@@ -95,7 +95,20 @@ public class Passenger extends User implements Serializable{
 		return count;
 	}
 	
+<<<<<<< HEAD
 	//Method that updates passenger's balance every time a deposit is made
+=======
+	public double calculateTotalFines()
+	{	
+		totalFines = 0;
+		for(Fine fine: fines) {
+			this.totalFines += fine.getPrice();
+		}
+		return this.totalFines;
+	}
+	
+	
+>>>>>>> 3880393120ae473a62b51e54278605206c453eb5
 	public void updateBalance(double additionalMoney) {
 		balance += additionalMoney;
 	}

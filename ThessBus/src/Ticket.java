@@ -34,31 +34,30 @@ public class Ticket extends Product implements Serializable {
 	
     public boolean isValid() {
 		
-    	String hoursText = getCurrentTime().substring(11, 13);
-    	String minutesText = getCurrentTime().substring(13, 15);
-    	int time = Integer.parseInt(hoursText) * 3600 + Integer.parseInt(minutesText) * 60;
-    	
-    	String purchaseHoursText = getDate_time().substring(11, 13);
-    	String purchaseMinutesText = getDate_time().substring(13, 15);
-    	int purchaseTime = Integer.parseInt(purchaseHoursText) * 3600 + Integer.parseInt(purchaseMinutesText) * 60;
-    	
+		String timeText = getCurrentTime().substring(10, 14);
+		int time = Integer.parseInt(timeText);
+		
+		String purchaseTimeText = getDate_time().substring(10, 14);
+		int purchaseTime = Integer.parseInt(purchaseTimeText);
+				
 		int duration = 0;
 		/*if(no_of_routes > 1) {*/
 			
 			switch(no_of_routes) {
 			case 2:
-				duration = 70 * 60;
+				duration = 70;
 				break;
 			case 3:
-				duration = 90 * 60;
+				duration = 90;
 				break;
 			case 4:
-				duration = 120 * 60;
+				duration = 120;
 				break;
 			}
 			
-			if(time > purchaseTime + duration) 
+			if(time > purchaseTime + duration) {
 				return false;
+			}
 			else 
 				return true;
 			
@@ -88,10 +87,6 @@ public class Ticket extends Product implements Serializable {
 
 	public int getRemaining_routes() {
 		return remaining_routes;
-	}
-
-	public void setBus(String bus) {
-		this.bus = bus;
 	}
 	
 }
