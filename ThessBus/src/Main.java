@@ -32,7 +32,7 @@ public class Main extends Application {
 		//FileManager.InsertUser(temp, "Users.dat");
 		
 		
-		//Hardcoded insertion of inpectors
+		//Hardcoded insertion of inspectors
 		TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector1");
 		FileManager.InsertUser(tempInsp, "Inspectors.dat");
 		
