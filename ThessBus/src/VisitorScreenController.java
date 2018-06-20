@@ -17,7 +17,8 @@ import javafx.stage.Stage;
 public class VisitorScreenController extends MainController implements Initializable{
 
 	@FXML private VBox navBarVBox;
-		
+	
+	//The ticket panel appears with transparented buttons
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Ticket_Panel.fxml"));
@@ -49,7 +50,7 @@ public class VisitorScreenController extends MainController implements Initializ
 		primaryStage.setTitle("ThessBus: Ticket Purchase");
 		primaryStage.show();
 	}
-	
+	//The card panel appears with transparented buttons
 	public void onClickedCard(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Card.fxml"));
