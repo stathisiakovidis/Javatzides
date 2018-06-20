@@ -15,13 +15,13 @@ Username: inspector2, Password: 12345
 
 ### Authors
 
-ΖΑΓΟΡΑ ΜΑΡΙΑ, dai17175@uom.edu.gr
-ΚΕΝΖΥ-ΤΖΙΑΤΖΙΟΥ ΜΙΧΑΕΛΑ ΛΟΥΚΙΑ, dai17123@uom.edu.gr
-ΚΟΥΛΑΞΙΔΗΣ ΓΙΩΡΓΟΣ, dai17177@uom.edu.gr
-ΕΡΜΙΔΗΣ ΑΛΕΞΑΝΔΡΟΣ, dai17119@uom.edu.gr
-ΙΑΚΩΒΙΔΗΣ ΕΥΣΤΑΘΙΟΣ, dai17168@uom.edu.gr
-ΚΙΘΑΡΙΔΗΣ ΣΟΦΟΚΛΗΣ, dai17152@uom.edu.gr
-ΤΣΟΝΑΣ ΝΕΣΤΟΡΑΣ, dai17114@uom.edu.gr
-Dimitrios Karamanis, dai17132@uom.edu.gr
-ΝΗΣΤΙΚΑΚΗ ΣΤΥΛΙΑΝΗ, dai17024@uom.edu.gr
-ΑΝΤΩΝΙΑΔΗΣ-ΛΕΙΒΑΔΑΣ ΔΙΟΝΥΣΙΟΣ, dai17104@uom.edu.gr
+* ΖΑΓΟΡΑ ΜΑΡΙΑ, dai17175@uom.edu.gr
+* ΚΕΝΖΥ-ΤΖΙΑΤΖΙΟΥ ΜΙΧΑΕΛΑ ΛΟΥΚΙΑ, dai17123@uom.edu.gr
+* ΚΟΥΛΑΞΙΔΗΣ ΓΙΩΡΓΟΣ, dai17177@uom.edu.gr
+* ΕΡΜΙΔΗΣ ΑΛΕΞΑΝΔΡΟΣ, dai17119@uom.edu.gr
+* ΙΑΚΩΒΙΔΗΣ ΕΥΣΤΑΘΙΟΣ, dai17168@uom.edu.gr
+* ΚΙΘΑΡΙΔΗΣ ΣΟΦΟΚΛΗΣ, dai17152@uom.edu.gr
+* ΤΣΟΝΑΣ ΝΕΣΤΟΡΑΣ, dai17114@uom.edu.gr
+* Dimitrios Karamanis, dai17132@uom.edu.gr
+* ΝΗΣΤΙΚΑΚΗ ΣΤΥΛΙΑΝΗ, dai17024@uom.edu.gr
+* ΑΝΤΩΝΙΑΔΗΣ-ΛΕΙΒΑΔΑΣ ΔΙΟΝΥΣΙΟΣ, dai17104@uom.edu.gr
