@@ -12,14 +12,15 @@ import java.util.Set;
 
 import com.google.zxing.NotFoundException;
 
+//Class that extends User superclass and models ticket inspectors
 public class TicketInspector extends User implements Serializable {
 
+	//Attributes
 	public String name;
-	public String inspector_num;
-	//ενδεικτικές διάρκειες δρομολογίων 
-	public HashMap<String, Integer> durations = new HashMap<>(); 
+	public String inspector_num; 
+	public HashMap<String, Integer> durations = new HashMap<>();	//estimated bus routes durations
 
-	
+	//Constructor
 	public TicketInspector(String aName, String aPassword, String username) {
 		super(username, aPassword);
 		this.name = aName;
@@ -88,6 +89,8 @@ public class TicketInspector extends User implements Serializable {
 		
 	}
 	
+	//Method called when a ticket inspector has scanned a qr code,
+	//so as to decode it and return the product number encrypted in it
 	public Product browseQR(String filepath_of_qr) throws FileNotFoundException, NotFoundException, IOException {			
 		String product_num;
 		Product product;
@@ -99,11 +102,10 @@ public class TicketInspector extends User implements Serializable {
 		return product;
 	}
 	
+	//Method indicating whether a passenger should be fined depending on his product's data
 	//duration = {70, 90, 120, 1, 3, 6, 12} depending on the product (multi-way ticket or card)
-	//bus, validation = 0, null if product = card
-	//validation = null if product = 1way ticket
-	
-	//τι γίνεται αν κάποιος παρει λεωφ λιγο πριν τις 12
+	//bus, validation_date_time = 0, null if product = card
+	//validation_date_time = null if the checked product is a one-way ticket
 	public boolean ticketValidation(String date_time, int duration, String bus, String validation_date_time, double price) throws ParseException {
 		Set<Integer> foo = new HashSet<>();
 		foo.add(1);
@@ -122,12 +124,12 @@ public class TicketInspector extends User implements Serializable {
 		date = sdf.parse(dates);
 		time = sdf2.parse(times);
 		
-		//Date current_date = Calendar.getInstance().getTime();
 		Date current_date;
 		current_date = sdf.parse(sdf.format(new Date()));
 		Date current_time;
 		current_time = sdf2.parse(sdf2.format(new Date()));
 		
+		//Checking if the product is a card
 		if(foo.contains(duration)) {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(date);
@@ -135,21 +137,23 @@ public class TicketInspector extends User implements Serializable {
 			Date expiration_date = cal.getTime();
 			expiration_date = sdf.parse(sdf.format(expiration_date));
 			
-			//Η κάρτα δεν έληξε
+			//Valid card
 			if((expiration_date.after(current_date)) || (expiration_date.equals(current_date))) {
 				return true;
 			}
-			else //Η κάρτα έχει λήξει
+			else //Not valid card
 				return false;
 			
 		}
 		
+		//If the product the inspector checking is a ticket
 		if(date.equals(current_date)) {
 		
-			//Έλεγχος τιμής εισιτηρίου σε περίπτωση που το λεωφορείο είναι το 78Ν
+			//Checking whether a passenger should be fined on 'N1' or 'N1A' where he should have validated a specific ticket
 			if((bus.equals("N1") || bus.equals("N1A")) && (price != 2.0))
 				return false;
 			
+			//One-way tickets test
 			if(validation_date_time.equals("-") == false) {
 				String validation_times = validation_date_time.substring(11, 19);
 				Date validation_time = null;
@@ -165,6 +169,7 @@ public class TicketInspector extends User implements Serializable {
 				}
 				return false;
 			}
+			//Multi-way tickets test
 			else {
 				long diff2 = current_time.getTime() - time.getTime();
 				if(diff2/(1000*60) > durations.get(bus))
@@ -178,17 +183,3 @@ public class TicketInspector extends User implements Serializable {
 	}
 
 }
-
-//Χρειάζεται να μπουν οι εντολές για ανανέωση των αρχείων στην closeOperation?? ν
-//Να αλλάξει ο τρόπος που τσεκάρεται ο χρήστης στη FileManager για προϊόντα και πρόστιμα 
-//Να μπουν και στο SignOut ν
-//Να προστεθούν εντολές για retrieve προϊόντων και προστίμων κατά την εγγραφή και τη σύνδεση
-//Πρώτη φορά που αγοράζεται εισιτήριο αποθήκευση της εικόνας ν
-//Alerts στο login να μην εξαφανίζουν παράθυρο ν 
-//Μηνύματα πληροφόρησης στο χρήστη και ελεγκτή για αγορά προϊόντος, έκδοση προστίμου ν
-//Να επιστρέφεται boolean μεταβλητή ή το μηνυμα που θα εμφανιστεί στον ελεγκτή; - ticketValidation ν
-//Register -> StartScreen αλλαγή stage ν
-//Αυτόματη συμπλήρωση πεδίων στο navBar και την αρχική ν
-//Αυτόματη εμφάνιση μηνυμάτων για πρόστιμα, εισιτήρια πολλαπλών και ληγμένες κάρτες -> Αρχική
-//DepositController!! ν
-//Έλεγχος εισιτηρίου: να δοκιμαστούν διάφορα
