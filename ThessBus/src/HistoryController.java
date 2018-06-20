@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -81,6 +83,20 @@ public class HistoryController extends MainController implements Initializable {
 					hbox.getChildren().add(busLabel);
 					hbox.getChildren().add(priceLabel);
 					historyVBox.getChildren().add(hbox);
+					hbox.setOnMousePressed(e -> {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Product's Qr Code");
+						alert.setHeaderText(null);
+						alert.setContentText("Ημερομηνία: " + dateTime.substring(0, 10) + " "
+								+ dateTime.substring(11, 13) + ":" + dateTime.substring(13, 15) + ":"
+								+ dateTime.substring(15, 17));
+						ImageView temp = new ImageView();
+						temp.setImage(QRcode.printQRCode(product.getQR_code()));
+						temp.setFitHeight(200);
+						temp.setFitWidth(200);
+						alert.setGraphic(temp);
+						alert.showAndWait();
+					});
 				}
 				
 			}
