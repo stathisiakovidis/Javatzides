@@ -4,24 +4,21 @@ import java.io.Serializable;
 import com.google.zxing.WriterException;
 
 public class Card extends Product implements Serializable {
-	
+
 	private int duration;
 	private boolean flag = false;
 	
-
+	//Card's class constructor
 	public Card(double price,Passenger owner, String type, int duration) {
 		super(price, owner, type);
 		this.duration = duration;
 	}
 	
-	public int getDuration() {
-		return duration;
-	}
-	
+	//Using this method from static QrCode class to generate unique qr code for card.
 	public void setQR () throws WriterException, IOException {
 		super.setQR();
 	}
-
+	//Checks card's validation.
 	public boolean isValid() {
 		String currentYear = getCurrentTime().substring(0, 3);
 		String currentMonth = getCurrentTime().substring(5, 7);
@@ -60,6 +57,8 @@ public class Card extends Product implements Serializable {
 			return true;
 		
 	}	
+	
+	//These methods are used for a Label which contains a message if the card has expired.
 	public boolean isFlag() {
 		return flag;
 	}
@@ -67,6 +66,11 @@ public class Card extends Product implements Serializable {
 	public void setFlagTrue()
 	{
 		flag = true;
+	}
+	
+	//Generating getters and setters.
+	public int getDuration() {
+		return duration;
 	}
 
 }
