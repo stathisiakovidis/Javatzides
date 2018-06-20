@@ -7,7 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class FileManager {
-
+	
+	//3 Types of data to be saved users, products, fines. Saving arraylists as objects.
 	public static ArrayList<User> users = new ArrayList<User>();
 	public static ArrayList<Product> products = new ArrayList<Product>();
 	public static ArrayList<Fine> fines = new ArrayList<Fine>();
@@ -51,6 +52,7 @@ public class FileManager {
 		boolean found = false;
 		User foundUser = null;
 		try {
+			//Read list of users
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
@@ -62,7 +64,8 @@ public class FileManager {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
+		//If given username equals with one on the retrieved list of users return the found user. Else return null
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)) {
 				found = true;
@@ -83,6 +86,7 @@ public class FileManager {
 		boolean found;
 
 		try {
+			//Read all passengers
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
@@ -94,6 +98,7 @@ public class FileManager {
 			e.printStackTrace();
 		}
 
+		//If given user equals with one on the retrieved list of users remove the latter and add the given one
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getUserNum().equals(user.getUserNum())) {
 				System.out.println("Passenger found");
@@ -157,6 +162,7 @@ public class FileManager {
 		ArrayList<Product> foundproducts = new ArrayList<Product>();
 
 		try {
+			
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			products = (ArrayList) ois.readObject();
@@ -304,6 +310,7 @@ public class FileManager {
 		ArrayList<Object> listOfItems = new ArrayList<>();
 
 		try {
+			//Read Items from file
 			FileInputStream fin = new FileInputStream(filename);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			listOfItems = (ArrayList) ois.readObject();
@@ -314,13 +321,15 @@ public class FileManager {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
+		//If product, search a products with the product num
 		if (filename.equals("Products.dat")) {
 			for (int i = 0; i < listOfItems.size(); i++) {
 				if (((Product) listOfItems.get(i)).getProduct_num().equals(searchvalue)) {
 					return listOfItems.get(i);
 				}
 			}
+		//If user, search with username
 		} else if (filename.equals("Users.dat")) {
 			for (int i = 0; i < listOfItems.size(); i++) {
 				if (((User) listOfItems.get(i)).getUsername().equals(searchvalue)) {

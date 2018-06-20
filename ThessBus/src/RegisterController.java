@@ -40,22 +40,26 @@ public class RegisterController extends MainController implements Initializable 
 	public TextField cardField;
 
 	public void onClickedRegister(ActionEvent e) throws IOException {
+		
+		//Check if user has filled all required fields
 		if (nameField.getText().equals("") || surnameField.getText().equals("") || passwordField1.getText().equals("")
 				|| passwordField2.getText().equals("")) {
 			showAlert("Complete the necessary fields");	
 		}
 		else
-		{if(passportField.getText().length()<=12)
+		{
+		//Apply some form restrictions
+		if(passportField.getText().length()<=12)
 			if(passwordField1.getText().equals(passwordField2.getText())) {
 				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
 					if(emailField.getText().contains("@")){
+					//If all user input is correct create and save the new user credentials
 				    Main.loginUser = new Passenger(nameField.getText()+" "+surnameField.getText(), passwordField1.getText(), emailField.getText(), cardField.getText(), idField.getText(), phoneField.getText(), passportField.getText(),0);
 					FileManager.InsertUser(Main.loginUser, "Users.dat");
+					
 					//appear the start screen when he register
-			
 					Stage stage = Main.getStagefromEvent(e);
 					stage.close();
-					
 					Stage primaryStage = new Stage();
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 					Parent root = null;
@@ -67,6 +71,8 @@ public class RegisterController extends MainController implements Initializable 
 					
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("ThessBus: StartScreen");
+					
+					//What happens when user closes window
 					primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 								@Override
 								public void handle(WindowEvent arg0) {
@@ -95,7 +101,6 @@ public class RegisterController extends MainController implements Initializable 
 										arg0.consume();
 								}});
 							primaryStage.show();
-							System.out.println(Main.loginUser.getUsername());
 						} else {
 							showAlert("The email address is not valid");
 						}

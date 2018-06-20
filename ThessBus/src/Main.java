@@ -31,6 +31,8 @@ public class Main extends Application {
 		//Passenger temp = new Passenger("alex bla", "123", "fd@asd", "1234567890", "id", "1234567890", "22", 40);
 		//FileManager.InsertUser(temp, "Users.dat");
 		
+		
+		//Hardcoded insertion of inpectors
 		TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector1");
 		FileManager.InsertUser(tempInsp, "Inspectors.dat");
 		
@@ -43,6 +45,7 @@ public class Main extends Application {
 		TicketInspector tempInsp4 = new TicketInspector("Xristina Papapasxali", "2121", "inspector4");
 		FileManager.InsertUser(tempInsp4, "Inspectors.dat");
 		
+		//Load fxml and generate GUI
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
 		Scene scene = new Scene(root);
