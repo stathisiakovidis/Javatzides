@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 public class InformationController extends MainController implements Initializable{
-
+	//Just a class for the text on the information pane
 	@FXML private Label usernameMenu;
 	@FXML private Label balanceMenu;
 	

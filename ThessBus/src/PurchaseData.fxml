@@ -30,6 +30,7 @@
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </TextField>
+            <TextField fx:id="productNumField" layoutX="61.0" layoutY="272.0" prefHeight="25.0" prefWidth="172.0" />
             <Text layoutX="63.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Επώνυμο">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
@@ -71,7 +72,6 @@
                   <Font name="Baskerville Old Face" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="productNumField" layoutX="61.0" layoutY="272.0" prefHeight="25.0" prefWidth="172.0" />
             <ImageView fitHeight="20.0" fitWidth="18.0" layoutX="64.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/euro-currency-symbol.png" />
@@ -136,7 +136,6 @@
                   <Image url="@../Images/circular-clock-.png" />
                </image>
             </ImageView>
-            <Button fx:id="checkDataButton" layoutX="59.0" layoutY="322.0" mnemonicParsing="false" onAction="#onClickedCheckData" prefHeight="40.0" prefWidth="172.0" text="Έλεγχος Στοιχείων" />
             <Text layoutX="60.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Τελευταίας Επικύρωσης ">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
@@ -147,6 +146,7 @@
                   <Font size="13.0" />
                </font>
             </TextField>
+            <Button fx:id="checkDataButton" layoutX="59.0" layoutY="322.0" mnemonicParsing="false" onAction="#onClickedCheckData" prefHeight="40.0" prefWidth="172.0" text="Έλεγχος Στοιχείων" />
             <Text layoutX="63.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αριθμός διαδρομών">
                <font>
                   <Font name="Baskerville Old Face" size="13.0" />
