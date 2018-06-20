@@ -55,7 +55,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			users = (ArrayList<User>) ois.readObject();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
