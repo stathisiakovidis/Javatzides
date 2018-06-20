@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -32,6 +33,8 @@ public class StartScreenController extends MainController implements Initializab
 	@FXML
 	private Hyperlink payNow;
 	@FXML private Pane payNowPane;
+	@FXML
+	private Label cardLabel;
 
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -109,6 +112,7 @@ public class StartScreenController extends MainController implements Initializab
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		usernameMenu.setText(Main.loginUser.getUsername());
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		welcome.setText("Γεια σου, " + Main.loginUser.getUsername() + "!");
@@ -127,9 +131,15 @@ public class StartScreenController extends MainController implements Initializab
 		}
 		
 		if(Main.loginUser.countNotValidCards() > 0) {
-			//label ενημέρωσης - κουμπί για την προβολή τους?
+			ArrayList<Product> products = Main.loginUser.getProducts();
+			for(int i = 0 ; i<products.size(); i++)
+			{
+				if(products.get(i) instanceof Card /*&& ((Card) products.get(i)).isValid() == false*/ && ((Card) products.get(i)).getFlag() == false)
+				{
+					cardLabel.setVisible(true);
+					((Card) products.get(i)).flag = true;
+				}
+			}	
 		}
-		
 	}
-
 }

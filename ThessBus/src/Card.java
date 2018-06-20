@@ -6,6 +6,7 @@ import com.google.zxing.WriterException;
 public class Card extends Product implements Serializable {
 	
 	private int duration;
+	public boolean flag = false; 
 
 	public Card(double price,Passenger owner, String type, int duration) {
 		super(price, owner, type);
@@ -58,5 +59,13 @@ public class Card extends Product implements Serializable {
 			return true;
 		
 	}
+	public void appearInStartScreen(boolean flag)
+	{
+		flag = true;
+	}
+	public boolean getFlag() {
+		return flag;
+	}
+	
 
 }
