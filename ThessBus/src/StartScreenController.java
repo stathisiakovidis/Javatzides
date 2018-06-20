@@ -159,7 +159,7 @@ public class StartScreenController extends MainController implements Initializab
 		}
 		ArrayList<Product> products = Main.loginUser.getProducts();
 		for (Product product : products) {
-			if(product instanceof Card /*&& ((Card) product).isValid() == false*/ && ((Card) product).isFlag() == false) {
+			if(product instanceof Card && ((Card) product).isValid() == false && ((Card) product).isFlag() == false) {
 				warningLabel.setVisible(true);
 				okButton.setVisible(true);
 				falseProduct = ((Card) product);
