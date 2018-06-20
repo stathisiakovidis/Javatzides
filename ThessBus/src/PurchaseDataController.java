@@ -33,6 +33,7 @@ public class PurchaseDataController extends MainController implements Initializa
 	
 	public void setDataToFields(Product productChecked, int typeOfProduct) {
 		
+		//Break username into firstname(first token) and lastname(second token)
 		String name="", surname ="";
         StringTokenizer st = new StringTokenizer(productChecked.getOwner().getUsername());
         name = st.nextToken();
@@ -40,12 +41,15 @@ public class PurchaseDataController extends MainController implements Initializa
         lastNameField.setText(surname);
         nameField.setText(name);
         
+        //Set date field
         String dateTime = productChecked.getDate_time();
         dateTimeField.setText(dateTime.substring(0, 13) + ":" + dateTime.substring(13, 15) + ":" + dateTime.substring(15, 17));
         
+        //Set productnum and price field
         productNumField.setText(productChecked.getProduct_num());
         priceField.setText(Double.toString(productChecked.getPrice()));
         
+        //Set fields according to radio button (if type of product is "καρτα" or "εισητηριο")
         if(typeOfProduct == 0) {
         	busField.setText("-");
         	lastValidationDateTimeField.setText("-");
@@ -70,6 +74,7 @@ public class PurchaseDataController extends MainController implements Initializa
 	
 	public void onClickedCheckData(ActionEvent actionEvent) throws NumberFormatException, ParseException {
 		int duration = 0;
+		//Check how many times a ticket can be validated and duration
 		if(routesField.getText().equals("Απεριορίστων διαδρομών")) {
 			String monthsubstring = typeProductField.getText().substring(7, 8);
 			monthsubstring = monthsubstring + (typeProductField.getText().substring(8, 9).equals(" ")?
@@ -89,7 +94,8 @@ public class PurchaseDataController extends MainController implements Initializa
 				break;
 			}
 		}
-				
+		
+		//Check if ticket is valid and issue fine
 		boolean valid = Main.loginIns.ticketValidation(dateTimeField.getText(), duration, busField.getText(), 
 									lastValidationDateTimeField.getText(), Double.parseDouble(priceField.getText()));
 		String contentText = (valid)?"Από τον έλεγχο του προϊόντος δεν προέκυψε ανάγκη για έκδοση προστίμου":

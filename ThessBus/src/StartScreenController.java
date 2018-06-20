@@ -32,6 +32,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class StartScreenController extends MainController implements Initializable {
+	//FXML labels 
 	@FXML
 	private Label usernameMenu;
 	@FXML
@@ -80,6 +81,7 @@ public class StartScreenController extends MainController implements Initializab
 		primaryStage.show();
 	}
 
+	//appear the list of the fines for the current user 
 	public void onClickPayNow(ActionEvent e) throws IOException {
 		ArrayList<String> choices = new ArrayList<>();
 		for (Fine f : Main.loginUser.getFines()) {
@@ -125,6 +127,7 @@ public class StartScreenController extends MainController implements Initializab
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//Set in start screen in the red frame if he has fines 
 		usernameMenu.setText(Main.loginUser.getUsername());
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		welcome.setText("Γεια σου, " + Main.loginUser.getUsername() + "!");
@@ -138,6 +141,7 @@ public class StartScreenController extends MainController implements Initializab
 			fineLabel.setText("   Δεν έχεις πρόστιμα προς πληρωμή");
 		}
 		
+		//Set in start screen in the red frame if he has multi way ticket  
 		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
 			HBox MultiWayTicketsHBox = new HBox();
 			MultiWayTicketsHBox.setSpacing(30);
@@ -157,6 +161,7 @@ public class StartScreenController extends MainController implements Initializab
 
 			payNowPane.getChildren().add(MultiWayTicketsHBox);
 		}
+		//Set in start screen in the red frame if he has not valid card 
 		ArrayList<Product> products = Main.loginUser.getProducts();
 		for (Product product : products) {
 			if(product instanceof Card && ((Card) product).isValid() == false && ((Card) product).isFlag() == false) {
@@ -169,6 +174,7 @@ public class StartScreenController extends MainController implements Initializab
 		
 	}
 	
+	//If he want to use the multi way ticket again
 	public void onClickViewTickets(ActionEvent e) {
 		ArrayList<String> choices = new ArrayList<>();
 		for (Product p: Main.loginUser.getProducts()) {
@@ -176,6 +182,7 @@ public class StartScreenController extends MainController implements Initializab
 				choices.add("Ημερομηνία επικύρωσης: " + p.getDate_time() + ", Απομένουσες χρήσεις: " + 
 							((Ticket)p).getRemaining_routes() + ", Τιμή: " + Double.toString(p.getPrice()) + "€");
 		}
+		
 		
 		Dialog<HashMap<String, String>> dialog = new Dialog<>();
 		dialog.setTitle("Validate Ticket");
@@ -448,7 +455,7 @@ public class StartScreenController extends MainController implements Initializab
 		});
 
 		Optional<HashMap<String, String>> result = dialog.showAndWait();
-		
+		//when the ticket and card is not valid 
 		result.ifPresent(r -> {
 		    if(r.get("ticket") != null && r.get("bus") != null) {
 		    	for (Product p : Main.loginUser.getProducts()) {
@@ -494,7 +501,7 @@ public class StartScreenController extends MainController implements Initializab
 			
 		});
 	}
-	
+	//Disappear the warning label for not valid card
 	public void OnClickedOk(ActionEvent actionEvent)
 	{
 		warningLabel.setVisible(false);
