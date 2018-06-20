@@ -84,6 +84,11 @@ public class Ticket extends Product implements Serializable {
 	public int getNo_of_routes() {
 		return no_of_routes;
 	}
+	
+
+	public void setBus(String bus) {
+		this.bus = bus;
+	}
 
 	public int getRemaining_routes() {
 		return remaining_routes;
