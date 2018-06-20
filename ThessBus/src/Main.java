@@ -32,7 +32,7 @@ public class Main extends Application {
 		FileManager.InsertUser(temp, "Users.dat");*/
 		
 		TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector12345");
-		FileManager.InsertUser(tempInsp, "Users.dat");
+		FileManager.InsertUser(tempInsp, "Inspectors.dat");
 		
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));

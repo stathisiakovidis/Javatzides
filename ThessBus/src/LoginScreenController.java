@@ -52,7 +52,7 @@ public class LoginScreenController extends MainController implements Initializab
 		else {
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
-						passwordField.getText(), "Users.dat");
+						passwordField.getText(), "Inspectors.dat");
 			}
 			else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
