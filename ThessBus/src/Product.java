@@ -11,7 +11,8 @@ import com.google.zxing.WriterException;
 import javafx.scene.image.Image;
 
 public abstract class Product implements Serializable {
-
+	
+	//Attributes
 	protected String date_time;
 	protected Passenger owner;
 	protected double price;
@@ -20,7 +21,7 @@ public abstract class Product implements Serializable {
 	protected byte[] QR_code;
 	protected Image qrImage;
 	
-	
+	//Constructor 
 	public Product(double price, Passenger owner, String type) {
 		this.date_time = getCurrentTime();
 		this.owner = owner;
@@ -35,6 +36,20 @@ public abstract class Product implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	//Prints the QR image
+	public void printQR() {
+		qrImage = QRcode.printQRCode(QR_code);
+	}
+	
+	public abstract boolean isValid() throws FileNotFoundException, NotFoundException, IOException;
+
+	
+	
+	//Setters and Getters for the class Product
+	public double getPrice() {
+		return price;
+	}
 
 	public void setProduct_num() {
 		this.product_num= date_time + owner.getUserNum();
@@ -48,12 +63,8 @@ public abstract class Product implements Serializable {
 		return owner;
 	}
 	
-	/*public void setDate_time() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar cal = Calendar.getInstance();
-		this.date_time = dateFormat.format(cal.getTime());
-	}*/
-
+	
+	//Returns date and time 
 	protected String getCurrentTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HHmmss");
 		Calendar cal = Calendar.getInstance();
@@ -64,15 +75,7 @@ public abstract class Product implements Serializable {
 		this.QR_code = QRcode.generateQRCode(product_num, 350, 350);
 	}
 	
-	public void printQR() {
-		qrImage = QRcode.printQRCode(QR_code);
-	}
 	
-	public abstract boolean isValid() throws FileNotFoundException, NotFoundException, IOException;
-
-	public double getPrice() {
-		return price;
-	}
 
 	public void setPrice(double price) {
 		this.price = price;

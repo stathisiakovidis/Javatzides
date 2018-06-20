@@ -36,7 +36,7 @@ public class SettingsController extends MainController implements Initializable 
 
 	public void onClickSave(ActionEvent e) throws IOException
 	{ 
-		
+		//Check if user has filled all required fields
 		if(nameField.getText().equals("")||subnameField.getText().equals("")||passwordField.getText().equals("")||confirmpasswordField.getText().equals(""))
 		{
 			showAlert("Complete the necessary fields");
@@ -44,12 +44,13 @@ public class SettingsController extends MainController implements Initializable 
 		}
 		else
 		{
+			//Apply some form restrictions
 			if(passwordField.getText().equals(confirmpasswordField.getText())) {
 				if(phoneField.getText().length()==10 && phoneField.getText().matches("\\d+")) {
 					if(emailField.getText().contains("@")) {
-						System.out.println(nameField.getText()+" "+subnameField.getText());
+						//Set the new user credentials
 						Main.loginUser.setNewData(nameField.getText()+" "+subnameField.getText(), passwordField.getText(), emailField.getText(), cardnumField.getText(), idField.getText(), phoneField.getText(), passportField.getText());
-						System.out.println(Main.loginUser.getUsername());
+						//Save new user credentials
 						Passenger updatedPassenger = new Passenger(Main.loginUser.getUsername(),
 									Main.loginUser.getPassword(), Main.loginUser.getEmail(),
 									Main.loginUser.getCardNum(), Main.loginUser.getId(),
@@ -81,6 +82,7 @@ public class SettingsController extends MainController implements Initializable 
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//Getting and setting all current user data to forms
 		String name="", surname ="";
         StringTokenizer st = new StringTokenizer(Main.loginUser.getUsername());
         name = st.nextToken();

@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainController {
-
+	//Opens deposit window when user hits the button deposit 
 	@FXML
 	public void onClickedPurchase(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -26,7 +26,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Deposit");
 		primaryStage.show();
 	}
-
+	//Opens history window when user hits the button history
 	@FXML
 	public void onClickedHistory(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -42,7 +42,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: History");
 		primaryStage.show();
 	}
-
+	//Opens startscreen window when user hits the button startscreen
 	public void onClickedStartScreen(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
@@ -55,7 +55,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Start Screen");
 		primaryStage.show();
 	}
-
+	//Opens information window when user hits the button informations
 	public void onClickedInformation(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Information.fxml"));
@@ -67,7 +67,9 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Information");
 		primaryStage.show();
 	}
-
+	//End of NavBar
+	
+	//Tasks for the program when the sign out button has been pressed
 	public void onClickedSignOut(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		primaryStage.close();
@@ -87,11 +89,6 @@ public class MainController {
 					Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
 			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-			/*for (Product p : Main.loginUser.getProducts()) {
-				System.out.println(p.getDate_time());
-			}
-			FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);*/
-			
 			FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
 			
 			Main.loginUser = null;
@@ -108,7 +105,7 @@ public class MainController {
 		stage.show();
 
 	}
-
+	//Opens settings window when user hits the button settings 
 	public void onClickedSettings(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
@@ -123,7 +120,7 @@ public class MainController {
 		primaryStage.setTitle("ThessBus: Login");
 		primaryStage.show();
 	}
-
+    //Opens the previous window when user hits the back button
 	public void onHyperlinkGoBack(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
 

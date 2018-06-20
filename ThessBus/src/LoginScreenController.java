@@ -70,7 +70,7 @@ public class LoginScreenController extends MainController implements Initializab
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
-				root = loader.load();
+					root = loader.load();
 				Scene scene = new Scene(root);
 				
 				//setUserData so that the fxml file of the loader can be retrieved.
