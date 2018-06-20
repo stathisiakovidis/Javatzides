@@ -94,12 +94,14 @@ public class LoginScreenController extends MainController implements Initializab
 										Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
 										Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
+							System.out.println(Main.loginUser.getUserNum() + " " + temp.getUserNum());
 							FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 							FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
+							
+							Main.loginUser = null;
 						} else
 							arg0.consume();
 						
-						Main.loginUser = null;
 					}
 				});
 				stage.show();
