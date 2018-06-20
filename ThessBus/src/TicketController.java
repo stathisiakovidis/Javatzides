@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 
 public class TicketController extends MainController implements Initializable {
 
+	//FXML buttons 
 	@FXML private Button oneWayNormal;
 	@FXML private Button oneWayReduced;
 	@FXML private Button twoWayNormal;
@@ -45,13 +46,15 @@ public class TicketController extends MainController implements Initializable {
 	private String bus = "";
 	private double cost;
 	
-
+    
 	public void TicketData(Ticket newTicket) throws WriterException, IOException{	
+		    //If you want to purchase for sure
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			alert.setHeaderText(null);
 			alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
 			
+			//If he clicks ok
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				if (Main.loginUser.getBalance() < cost) {
@@ -88,7 +91,7 @@ public class TicketController extends MainController implements Initializable {
 			}
 	}
 		
-
+    //Clicked one way ticket
 	public void onClickedOneWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.5 * Main.loginUser.getCheck();
@@ -98,7 +101,8 @@ public class TicketController extends MainController implements Initializable {
 		else
 			noBusSelectedAlert();
 	}
-
+	
+	//Clicked two way ticket
 	public void onClickedTwoWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.6 * Main.loginUser.getCheck();
@@ -109,6 +113,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
+	//Clicked three way ticket
 	public void onClickedThreeWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 0.8 * Main.loginUser.getCheck();
@@ -119,6 +124,7 @@ public class TicketController extends MainController implements Initializable {
 			noBusSelectedAlert();
 	}
 	
+	//Clicked four way ticket
 	public void onClickedFourWay(ActionEvent e) throws WriterException, IOException {
 		if (bus != "") {
 			cost = 1.0 * Main.loginUser.getCheck();
@@ -142,12 +148,13 @@ public class TicketController extends MainController implements Initializable {
 
 	}
 	
-	
+	//Choose bus and it keeps the number of the bus 
 	public void comboBoxChoice(ActionEvent actionEvent) {
 		bus = busesComboBox.getValue().substring(0, 2);
 		bus = bus + (Character.isLetter((busesComboBox.getValue().charAt(2))) ? busesComboBox.getValue().charAt(2) : "");
 	}
 
+	//if he not choose any of the buses
 	public void noBusSelectedAlert() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Alert");
@@ -156,37 +163,8 @@ public class TicketController extends MainController implements Initializable {
 		alert.showAndWait();
 	}
 
-	/*
-	 * public void onClickedOneWayRedused(ActionEvent e) {
-	 * System.out.println("HEY"); }
-	 * 
-	 * public void onClickedTwoWayRedused(ActionEvent e) {
-	 * System.out.println("HEY"); }
-	 */
-
-	/*
-	 * public void clickedButton(ActionEvent e) {
-	 * 
-	 * Ticket ticket = new Ticket(null, 1.0, owner, null, null, null, 1, 12, null);
-	 * 
-	 * if(e.getSource().equals(oneWayNormal)) { ticket.setPrice(1);
-	 * ticket.setNo_of_routes(1); } else if(e.getSource().equals(oneWayReduced)) {
-	 * ticket.setPrice(0.5); ticket.setNo_of_routes(1); } else
-	 * if(e.getSource().equals(twoWayNormal)) { ticket.setPrice(1.20);
-	 * ticket.setNo_of_routes(2); } else if(e.getSource().equals(twoWayReduced)) {
-	 * ticket.setPrice(0.60); ticket.setNo_of_routes(2); }
-	 * 
-	 * int reply = JOptionPane.showConfirmDialog(null,
-	 * "Είσαι σίγουρος ότι θες να συνεχίσεις;", "Close?",
-	 * JOptionPane.YES_NO_OPTION); if (reply == JOptionPane.YES_OPTION) {
-	 * if(owner.getBalance() >= ticket.getPrice()) {
-	 * owner.reduceBalance(ticket.getPrice()); owner.addProduct(ticket); } else
-	 * JOptionPane.showMessageDialog(null, "ΒΛΑΧΑ ΒΛΑΧΑ ΦΤΩΧΙΑ ", null,
-	 * JOptionPane.WARNING_MESSAGE); }
-	 * 
-	 * }
-	 */
-
+	
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -425,7 +403,8 @@ public class TicketController extends MainController implements Initializable {
 						"Χ1:ΚΤΕΛ - Αεροδρόμιο",
 						"N1A: ΚΤΕΛ - Αεροδρόμιο Νυχτερινό μέσω Α.Σ. Ι.Κ.Ε.Α.",
 						"Ν1: ΚΤΕΛ - Αεροδρόμιο Νυχτερινό"));
-
+        
+		//If the passenger has university,school id then he has a discount
 		if (Main.loginUser != null) {
 			if (Main.loginUser.getCheck() == 1) {
 				oneWayNormal.setMouseTransparent(true);
@@ -447,6 +426,8 @@ public class TicketController extends MainController implements Initializable {
 
 	}
 
+	//Getters and Setters
+	
 	public VBox getNavBarVBox() {
 		return navBarVBox;
 	}

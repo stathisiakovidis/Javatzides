@@ -18,10 +18,12 @@ public class Ticket extends Product implements Serializable {
 		this.bus = bus;
 	}
 	
+	//set the current time to the validation time 
 	public void setValidation_date_time() {
 		this.validation_date_time = getCurrentTime();
 		
 	}
+	
 	
 	@Override
 	public void setQR () throws WriterException, IOException {
@@ -32,6 +34,7 @@ public class Ticket extends Product implements Serializable {
 		super.printQR();
 	}
 	
+	//Checks if the ticket is valid 
     public boolean isValid() {
 		
     	String hoursText = getCurrentTime().substring(11, 13);
@@ -43,8 +46,7 @@ public class Ticket extends Product implements Serializable {
     	int purchaseTime = Integer.parseInt(purchaseHoursText) * 3600 + Integer.parseInt(purchaseMinutesText) * 60;
 
     	int duration = 0;
-    	/*if(no_of_routes > 1) {*/
-    		
+    		// set the duration of the ticket
     		switch(no_of_routes) {
     		case 2:
     			duration = 70 * 60;
@@ -62,16 +64,16 @@ public class Ticket extends Product implements Serializable {
     		else 
     			return true;
     		
-    	/*}
-    	return true;*/
+    	
     }
 
 
-	
+	//if the tickets is multi way 
 	public void Refresh_num_of_routes() {
 		remaining_routes = remaining_routes - 1;
 	}
 
+	//Getters and setters
 	public String getBus() {
 		return bus;
 	}
