@@ -26,7 +26,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class StartScreenController extends MainController implements Initializable {
@@ -137,7 +139,23 @@ public class StartScreenController extends MainController implements Initializab
 		}
 		
 		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
-			//label ενημέρωσης - κουμπί για λίστα επιλογής
+			HBox MultiWayTicketsHBox = new HBox();
+			MultiWayTicketsHBox.setSpacing(30);
+			MultiWayTicketsHBox.setPadding(new Insets(0, 0, 0, 20));
+
+			Label multiWayTicketsLabel = new Label("Έχεις (" + Main.loginUser.countMultiWayNotValidatedTickets() + ") εισιτήριο/α πολλαπλών"
+									+ System.lineSeparator() + "διαδρομών σε εκκρεμότητα");
+			multiWayTicketsLabel.setFont(new Font(13));
+			Hyperlink viewTicketslink = new Hyperlink("Προβολή");
+			//viewTicketslink.setTextFill(new );
+			viewTicketslink.setUnderline(true);
+			viewTicketslink.setOnAction((ActionEvent e) -> {
+			    onClickViewTickets(e);
+			});
+			MultiWayTicketsHBox.getChildren().add(multiWayTicketsLabel);
+			MultiWayTicketsHBox.getChildren().add(viewTicketslink);
+
+			payNowPane.getChildren().add(MultiWayTicketsHBox);
 		}
 		ArrayList<Product> products = Main.loginUser.getProducts();
 		for (Product product : products) {
