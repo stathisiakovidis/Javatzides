@@ -18,7 +18,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FineController extends MainController implements Initializable {
-
+	
+	//FXML components for Inspector.FXML 
 	@FXML Pane leftPane;
 	@FXML Hyperlink backHyperlink;
 	@FXML TextField nameField;
@@ -33,7 +34,7 @@ public class FineController extends MainController implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
-
+	//Method for the inspector to charge user with a fine
 	public void onClickedFine(ActionEvent actionEvent) throws IOException
 	{
 		if(nameField.getText().isEmpty() || lastNameField.getText().isEmpty() || busField.getText().isEmpty()) {
@@ -69,11 +70,11 @@ public class FineController extends MainController implements Initializable {
 				stage.show();
             }
 		}
-	}
+	}//Back button
 	public Pane getLeftPane() {
 		return leftPane;
 	}
-
+	//Sign out button
 	public Hyperlink getBackHyperlink() {
 		return backHyperlink;
 	}
