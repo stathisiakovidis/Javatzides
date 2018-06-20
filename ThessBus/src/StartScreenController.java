@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,6 +33,11 @@ public class StartScreenController extends MainController implements Initializab
 	@FXML
 	private Hyperlink payNow;
 	@FXML private Pane payNowPane;
+	@FXML
+	private Label warningLabel;
+	@FXML
+	private Button okButton;
+	private Card falseProduct;
 
 	public void onClickedTicket(ActionEvent actionEvent) throws IOException {
 		Stage primaryStage = getStageFromEvent(actionEvent);
@@ -125,11 +131,22 @@ public class StartScreenController extends MainController implements Initializab
 		if(Main.loginUser.countMultiWayNotValidatedTickets() > 0) {
 			//label ενημέρωσης - κουμπί για λίστα επιλογής
 		}
-		
-		if(Main.loginUser.countNotValidCards() > 0) {
-			//label ενημέρωσης - κουμπί για την προβολή τους?
+		ArrayList<Product> products = Main.loginUser.getProducts();
+		for (Product product : products) {
+			if(product instanceof Card /*&& ((Card) product).isValid() == false*/ && ((Card) product).isFlag() == false) {
+				warningLabel.setVisible(true);
+				okButton.setVisible(true);
+				falseProduct = ((Card) product);
+			}
+				
 		}
 		
 	}
-
+	public void OnClickedOk(ActionEvent actionEvent)
+	{
+		warningLabel.setVisible(false);
+		okButton.setVisible(false);
+        falseProduct.setFlagTrue();
+	}
+		
 }
