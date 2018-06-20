@@ -89,11 +89,11 @@ public class RegisterController extends MainController implements Initializable 
 																Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
 																Main.loginUser.getBalance());
 
-														FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-														/*
-														 * FileManager.updateFines(Main.loginUser.getUsername(),
-														 * Main.loginUser.getFines(), "Fines.dat");
-														 */
+														//FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
+														
+														/*FileManager.updateFines(Main.loginUser.getUsername(), 
+																Main.loginUser.getFines(), "Fines.dat");*/
+														 
 													}
 												} 
 												else
