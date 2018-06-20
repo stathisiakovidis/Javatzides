@@ -117,8 +117,11 @@ public class PurchaseDataController extends MainController implements Initializa
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
-			
 			Scene scene = new Scene(root);
+			
+			//setUserData so that the fxml file of the loader can be retrieved
+    		scene.setUserData(loader);
+			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(" ");
 			primaryStage.show();

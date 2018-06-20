@@ -25,7 +25,7 @@ public class DepositController extends MainController implements Initializable{
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
-		    Main.loginUser.updateBalance(Double.parseDouble(result.get()));
+		    Main.loginUser.updateBalance(result.get().equals("")?0:Double.parseDouble(result.get()));
 		    balanceLabel.setText(Double.toString(Main.loginUser.getBalance()));
 		    
 		    Alert alert = new Alert(AlertType.INFORMATION);

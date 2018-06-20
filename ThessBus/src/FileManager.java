@@ -258,7 +258,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			fines = (ArrayList) ois.readObject();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -281,7 +281,7 @@ public class FileManager {
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			fines = (ArrayList) ois.readObject();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
