@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class LoginScreenController extends MainController implements Initializable {
+	//Fxml components in LoginScreen.fxml
 	@FXML
 	public Button loginButton;
 	@FXML
@@ -34,11 +35,11 @@ public class LoginScreenController extends MainController implements Initializab
 	public PasswordField passwordField;
 	@FXML
 	private Hyperlink visitorHyperlink;
-	
+	//This method is called when user(Passenger or Inspector) tries to Log in with his ThessBus account.
 	public void onClickedLogin(ActionEvent e) throws IOException {
 
 		Stage primarystage = Main.getStagefromEvent(e);
-		 
+		 //This statement checks if user name and password field are filled.
 		if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Alert");
@@ -50,6 +51,7 @@ public class LoginScreenController extends MainController implements Initializab
             }
 		} 
 		else {
+			//Search if user(passenger or inspector) exists in project's files.
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
 						passwordField.getText(), "Inspectors.dat");
@@ -57,7 +59,7 @@ public class LoginScreenController extends MainController implements Initializab
 			else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
 						"Users.dat");
-
+			//If the user is passenger start screen is prompted and passenger's products and fines are loaded in Main.loginUser static variable.
 			if (Main.loginUser != null) {
 				primarystage.close();
 				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUserNum(), "Products.dat"));
@@ -71,13 +73,12 @@ public class LoginScreenController extends MainController implements Initializab
 				root = loader.load();
 				Scene scene = new Scene(root);
 				
-				//setUserData so that the fxml file of the loader can be retrieved
-	    		scene.setUserData(loader);
-				
+				//setUserData so that the fxml file of the loader can be retrieved.
+	    		scene.setUserData(loader);	
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Home");
 				stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
+					//If passenger presses X then user and fine files are updated and the program closes after confirmation.
 					@Override
 					public void handle(WindowEvent arg0) {
 						Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -107,6 +108,7 @@ public class LoginScreenController extends MainController implements Initializab
 				stage.show();
 				
 			}
+			//If user is inspector inspector's screen is prompted
 			else if (Main.loginIns != null) {
 				primarystage.close();
 				Stage stage = new Stage();
@@ -116,12 +118,11 @@ public class LoginScreenController extends MainController implements Initializab
 				Scene scene = new Scene(root);
 				
 				//setUserData so that the fxml file of the loader can be retrieved
-	    		scene.setUserData(loader);
-				
+	    		scene.setUserData(loader);	
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Inspector");
 				stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
+					//If inspector presses X the program closes after confirmation.
 					@Override
 					public void handle(WindowEvent arg0) {
 						Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -141,6 +142,7 @@ public class LoginScreenController extends MainController implements Initializab
 				stage.show();
 			}
 			else {
+				//If user doesn't exist an error occurs
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Alert");
 				alert.setHeaderText(null);
@@ -152,7 +154,7 @@ public class LoginScreenController extends MainController implements Initializab
 			}
 		}
 	}
-
+	//This method is used to load register screen
 	public void onClickedSignUp(ActionEvent actionEvent) throws Exception {
 		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScreen.fxml"));
@@ -168,7 +170,7 @@ public class LoginScreenController extends MainController implements Initializab
 		primaryStage.setTitle("ThessBus: Sign Up");
 		primaryStage.show();
 	}
-
+	//If a user doesn't have a account he can browse the app's products as a visitor
 	public void onHyperlinkVisitor(ActionEvent actionEvent) throws Exception {
 		Stage primaryStage = MainController.getStageFromEvent(actionEvent);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("VisitorScreen.fxml"));
@@ -187,7 +189,7 @@ public class LoginScreenController extends MainController implements Initializab
 	
 	
 	
-
+	//Initializing LoginScreenController.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

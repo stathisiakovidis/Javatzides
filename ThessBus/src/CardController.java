@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 public class CardController extends MainController implements Initializable {
 	private Passenger owner = Main.loginUser;
 	private double cost;
+	//Fxml components in  Card.fxml
 	@FXML private Button monthlyReduced;
 	@FXML private Button threeMonthsReduced;
 	@FXML private Button sixMonthsReduced;
@@ -35,15 +36,16 @@ public class CardController extends MainController implements Initializable {
 	@FXML private Button annualNormal;
 	@FXML private Label usernameMenu;
 	@FXML private Label balanceMenu;
-	
+	//This method is used to purchase a card.
 	public void CardData(Card newcard) throws WriterException, IOException {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
 		alert.setHeaderText(null);
 		alert.setContentText("Είσαι σίγουρος ότι θέλεις να συνεχίσεις;");
-
+		
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
+			//Checking if user's balance is enough to purchase the card.
 			if (owner.getBalance() < cost) {
 				Alert alert1 = new Alert(AlertType.ERROR);
 				alert1.setTitle("Alert");
@@ -58,9 +60,10 @@ public class CardController extends MainController implements Initializable {
 				newalert.setContentText("Γιουχου! Η κάρτα σου αγοράστηκε!");
 				newalert.showAndWait();
 				
+				//Update user's balance and insert the new card in his products
 				owner.reduceBalance(cost);
 				owner.addProduct(newcard);
-				
+				//Updating user's data in file and inserting the new card in product's file
 				Passenger temp = new Passenger(Main.loginUser.getUsername(),
 						Main.loginUser.getPassword(), Main.loginUser.getEmail(),
 						Main.loginUser.getCardNum(), Main.loginUser.getId(),
@@ -70,15 +73,13 @@ public class CardController extends MainController implements Initializable {
 				FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 				FileManager.insertProducts(Main.loginUser.getUsername(), newcard,
 							"Products.dat");
-				/*FileManager.updateFines(Main.loginUser.getUsername(), Main.loginUser.getFines(),
-								"Fines.dat");*/
 			}
 		}
 		else {
 		    // ... user chose CANCEL or closed the dialog
 		}
 	}
-	
+	//Generating different types of cards.
 	public void generateMonthlyCard(ActionEvent event) throws IOException, WriterException {
 		cost = 15 * owner.getCheck();
 		Card newcard = new Card(cost, owner, "Μηνιαία", 1);
@@ -102,7 +103,7 @@ public class CardController extends MainController implements Initializable {
 		Card newcard = new Card(cost, owner, "Ετήσια", 12);
 		CardData(newcard);
 	}
-
+	//Generating getters and setters.
 	public Button getMonthlyNormal() {
 		return monthlyNormal;
 	}
@@ -147,9 +148,11 @@ public class CardController extends MainController implements Initializable {
 		return signOutHyperlink;
 	}
 	
+	//Initializing CardController.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		if(owner != null) {
+			//Check if user is reduced or normal
 			if(owner.getCheck() == 1) {
 				monthlyNormal.setMouseTransparent(true);
 				threeMonthsNormal.setMouseTransparent(true);

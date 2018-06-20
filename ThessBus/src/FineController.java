@@ -62,8 +62,7 @@ public class FineController extends MainController implements Initializable {
 				Scene scene = new Scene(root);
 				
 				//setUserData so that the fxml file of the loader can be retrieved
-		        scene.setUserData(loader);
-				
+		        scene.setUserData(loader);	
 				stage.setScene(scene);
 				stage.setTitle("ThessBus: Inspector");
 				stage.show();

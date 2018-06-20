@@ -14,13 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class HistoryController extends MainController implements Initializable {
-
+	//Fxml components in History.fxml
 	@FXML private Label historystatusLabel;
 	@FXML private VBox historyVBox;
 	@FXML private VBox navBarVBox;
 	@FXML private Label usernameMenu;
 	@FXML private Label balanceMenu;
-	
+	//Setting history screen which includes qrcode image,date-time,bus and price of the product.
 	public void setFieldsandData(ArrayList<Product> products, ArrayList<Fine> fines) {
 		if(products.isEmpty() && fines.isEmpty())
 			historystatusLabel.setText("Δεν υπάρχουν στοιχεία για προβολή!");
@@ -83,6 +83,7 @@ public class HistoryController extends MainController implements Initializable {
 					hbox.getChildren().add(busLabel);
 					hbox.getChildren().add(priceLabel);
 					historyVBox.getChildren().add(hbox);
+					//A windows is prompted which shows all the details about the product.
 					hbox.setOnMousePressed(e -> {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Product's Qr Code");
@@ -103,6 +104,7 @@ public class HistoryController extends MainController implements Initializable {
 				}
 				
 			}
+			//Contains user's fines that are not paid.
 			if(fines.isEmpty() == false) {
 				Label dummy = new Label("");
 				historyVBox.getChildren().add(dummy);
@@ -168,6 +170,7 @@ public class HistoryController extends MainController implements Initializable {
 
 	}
 
+	//Initializing HistoryController.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		historystatusLabel.setText("");
@@ -175,7 +178,8 @@ public class HistoryController extends MainController implements Initializable {
 		balanceMenu.setText(Double.toString(Main.loginUser.getBalance()));
 		
 	}
-
+	
+	//Generating setters and getters.
 	public Label getHistorystatusLabel() {
 		return historystatusLabel;
 	}
