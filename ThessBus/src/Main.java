@@ -1,7 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-	import java.util.Optional;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ public class Main extends Application {
 	 
 	static Passenger loginUser = null;
 	static TicketInspector loginIns = null;
-	
+
 	public static void main(String[] args)
 	{
 		launch(args);
@@ -31,8 +31,8 @@ public class Main extends Application {
 		/*Passenger temp = new Passenger("alex bla", "123", "fd@asd", "1234567890", "id", "1234567890", "22", 40);
 		FileManager.InsertUser(temp, "Users.dat");*/
 		
- 		TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector12345");
- 		FileManager.InsertUser(tempInsp, "Inspectors.dat");
+		TicketInspector tempInsp = new TicketInspector("Dionisis Antoniadis", "paok1998", "inspector12345");
+		FileManager.InsertUser(tempInsp, "Users.dat");
 		
 		Parent root=null;
 		root= FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));

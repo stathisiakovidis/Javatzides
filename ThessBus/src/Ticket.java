@@ -88,4 +88,5 @@ public class Ticket extends Product implements Serializable {
 	public int getRemaining_routes() {
 		return remaining_routes;
 	}
+	
 }

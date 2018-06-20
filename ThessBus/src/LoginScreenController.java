@@ -1,7 +1,6 @@
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -25,7 +24,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.GaussianBlur;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-	
+
 public class LoginScreenController extends MainController implements Initializable {
 	@FXML
 	public Button loginButton;
@@ -53,7 +52,7 @@ public class LoginScreenController extends MainController implements Initializab
 		else {
 			if (usernameField.getText().contains("inspector")) {
 				Main.loginIns = (TicketInspector) FileManager.searchUser(usernameField.getText(),
-						passwordField.getText(), "Inspectors.dat");
+						passwordField.getText(), "Users.dat");
 			}
 			else
 				Main.loginUser = (Passenger) FileManager.searchUser(usernameField.getText(), passwordField.getText(),
@@ -97,12 +96,6 @@ public class LoginScreenController extends MainController implements Initializab
 
 							FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
 							FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
-							 Passenger temp1 = new Passenger(Main.loginUser.getUsername(),
-										Main.loginUser.getPassword(), Main.loginUser.getEmail(),
-										Main.loginUser.getCardNum(), Main.loginUser.getId(),
-										Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
-										Main.loginUser.getBalance());
-					            FileManager.InsertUser(temp1, "Users.dat");
 						} else
 							arg0.consume();
 						
@@ -154,7 +147,6 @@ public class LoginScreenController extends MainController implements Initializab
 	            if (result.get() == ButtonType.OK){
 	                alert.close();
 	            }
-	           
 			}
 		}
 	}
@@ -173,7 +165,6 @@ public class LoginScreenController extends MainController implements Initializab
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("ThessBus: Sign Up");
 		primaryStage.show();
-		
 	}
 
 	public void onHyperlinkVisitor(ActionEvent actionEvent) throws Exception {
