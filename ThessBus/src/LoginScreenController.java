@@ -64,9 +64,6 @@ public class LoginScreenController extends MainController implements Initializab
 				primarystage.close();
 				Main.loginUser.setProducts(FileManager.getProducts(Main.loginUser.getUserNum(), "Products.dat"));
 				Main.loginUser.setFines(FileManager.getFines(Main.loginUser.getUserNum(), "Fines.dat"));
-				for (Product product : Main.loginUser.getProducts()) {
-					System.out.println(product.getDate_time());
-				}
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScreen.fxml"));
 				Parent root = null;
@@ -94,10 +91,9 @@ public class LoginScreenController extends MainController implements Initializab
 										Main.loginUser.getCardNum(), Main.loginUser.getId(),
 										Main.loginUser.getPhoneNum(), Main.loginUser.getPassport(),
 										Main.loginUser.getBalance(), Main.loginUser.getUserNum());
-
-							System.out.println(Main.loginUser.getUserNum() + " " + temp.getUserNum());
 							FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-							FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
+							if(Main.loginUser.getFines()!=null)
+								FileManager.updateFines(Main.loginUser.getUserNum(), Main.loginUser.getFines(), "Fines.dat");
 							
 							Main.loginUser = null;
 						} else

@@ -81,7 +81,6 @@ public class TicketController extends MainController implements Initializable {
 							Main.loginUser.getBalance(), Main.loginUser.getUserNum());
 
 					FileManager.updatePassenger(Main.loginUser, "Users.dat", temp);
-					System.out.println("main loginuser: " + Main.loginUser.getUserNum() + " updated: " + temp.getUserNum());
 					FileManager.insertProducts(Main.loginUser.getUsername(), newTicket,
 							"Products.dat");
 				}

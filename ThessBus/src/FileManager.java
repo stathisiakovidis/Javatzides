@@ -101,12 +101,10 @@ public class FileManager {
 		//If given user equals with one on the retrieved list of users remove the latter and add the given one
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getUserNum().equals(user.getUserNum())) {
-				System.out.println("Passenger found");
 				users.remove(i);
 				users.add(newUser);
 				found = true;
 				try {
-					System.out.println("Passenger updated");
 					FileOutputStream fout = new FileOutputStream(filename);
 					ObjectOutputStream oos = new ObjectOutputStream(fout);
 					oos.writeObject(users);
@@ -137,7 +135,6 @@ public class FileManager {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("geia");
 			// if io exception then first time adding a product so no need to read the list
 				products.add(producttoInsert);
 			try {
@@ -146,7 +143,6 @@ public class FileManager {
 				e1.printStackTrace();
 			}
 		} catch (ClassNotFoundException e) {
-			System.out.println("geia 1");
 			// if class not found then first time adding a product so no need to read the
 			// list
 				products.add(producttoInsert);
