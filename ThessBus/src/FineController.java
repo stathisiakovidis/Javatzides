@@ -38,41 +38,59 @@ public class FineController extends MainController implements Initializable {
 	public void onClickedFine(ActionEvent actionEvent) throws IOException
 	{
 		if(nameField.getText().isEmpty() || lastNameField.getText().isEmpty() || busField.getText().isEmpty()) {
-			Alert alert = new Alert(AlertType.ERROR);
+			/*Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Alert");
 			alert.setHeaderText(null);
 			alert.setContentText("Συμπλήρωσε όλα τα απαραίτητα πεδία μάγκα μου!");
-			alert.showAndWait();
+			alert.showAndWait();*/
+			showAlert("Συμπλήρωσε όλα τα απαραίτητα πεδία μάγκα μου!");
 		}
 		else {
 			String name = nameField.getText() + " " + lastNameField.getText();
 			Passenger passenger = (Passenger) FileManager.search(name, "Users.dat");
-			Fine fine = new Fine(passenger, Main.loginIns.getUserNum(), busField.getText());
-			FileManager.insertFine(fine, "Fines.dat");
-			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Alert");
-			alert.setHeaderText(null);
-			alert.setContentText("Το πρόστιμο κόπηκε με επιτυχία");
-			Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-            	Stage stage = Main.getStagefromEvent(actionEvent);
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
-				Parent root = null;
-				root = loader.load();
-				Scene scene = new Scene(root);
+			if(passenger != null) {
+				Fine fine = new Fine(passenger, Main.loginIns.getUserNum(), busField.getText());
+				FileManager.insertFine(fine, "Fines.dat");
 				
-				//setUserData so that the fxml file of the loader can be retrieved
-		        scene.setUserData(loader);	
-				stage.setScene(scene);
-				stage.setTitle("ThessBus: Inspector");
-				stage.show();
-            }
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Alert");
+				alert.setHeaderText(null);
+				alert.setContentText("Το πρόστιμο κόπηκε με επιτυχία");
+				Optional<ButtonType> result = alert.showAndWait();
+	            if (result.get() == ButtonType.OK) {
+	            	Stage stage = Main.getStagefromEvent(actionEvent);
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("Inspector.fxml"));
+					Parent root = null;
+					root = loader.load();
+					Scene scene = new Scene(root);
+					
+					//setUserData so that the fxml file of the loader can be retrieved
+			        scene.setUserData(loader);
+			        
+					stage.setScene(scene);
+					stage.setTitle("ThessBus: Inspector");
+					stage.show();
+	            }
+			}
+			else
+				showAlert("Ο χρήστης που ψάχνεις δεν είναι εγγεγραμμένος στο σύστημα!");
+		
 		}
-	}//Back button
+	}
+	
+	public void showAlert(String message) {
+		Alert alert = new Alert(AlertType.ERROR); 
+		alert.setTitle("Alert");
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
+	
+	//Back button
 	public Pane getLeftPane() {
 		return leftPane;
 	}
+	
 	//Sign out button
 	public Hyperlink getBackHyperlink() {
 		return backHyperlink;
